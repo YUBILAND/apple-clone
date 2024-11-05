@@ -1,0 +1,22 @@
+.apple_black {
+  color: #1d1d1f;
+}
+
+.glow {
+  transition: color 0.5s ease;
+}
+
+.glow:hover {
+  color: white;
+  
+}
+
+.header_color {
+  background-color: #171718;
+  /* background-color: rgba(23, 23, 24, 0.9); */
+
+}
+
+.blur_element {
+  backdrop-filter: blur(8px);
+}
