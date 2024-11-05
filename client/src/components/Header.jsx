@@ -372,7 +372,7 @@ const Header = () => {
                 console.log('Hovering over pop');
                 setIsHoverHeader((prev) => ({
                     ...prev,
-                    'store' : true
+                    [popMenu.getAttribute('data-key')] : true
                 }))
             });
             popMenu.addEventListener('mouseleave', () => {
@@ -380,15 +380,12 @@ const Header = () => {
                 console.log('No longer hovering pop');
                 setIsHoverHeader((prev) => ({
                     ...prev,
-                    'store' : false
+                    [popMenu.getAttribute('data-key')] : false
                 }))
             });
         }
     }, [isHoverHeader])
         
-
-    
-
 
   return (
     <>
@@ -415,20 +412,21 @@ const Header = () => {
                 </a>
             </header>
         </headercontainer>
+
         {isHoverHeader && 
         Object.entries(isHoverHeader).map(([key, val], ind) => {
             return val &&  
-                <div id='popMenu' className='z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white'>
+                <div data-key={key} id='popMenu' className='z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white'>
                     <div className='text-left w-[980px] mx-auto my-10 flex'>
                         {header_popMenu[ind].map((col, col_i) => {
-                            if (col_i === 0) {
+                            if (col_i === 0) { // first col, bigger text
                                 return (
-                                    <div className='mr-20'>
+                                    <div className='mr-20 select-none'>
                                         {col.map((item, i) => {
-                                            if (i === 0) {
+                                            if (i === 0) { // title
                                                 return <div className='text-[#d1d1d1] text-xs pb-4'>{item}</div>
                                             } else {
-                                                return <ul className='leading-none font-bold text-xl pb-4'>{item}</ul>
+                                                return <a href='/' className='text-[#e6e6e6] glow block leading-none font-bold text-xl pb-4'>{item}</a>
                                             }
                                         })}
                                     </div>
@@ -436,12 +434,12 @@ const Header = () => {
                             } 
                             else {
                                 return (
-                                    <div className='mr-12'>
+                                    <div className='mr-12 select-none'>
                                         {col.map((item, i) => {
                                             if (i === 0) {
                                                 return <div className='text-[#d1d1d1] text-xs pb-4'>{item}</div>
                                             } else {
-                                                return <ul className='text-xs pb-2'>{item}</ul>
+                                                return <a href='/' className='glow block text-xs text-[#e6e6e6] pb-2'>{item}</a>
                                             }
                                         })}
                                     </div>
@@ -450,9 +448,6 @@ const Header = () => {
                         })}
                     </div>
                 </div>
-                
-            
-           
                 
         })}
 
