@@ -4,9 +4,9 @@ import AppleIcon from '@mui/icons-material/Apple';
 
 function FrontPage() {
   return (
-    <div className='mt-[44px]'>
+    <div className='mt-[44px] select-none'>
         {/* first image */}
-        <firstimg className='block select-none relative mb-3'>
+        <firstimg className='block relative mb-3'>
             <div className='text-white '> 
                 <img className='h-[692px] object-cover' src="https://www.apple.com/v/home/bu/images/heroes/iphone-16-pro/hero_iphone16pro_avail__fnf0f9x70jiy_large.jpg" alt="" /> 
                 <div className='absolute top-20 left-0 right-0 w-fit mx-auto text-center'>
@@ -21,7 +21,7 @@ function FrontPage() {
         </firstimg>
 
         {/* second image */}
-        <secondimg className='block select-none relative mb-3'>
+        <secondimg className='block relative mb-3'>
             <div className='text-white'> 
                 <img className='h-[692px] object-cover' src="https://www.apple.com/v/home/bu/images/heroes/iphone-16/hero_iphone16_avail__euwzls69btea_largetall.jpg" alt="" /> 
                 <div className='absolute top-20 left-0 right-0 w-fit mx-auto text-center'>
@@ -36,7 +36,7 @@ function FrontPage() {
         </secondimg>
 
         {/* third image */}
-        <thirdimg className='block select-none relative mb-3'>
+        <thirdimg className='block relative mb-3'>
             <div className='text-white'>
                 <img className='h-[692px] object-cover' src="https://www.apple.com/v/home/bu/images/heroes/macbook-pro-enhanced/hero_macbookpro_announce__f7vm5bnswsae_largetall.jpg" alt="" /> 
                 <div className='absolute top-20 left-0 right-0 w-fit mx-auto text-center'>

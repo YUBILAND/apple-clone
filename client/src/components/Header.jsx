@@ -507,7 +507,7 @@ const Header = () => {
     }
     
   return (
-    <>
+    <div className='select-none'>
         <headercontainer className='z-10 fixed top-0 left-0 w-full h-[44px] bg-[rgba(22,_22,_23,_0.9)] backdrop-blur text-[#d1d1d1] flex'>
             <header className='flex items-center justify-between w-[980px] mx-auto text-xs'>
                 <a href="/">
@@ -534,7 +534,8 @@ const Header = () => {
 
         { isHoverHeader && // when header icon is hovered on
         Object.entries(isHoverHeader).map(([key, val], ind) => {
-            return val &&  
+            return val && 
+            <>
                 <div data-key={key} id='popMenu' className='z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white'>
                     <div className='text-left w-[980px] mx-auto my-10 flex'>
                         {header_popMenu[ind].map((col, col_i) => {
@@ -567,68 +568,74 @@ const Header = () => {
                         })}
                     </div>
                 </div>
-                
+
+                <div className='fixed w-screen h-screen backdrop-blur z-[5]'></div>
+            </> 
         })}
 
         { isHoverSearch && //when search icon is hovered on
-        <searchhover id='searchPopMenu'>
-            <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white mb-6'>
-                <div className='text-left w-[980px] mx-auto my-10  '>
-                    <div className='flex items-center mb-8'>
-                        <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? 'white' : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
-                        <input value={inputValue} onChange={handleChange} id='apple-search' placeholder='Search apple.com' className='leading-none text-white header_color placeholder-[#86868B] font-semibold w-full outline-none text-2xl' type="text" />
-                        <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} glow`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
-                    </div>
-                    <div className='text-xs'>
-                        <div className='dark_gray mb-2'>Quick Links</div>
-                        {quickLinks.map(item => {
-                            return <a className='group text-[#e6e6e6] hover:text-white hover:bg-[#1D1D1F] flex items-center mb-1 py-1 rounded-md' href="">
-                            <EastIcon className='group-hover:text-white' sx={{ fontSize: '0.7rem', marginRight: '8px', color: '#86868B', marginTop: '3px',}}/>
-                            <ul>{item}</ul>
-                        </a>
-                        })}
+        <>
+            <searchhover id='searchPopMenu'>
+                <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white mb-6'>
+                    <div className='text-left w-[980px] mx-auto my-10  '>
+                        <div className='flex items-center mb-8'>
+                            <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? 'white' : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
+                            <input value={inputValue} onChange={handleChange} id='apple-search' placeholder='Search apple.com' className='leading-none text-white header_color placeholder-[#86868B] font-semibold w-full outline-none text-2xl' type="text" />
+                            <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} glow`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
+                        </div>
+                        <div className='text-xs'>
+                            <div className='dark_gray mb-2'>Quick Links</div>
+                            {quickLinks.map(item => {
+                                return <a className='group text-[#e6e6e6] hover:text-white hover:bg-[#1D1D1F] flex items-center mb-1 py-1 rounded-md' href="">
+                                <EastIcon className='group-hover:text-white' sx={{ fontSize: '0.7rem', marginRight: '8px', color: '#86868B', marginTop: '3px',}}/>
+                                <ul>{item}</ul>
+                            </a>
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </searchhover>
+            </searchhover>
+            <div className='fixed w-screen h-screen backdrop-blur z-[5]'></div>
+        </>
         }
 
-        { isHoverShoppingBag &&
-        <shoppingbaghover id='shoppingBagPopMenu'>
-            <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white pb-10'>
-                <div className='text-left w-[980px] mx-auto my-10  '>
-                    <div className='text-2xl mb-5'>Your Bag is empty.</div>
-                    <div className='text-xs mb-8 dark_gray'>
-                        <a className='underline text-[#2997FF] visited:text-purple-600' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
-                    <div className='flex flex-col text-xs'>
-                        <div className='mb-3 dark_gray'>My Profile</div>
-                        <a href='' className='mb-1 flex items-center w-fit group'>
-                            <ViewInArIcon className='group-hover:text-white pr-3 dark_gray'/>
-                            <ul href="" className='group-hover:text-white almost_white'>Orders</ul>
-                        </a>
-                        <a href='' className='mb-1 flex items-center w-fit group'>
-                            <BookmarkBorderIcon className='group-hover:text-white pr-3 dark_gray'/>
-                            <ul className='group-hover:text-white almost_white' href="">Your Saves</ul>
-                        </a>
-                        <a href='' className='mb-1 flex items-center w-fit group'>
-                            <SettingsIcon className='group-hover:text-white pr-3 dark_gray'/>
-                            <ul className='group-hover:text-white almost_white' href="">Account</ul>
-                        </a>
-                        <a href='' className='mb-1 flex items-center w-fit group'>
-                            <AccountCircleOutlinedIcon className='group-hover:text-white pr-3 dark_gray'/>
-                            <ul className='group-hover:text-white almost_white' href="">Sign In</ul>
-                        </a>
+        { isHoverShoppingBag && // when shopping bag icon is hovered on
+        <>
+            <shoppingbaghover id='shoppingBagPopMenu'>
+                <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white pb-10'>
+                    <div className='text-left w-[980px] mx-auto my-10  '>
+                        <div className='text-2xl mb-5'>Your Bag is empty.</div>
+                        <div className='text-xs mb-8 dark_gray'>
+                            <a className='underline text-[#2997FF] visited:text-purple-600' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
+                        <div className='flex flex-col text-xs'>
+                            <div className='mb-3 dark_gray'>My Profile</div>
+                            <a href='' className='mb-1 flex items-center w-fit group'>
+                                <ViewInArIcon className='group-hover:text-white pr-3 dark_gray'/>
+                                <ul href="" className='group-hover:text-white almost_white'>Orders</ul>
+                            </a>
+                            <a href='' className='mb-1 flex items-center w-fit group'>
+                                <BookmarkBorderIcon className='group-hover:text-white pr-3 dark_gray'/>
+                                <ul className='group-hover:text-white almost_white' href="">Your Saves</ul>
+                            </a>
+                            <a href='' className='mb-1 flex items-center w-fit group'>
+                                <SettingsIcon className='group-hover:text-white pr-3 dark_gray'/>
+                                <ul className='group-hover:text-white almost_white' href="">Account</ul>
+                            </a>
+                            <a href='' className='mb-1 flex items-center w-fit group'>
+                                <AccountCircleOutlinedIcon className='group-hover:text-white pr-3 dark_gray'/>
+                                <ul className='group-hover:text-white almost_white' href="">Sign In</ul>
+                            </a>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-        </shoppingbaghover>
+            </shoppingbaghover>
+            <div className='fixed w-screen h-screen backdrop-blur z-[5]'></div>
+        </>
         }
 
 
-        
-
-    </>
+    </div>
   )
 }
 
