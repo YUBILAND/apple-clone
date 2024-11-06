@@ -1,5 +1,22 @@
 .apple_black {
   color: #1d1d1f;
+  
+}
+
+.dark_gray {
+  color: #86868B;
+}
+
+.light_gray {
+  color: #C6C6CA;
+}
+
+.hover_highlight {
+  background-color: #1D1D1F;
+}
+
+.almost_white {
+  color: #E3E3E8;
 }
 
 .glow {
@@ -8,11 +25,10 @@
 
 .glow:hover {
   color: white;
-  
 }
 
 .header_color {
-  background-color: #171718;
+  background-color: #161617;
   /* background-color: rgba(23, 23, 24, 0.9); */
 
 }

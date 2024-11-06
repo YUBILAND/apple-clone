@@ -2,6 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import AppleIcon from '@mui/icons-material/Apple';
 import SearchIcon from '@mui/icons-material/Search';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import EastIcon from '@mui/icons-material/East';
+import CancelIcon from '@mui/icons-material/Cancel';
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 const Header = () => {
     // header items
@@ -336,16 +342,21 @@ const Header = () => {
         }, {}) // turn array to hashmap where key is false
     );
 
-    const [isClickSearchIcon, setIsClickSearchIcon] = useState(false)
-    // const [isHoverSearch, setIsHoverSearch] = useState(false)
+    const [isClickSearchIcon, setIsClickSearchIcon] = useState(false);
+    const [isHoverSearch, setIsHoverSearch] = useState(false);
 
-    useEffect(() => {
+    const [isClickShoppingBagIcon, setIsClickShoppingBagIcon] = useState(false);
+    const [isHoverShoppingBag, setIsHoverShoppingBag] = useState(false);
+
+    
+
+    useEffect(() => { // hover on header icon, loads after DOM
         header_items_to_href.map(item => {
             const headerIconElement = document.getElementById(item);
             if (headerIconElement) {
                 headerIconElement.addEventListener('mouseenter', () => {
                     // Code to execute when the mouse enters the element
-                    console.log('Hovering over the element');
+                    // console.log('Hovering over the element');
                     setIsHoverHeader((prev) => ({
                         ...prev,
                         [item] : true
@@ -353,7 +364,7 @@ const Header = () => {
                 });
                 headerIconElement.addEventListener('mouseleave', () => {
                     // Code to execute when the mouse leaves the element
-                    console.log('No longer hovering over element');
+                    // console.log('No longer hovering over element');
                     setIsHoverHeader((prev) => ({
                         ...prev,
                         [item] : false
@@ -362,14 +373,46 @@ const Header = () => {
                 });
             }
         })
+
+        // Search Icon, on click then hover
+        const searchIconElement = document.getElementById('search');
+        if (searchIconElement) {
+            searchIconElement.addEventListener('click', () => {
+                setIsHoverSearch(true);
+
+                // searchIconElement.addEventListener('mouseenter', () => {
+                //     setIsHoverSearch(true);
+                // });
+
+                searchIconElement.addEventListener('mouseleave', () => {
+                    setIsHoverSearch(false);
+                });
+            });
+        }
+
+        // Shopping Bag Icon, on click then hover
+        const shoppingBagIconElement = document.getElementById('shoppingBag');
+        if (shoppingBagIconElement) {
+            shoppingBagIconElement.addEventListener('click', () => {
+                setIsHoverShoppingBag(true);
+
+                // shoppingBagIconElement.addEventListener('mouseenter', () => {
+                //     setIsHoverSearch(true);
+                // });
+
+                shoppingBagIconElement.addEventListener('mouseleave', () => {
+                    setIsHoverShoppingBag(false);
+                });
+            });
+        }
     }, [])
 
-    useEffect(() => {
+    useEffect(() => { // hover on pop menu
         const popMenu = document.getElementById('popMenu');
         if (popMenu) {
             popMenu.addEventListener('mouseenter', () => {
                 // Code to execute when the mouse enters the element
-                console.log('Hovering over pop');
+                // console.log('Hovering over pop');
                 setIsHoverHeader((prev) => ({
                     ...prev,
                     [popMenu.getAttribute('data-key')] : true
@@ -377,7 +420,7 @@ const Header = () => {
             });
             popMenu.addEventListener('mouseleave', () => {
                 // Code to execute when the mouse leaves the element
-                console.log('No longer hovering pop');
+                // console.log('No longer hovering pop');
                 setIsHoverHeader((prev) => ({
                     ...prev,
                     [popMenu.getAttribute('data-key')] : false
@@ -385,11 +428,87 @@ const Header = () => {
             });
         }
     }, [isHoverHeader])
-        
 
+    useEffect(() => { // hover on search pop menu
+        const searchPopMenu = document.getElementById('searchPopMenu');
+        if (searchPopMenu) {
+            searchPopMenu.addEventListener('mouseenter', () => {
+                setIsHoverSearch(true);
+            });
+            searchPopMenu.addEventListener('mouseleave', () => {
+                setIsHoverSearch(false);
+                clearInput(); // clear searchbar on unhover
+            });
+        }
+
+        return () => { // removes event listener for search
+            if (!isHoverSearch) {
+                const searchIconElement = document.getElementById('search');
+                searchIconElement.removeEventListener('mouseenter', () => {
+                    setIsHoverSearch(true)});
+                searchIconElement.removeEventListener('mouseleave', () => {
+                    setIsHoverSearch(false)});
+            }
+        }
+    }, [isHoverSearch])
+
+    useEffect(() => { // hover on shopping bag pop menu
+        const shoppingBagPopMenu = document.getElementById('shoppingBagPopMenu');
+        if (shoppingBagPopMenu) {
+            shoppingBagPopMenu.addEventListener('mouseenter', () => {
+                setIsHoverShoppingBag(true);
+            });
+            shoppingBagPopMenu.addEventListener('mouseleave', () => {
+                setIsHoverShoppingBag(false);
+            });
+        }
+
+        return () => { // removes event listener for search
+            if (!isHoverShoppingBag) {
+                const shoppingBagIconElement = document.getElementById('shoppingBag');
+                shoppingBagIconElement.removeEventListener('mouseenter', () => {
+                    setIsHoverShoppingBag(true)});
+                shoppingBagIconElement.removeEventListener('mouseleave', () => {
+                    setIsHoverShoppingBag(false)});
+            }
+        }
+    }, [isHoverShoppingBag])
+
+    const quickLinks = [
+        'Find a Store',
+        'Apple Vision Pro',
+        'AirPods',
+        'AirTag',
+        'Apple Trade In'
+    ]
+
+    function clickSearch () {
+        setIsClickSearchIcon(true);
+        document.getElementById("apple-search").focus();
+    }
+
+    const [inputValue, setInputValue] = useState('');
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);  // Update state with the new value
+      };
+
+    useEffect(() => {
+    console.log(inputValue)
+    }, [inputValue])
+
+    const clearInput = () => {
+        setInputValue('') // clear state
+        document.getElementById("apple-search").focus(); // refocus on input field
+    }
+
+    function clickShoppingBag () {
+        setIsClickShoppingBagIcon(true);
+    }
+    
   return (
     <>
-        <headercontainer className='z-10 fixed top-0 left-0 w-full h-[44px] bg-[rgba(23,_23,_24,_0.9)] backdrop-blur text-[#d1d1d1] flex'>
+        <headercontainer className='z-10 fixed top-0 left-0 w-full h-[44px] bg-[rgba(22,_22,_23,_0.9)] backdrop-blur text-[#d1d1d1] flex'>
             <header className='flex items-center justify-between w-[980px] mx-auto text-xs'>
                 <a href="/">
                     <AppleIcon className='glow' sx={{color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
@@ -403,17 +522,17 @@ const Header = () => {
                         </a>
                     )
                 })} 
-
-                <a href="/">
-                    <SearchIcon className='glow' sx={{fontSize: '1.3rem', color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
-                </a>
-                <a href="/">
-                    <WorkOutlineIcon className='glow' sx={{fontSize: '1.3rem', color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
-                </a>
+                
+                <div id='search' className='h-full cursor-pointer flex items-center'>
+                    <SearchIcon onClick={clickSearch} className='glow  leading-[44px]' sx={{fontSize: '1.3rem', color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
+                </div>
+                <div id='shoppingBag' className='h-full cursor-pointer flex items-center'>
+                    <WorkOutlineIcon onClick={clickShoppingBag} className='glow' sx={{fontSize: '1.3rem', color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
+                </div>
             </header>
         </headercontainer>
 
-        {isHoverHeader && 
+        { isHoverHeader && // when header icon is hovered on
         Object.entries(isHoverHeader).map(([key, val], ind) => {
             return val &&  
                 <div data-key={key} id='popMenu' className='z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white'>
@@ -451,13 +570,63 @@ const Header = () => {
                 
         })}
 
-        {/* <searchhover>
-            <div className='z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white'>
-                <div className='text-left w-[980px] mx-auto my-10 flex'>
+        { isHoverSearch && //when search icon is hovered on
+        <searchhover id='searchPopMenu'>
+            <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white mb-6'>
+                <div className='text-left w-[980px] mx-auto my-10  '>
+                    <div className='flex items-center mb-8'>
+                        <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? 'white' : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
+                        <input value={inputValue} onChange={handleChange} id='apple-search' placeholder='Search apple.com' className='leading-none text-white header_color placeholder-[#86868B] font-semibold w-full outline-none text-2xl' type="text" />
+                        <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} glow`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
+                    </div>
+                    <div className='text-xs'>
+                        <div className='dark_gray mb-2'>Quick Links</div>
+                        {quickLinks.map(item => {
+                            return <a className='group text-[#e6e6e6] hover:text-white hover:bg-[#1D1D1F] flex items-center mb-1 py-1 rounded-md' href="">
+                            <EastIcon className='group-hover:text-white' sx={{ fontSize: '0.7rem', marginRight: '8px', color: '#86868B', marginTop: '3px',}}/>
+                            <ul>{item}</ul>
+                        </a>
+                        })}
+                    </div>
+                </div>
+            </div>
+        </searchhover>
+        }
+
+        { isHoverShoppingBag &&
+        <shoppingbaghover id='shoppingBagPopMenu'>
+            <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white pb-10'>
+                <div className='text-left w-[980px] mx-auto my-10  '>
+                    <div className='text-2xl mb-5'>Your Bag is empty.</div>
+                    <div className='text-xs mb-8 dark_gray'>
+                        <a className='underline text-[#2997FF] visited:text-purple-600' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
+                    <div className='flex flex-col text-xs'>
+                        <div className='mb-3 dark_gray'>My Profile</div>
+                        <a href='' className='mb-1 flex items-center w-fit group'>
+                            <ViewInArIcon className='group-hover:text-white pr-3 dark_gray'/>
+                            <ul href="" className='group-hover:text-white almost_white'>Orders</ul>
+                        </a>
+                        <a href='' className='mb-1 flex items-center w-fit group'>
+                            <BookmarkBorderIcon className='group-hover:text-white pr-3 dark_gray'/>
+                            <ul className='group-hover:text-white almost_white' href="">Your Saves</ul>
+                        </a>
+                        <a href='' className='mb-1 flex items-center w-fit group'>
+                            <SettingsIcon className='group-hover:text-white pr-3 dark_gray'/>
+                            <ul className='group-hover:text-white almost_white' href="">Account</ul>
+                        </a>
+                        <a href='' className='mb-1 flex items-center w-fit group'>
+                            <AccountCircleOutlinedIcon className='group-hover:text-white pr-3 dark_gray'/>
+                            <ul className='group-hover:text-white almost_white' href="">Sign In</ul>
+                        </a>
+                    </div>
 
                 </div>
             </div>
-        </searchhover> */}
+        </shoppingbaghover>
+        }
+
+
+        
 
     </>
   )

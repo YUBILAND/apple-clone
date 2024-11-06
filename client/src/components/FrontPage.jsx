@@ -6,8 +6,8 @@ function FrontPage() {
   return (
     <div className='mt-[44px]'>
         {/* first image */}
-        <first-img className='relative mb-3'>
-            <div className='text-white'> 
+        <firstimg className='block select-none relative mb-3'>
+            <div className='text-white '> 
                 <img className='h-[692px] object-cover' src="https://www.apple.com/v/home/bu/images/heroes/iphone-16-pro/hero_iphone16pro_avail__fnf0f9x70jiy_large.jpg" alt="" /> 
                 <div className='absolute top-20 left-0 right-0 w-fit mx-auto text-center'>
                     <h1 className='text-6xl font-bold mb-2'>iPhone 16 Pro</h1>
@@ -18,10 +18,10 @@ function FrontPage() {
                     </div>
                 </div>
             </div>
-        </first-img>
+        </firstimg>
 
         {/* second image */}
-        <second-img className='relative mb-3'>
+        <secondimg className='block select-none relative mb-3'>
             <div className='text-white'> 
                 <img className='h-[692px] object-cover' src="https://www.apple.com/v/home/bu/images/heroes/iphone-16/hero_iphone16_avail__euwzls69btea_largetall.jpg" alt="" /> 
                 <div className='absolute top-20 left-0 right-0 w-fit mx-auto text-center'>
@@ -33,10 +33,10 @@ function FrontPage() {
                     </div>
                 </div>
             </div>
-        </second-img>
+        </secondimg>
 
         {/* third image */}
-        <third-img className='relative mb-3'>
+        <thirdimg className='block select-none relative mb-3'>
             <div className='text-white'>
                 <img className='h-[692px] object-cover' src="https://www.apple.com/v/home/bu/images/heroes/macbook-pro-enhanced/hero_macbookpro_announce__f7vm5bnswsae_largetall.jpg" alt="" /> 
                 <div className='absolute top-20 left-0 right-0 w-fit mx-auto text-center'>
@@ -52,11 +52,11 @@ function FrontPage() {
             <div className='text-white absolute bottom-12 left-0 right-0 w-fit mx-auto text-center'>
                 <h1 className='font-semibold text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310]'>Hello, Apple Intelligence.</h1>
             </div>
-        </third-img>
+        </thirdimg>
 
         {/* six box */}
-        <grid-box className='grid grid-cols-2 gap-3 px-3 mb-3'>
-            <grid-1 className='relative h-[580px]'>
+        <gridbox className='grid grid-cols-2 gap-3 px-3 mb-3'>
+            <grid1 className='block relative h-[580px]'>
                 <div className='apple_black'> 
                     <img className='h-[580px] object-cover' src="https://www.apple.com/v/home/bu/images/promos/mac-mini/promo_macmini_announce__bwha5fjvaioi_large.jpg" alt="" /> 
                     <div className='absolute top-12 left-0 right-0 w-fit mx-auto text-center'>
@@ -72,9 +72,9 @@ function FrontPage() {
                 <div className='text-white absolute bottom-12 left-0 right-0 w-fit mx-auto text-center'>
                     <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310]'>Hello, Apple Intelligence.</h1>
                 </div>
-            </grid-1>
+            </grid1>
             
-            <grid-2 className='relative h-[580px]'>
+            <grid2 className='block relative h-[580px]'>
                 <div className='apple_black'> 
                     <img className='h-[580px] object-cover' src="https://www.apple.com/v/home/bu/images/promos/imac/promo_imac_announce__f4qdil7mfmeu_large.jpg" alt="" /> 
                     <div className='absolute top-12 left-0 right-0 w-fit mx-auto text-center'>
@@ -97,9 +97,9 @@ function FrontPage() {
                 <div className='text-white absolute bottom-12 left-0 right-0 w-fit mx-auto text-center'>
                     <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310]'>Hello, Apple Intelligence.</h1>
                 </div>
-            </grid-2>
+            </grid2>
             
-            <grid-3 className='relative h-[580px]'>
+            <grid3 className='block relative h-[580px]'>
                 <div className='text-white'> 
                     <img className='h-[580px] object-cover' src="https://www.apple.com/v/home/bu/images/promos/airpods-pro-2/promo_airpods_pro_2_avail__vkitqi3okwie_large.jpg" alt="" /> 
                     <div className='absolute bottom-10 left-0 right-0 w-fit mx-auto text-center'>
@@ -111,9 +111,9 @@ function FrontPage() {
                         </div>
                     </div>
                 </div>
-            </grid-3>
+            </grid3>
 
-            <grid-4 className='relative h-[580px]'>
+            <grid4 className='block relative h-[580px]'>
                 <div className='apple_black'> 
                     <img className='h-[580px] object-cover' src="https://www.apple.com/v/home/bu/images/promos/apple-intelligence/promo_ai__couihqxznyvm_large.jpg" alt="" /> 
                     <div className='absolute top-10 left-0 right-0 w-fit mx-auto text-center'>
@@ -125,9 +125,9 @@ function FrontPage() {
                         </div>
                     </div>
                 </div>
-            </grid-4>
+            </grid4>
 
-            <grid-5 className='relative h-[580px]'>
+            <grid5 className='block relative h-[580px]'>
                 <div className='apple_black'> 
                     <img className='h-[580px] object-cover' src="https://www.apple.com/v/home/bu/images/promos/iphone-tradein/promo_iphone_tradein__bugw15ka691e_large.jpg" alt="" /> 
                     <div className='absolute top-10 left-0 right-0 w-fit mx-auto text-center'>
@@ -142,9 +142,9 @@ function FrontPage() {
                         </div>
                     </div>
                 </div>
-            </grid-5>
+            </grid5>
 
-            <grid-6 className='relative h-[580px]'>
+            <grid6 className='block relative h-[580px]'>
                 <div className='apple_black'> 
                     <img className='h-[580px] object-cover' src="https://www.apple.com/v/home/bu/images/promos/apple-card/promo_apple_card__5cm7draujpey_large.jpg" alt="" /> 
                     <div className='absolute top-10 left-0 right-0 w-fit mx-auto text-center'>
@@ -159,10 +159,10 @@ function FrontPage() {
                         </div>
                     </div>
                 </div>
-            </grid-6>
+            </grid6>
 
             
-        </grid-box>
+        </gridbox>
         
         
 
