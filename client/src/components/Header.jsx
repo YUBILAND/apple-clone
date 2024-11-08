@@ -9,7 +9,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
-const Header = () => {
+const Header = (props) => {
     // header items
     const header_items = [
         'Store',
@@ -508,26 +508,26 @@ const Header = () => {
     
   return (
     <div className='select-none'>
-        <headercontainer className='z-10 fixed top-0 left-0 w-full h-[44px] bg-[rgba(22,_22,_23,_0.9)] backdrop-blur text-[#d1d1d1] flex'>
+        <headercontainer className={`z-10 ${props.darkMode && 'fixed' } top-0 left-0 w-full h-[44px] ${props.darkMode ? 'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' : 'bg-[#f5f5f7] text-[#313131]'} backdrop-blur  flex`}>
             <header className='flex items-center justify-between w-[980px] mx-auto text-xs'>
                 <a href="/">
-                    <AppleIcon className='glow' sx={{color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
+                    <AppleIcon className={`${props.darkMode ? 'glow' : 'glow_dark'}`} sx={{color: props.darkMode ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                 </a>
-
+                
                 {/* header_item_icons */}
                 {header_items.map((item, i) => {
                     return (
-                        <a id={header_items_to_href[i]} className='glow h-full' href={header_items_to_href[i]}>
+                        <a id={header_items_to_href[i]} className={`${props.darkMode ? 'glow' : 'glow_dark'} h-full`} href={header_items_to_href[i]}>
                         <span id='child' className='px-2 leading-[44px] align-middle'>{item}</span>
                         </a>
                     )
                 })} 
                 
                 <div id='search' className='h-full cursor-pointer flex items-center'>
-                    <SearchIcon onClick={clickSearch} className='glow  leading-[44px]' sx={{fontSize: '1.3rem', color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
+                    <SearchIcon onClick={clickSearch} className={`${props.darkMode ? 'glow' : 'glow_dark'} leading-[44px]`} sx={{fontSize: '1.3rem', color: props.darkMode ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                 </div>
                 <div id='shoppingBag' className='h-full cursor-pointer flex items-center'>
-                    <WorkOutlineIcon onClick={clickShoppingBag} className='glow' sx={{fontSize: '1.3rem', color: '#d0d0d0', transition: 'color 0.5s ease'}}/>
+                    <WorkOutlineIcon onClick={clickShoppingBag} className={`${props.darkMode ? 'glow' : 'glow_dark'}`} sx={{fontSize: '1.3rem', color: props.darkMode ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                 </div>
             </header>
         </headercontainer>
@@ -536,7 +536,7 @@ const Header = () => {
         Object.entries(isHoverHeader).map(([key, val], ind) => {
             return val && 
             <>
-                <div data-key={key} id='popMenu' className='z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white'>
+                <div data-key={key} id='popMenu' className={`z-10 fixed top-0 left-0 w-full mt-[44px] ${props.darkMode ? 'header_color' : 'bg-[#f5f5f7] text-[#313131]'}  text-center text-white`}>
                     <div className='text-left w-[980px] mx-auto my-10 flex'>
                         {header_popMenu[ind].map((col, col_i) => {
                             if (col_i === 0) { // first col, bigger text
@@ -544,9 +544,9 @@ const Header = () => {
                                     <div className='mr-20 select-none'>
                                         {col.map((item, i) => {
                                             if (i === 0) { // title
-                                                return <div className='text-[#d1d1d1] text-xs pb-4'>{item}</div>
+                                                return <div className={`${props.darkMode ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'}  text-xs pb-4`}>{item}</div>
                                             } else {
-                                                return <a href='/' className='text-[#e6e6e6] glow block leading-none font-bold text-xl pb-4'>{item}</a>
+                                                return <a href='/' className={`${props.darkMode ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block leading-none font-bold text-xl pb-4`}>{item}</a>
                                             }
                                         })}
                                     </div>
@@ -557,9 +557,9 @@ const Header = () => {
                                     <div className='mr-12 select-none'>
                                         {col.map((item, i) => {
                                             if (i === 0) {
-                                                return <div className='text-[#d1d1d1] text-xs pb-4'>{item}</div>
+                                                return <div className={`${props.darkMode ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-xs pb-4`}>{item}</div>
                                             } else {
-                                                return <a href='/' className='glow block text-xs text-[#e6e6e6] pb-2'>{item}</a>
+                                                return <a href='/' className={`${props.darkMode ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block text-xs pb-2`}>{item}</a>
                                             }
                                         })}
                                     </div>
@@ -576,18 +576,19 @@ const Header = () => {
         { isHoverSearch && //when search icon is hovered on
         <>
             <searchhover id='searchPopMenu'>
-                <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white mb-6'>
+                <div className={`select-none z-10 fixed top-0 left-0 w-full mt-[44px] ${props.darkMode ? 'header_color' : 'white_header_color text-[#313131]'} text-center text-white mb-6`}>
                     <div className='text-left w-[980px] mx-auto my-10  '>
                         <div className='flex items-center mb-8'>
-                            <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? 'white' : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
-                            <input value={inputValue} onChange={handleChange} id='apple-search' placeholder='Search apple.com' className='leading-none text-white header_color placeholder-[#86868B] font-semibold w-full outline-none text-2xl' type="text" />
-                            <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} glow`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
+                            <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? (props.darkMode ? 'white' : 'black') : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
+                            <input value={inputValue} onChange={handleChange} id='apple-search' placeholder='Search apple.com' className={`leading-none placeholder-[#86868B]
+                            ${props.darkMode ? 'header_color text-white' : 'white_header_color text-[#313131]'} font-semibold w-full outline-none text-2xl`} type="text" />
+                            <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} ${props.darkMode ? 'glow' : 'glow_dark'}`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
                         </div>
                         <div className='text-xs'>
                             <div className='dark_gray mb-2'>Quick Links</div>
                             {quickLinks.map(item => {
-                                return <a className='group text-[#e6e6e6] hover:text-white hover:bg-[#1D1D1F] flex items-center mb-1 py-1 rounded-md' href="">
-                                <EastIcon className='group-hover:text-white' sx={{ fontSize: '0.7rem', marginRight: '8px', color: '#86868B', marginTop: '3px',}}/>
+                                return <a className={`group ${props.darkMode ? 'text-[#e6e6e6] hover:text-white hover:bg-[#1D1D1F]' : 'text-[#333336] hover:text-black hover:bg-[#F5F5F7]'} flex items-center mb-1 py-1 rounded-md`} href="">
+                                <EastIcon className={`${props.darkMode ? 'group-hover:text-white' : 'group-hover:text-black'}`} sx={{ fontSize: '0.7rem', marginRight: '8px', color: '#86868B', marginTop: '3px',}}/>
                                 <ul>{item}</ul>
                             </a>
                             })}
@@ -602,28 +603,28 @@ const Header = () => {
         { isHoverShoppingBag && // when shopping bag icon is hovered on
         <>
             <shoppingbaghover id='shoppingBagPopMenu'>
-                <div className='select-none z-10 fixed top-0 left-0 w-full mt-[44px] header_color text-center text-white pb-10'>
+                <div className={`select-none z-10 fixed top-0 left-0 w-full mt-[44px] ${props.darkMode ? 'header_color' : 'white_header_color text-[#313131]'} text-center text-white pb-10`}>
                     <div className='text-left w-[980px] mx-auto my-10  '>
                         <div className='text-2xl mb-5'>Your Bag is empty.</div>
                         <div className='text-xs mb-8 dark_gray'>
-                            <a className='underline text-[#2997FF] visited:text-purple-600' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
+                            <a className='underline text-[#2997FF]' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
                         <div className='flex flex-col text-xs'>
                             <div className='mb-3 dark_gray'>My Profile</div>
-                            <a href='' className='mb-1 flex items-center w-fit group'>
-                                <ViewInArIcon className='group-hover:text-white pr-3 dark_gray'/>
-                                <ul href="" className='group-hover:text-white almost_white'>Orders</ul>
+                            <a href='' className={`mb-1 flex items-center w-fit group ${props.darkMode ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
+                                <ViewInArIcon className={`${props.darkMode ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
+                                <ul className={`${props.darkMode ? 'hover:text-white almost_white' : 'hover:text-black'}`}>Orders</ul>
                             </a>
-                            <a href='' className='mb-1 flex items-center w-fit group'>
-                                <BookmarkBorderIcon className='group-hover:text-white pr-3 dark_gray'/>
-                                <ul className='group-hover:text-white almost_white' href="">Your Saves</ul>
+                            <a href='' className={`mb-1 flex items-center w-fit group ${props.darkMode ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
+                                <BookmarkBorderIcon className={`${props.darkMode ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
+                                <ul className={`${props.darkMode ? 'hover:text-white almost_white' : 'hover:text-black'}`} href="">Your Saves</ul>
                             </a>
-                            <a href='' className='mb-1 flex items-center w-fit group'>
-                                <SettingsIcon className='group-hover:text-white pr-3 dark_gray'/>
-                                <ul className='group-hover:text-white almost_white' href="">Account</ul>
+                            <a href='' className={`mb-1 flex items-center w-fit group ${props.darkMode ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
+                                <SettingsIcon className={`${props.darkMode ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
+                                <ul className={`${props.darkMode ? 'hover:text-white almost_white' : 'hover:text-black'}`} href="">Account</ul>
                             </a>
-                            <a href='' className='mb-1 flex items-center w-fit group'>
-                                <AccountCircleOutlinedIcon className='group-hover:text-white pr-3 dark_gray'/>
-                                <ul className='group-hover:text-white almost_white' href="">Sign In</ul>
+                            <a href='' className={`mb-1 flex items-center w-fit group ${props.darkMode ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
+                                <AccountCircleOutlinedIcon className={`${props.darkMode ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
+                                <ul className={`${props.darkMode ? 'hover:text-white almost_white' : 'hover:text-black'}`} href="">Sign In</ul>
                             </a>
                         </div>
 

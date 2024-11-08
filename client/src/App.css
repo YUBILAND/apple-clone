@@ -11,6 +11,15 @@
   color: #C6C6CA;
 }
 
+.store_light_gray {
+  color: #6e6e73;
+}
+
+.store_dark_gray {
+  color: #211b1d;
+}
+
+
 .hover_highlight {
   background-color: #1D1D1F;
 }
@@ -27,10 +36,21 @@
   color: white;
 }
 
+.glow_dark {
+  transition: color 0.5s ease;
+}
+
+.glow_dark:hover {
+  color: black;
+}
+
 .header_color {
   background-color: #161617;
   /* background-color: rgba(23, 23, 24, 0.9); */
+}
 
+.white_header_color {
+  background-color: #FAFAFC;
 }
 
 .blur_element {
