@@ -1,5 +1,8 @@
 import React from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
+import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 
 const LineUp = () => {
 
@@ -48,7 +51,7 @@ const LineUp = () => {
         },
     ]
   return (
-    <div className='bg-[#f5f5f7] pb-[140px] mb-[140px]'>
+    <div className='bg-[#f5f5f7] pb-[140px]'>
         
         <div className='w-[1700px] mx-auto'>
 
@@ -94,10 +97,10 @@ hover:text-white'>Displays</button>
                 <div className='ml-4 w-[372px]'>
                     <div className=' mt-20 text-center  '>
 
-{/* Image */}
+    {/* Image */}
                         <img className='mx-auto transition-transform duration-300 hover:scale-105' src="https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mbp_14_16__bkl8zusnkpw2_large.png" alt="" />
 
-{/* Color and New */}
+    {/* Color and New */}
                         <div className='mt-12 text-center '>
                             <div className='grid grid-cols-2 gap-2 w-fit mx-auto'>
                                 <div className='w-3 h-3 rounded-full bg-black'/>
@@ -107,7 +110,7 @@ hover:text-white'>Displays</button>
 
                         <span className='inline-block mt-4 mb-2 font-bold text-xs text-[#BD4410]'>New</span>
 
-{/* Item Description */}
+    {/* Item Description */}
                         <div className='flex flex-col mb-12'> 
                             <span className='font-semibold text-3xl'>MacBook Pro 14" and 16"</span>
                             <span className='font-semibold text-lg'>M4, M4 Pro, or M4 Max chip</span>
@@ -128,9 +131,9 @@ hover:text-white'>Displays</button>
 
                         </div>
 
-{/* horizontal line */}
+    {/* horizontal line */}
                         <hr className='border-[#cececf] my-6' />
-{/* Item Specs */}
+    {/* Item Specs */}
                         <div className='grid grid-rows-1 gap-10 pt-6'>
                             {product_spec_items.map((item, i) => {
 
@@ -156,39 +159,82 @@ hover:text-white'>Displays</button>
                 </div>
             </div>
 
+{/* Apple Trade In */}
+            <div>
+                <div className='pt-[140px] font-semibold text-6xl text-left store_dark_gray'>Apple Trade In</div>
 
-            <div className='pt-[140px] font-semibold text-6xl text-left store_dark_gray'>Apple Trade In</div>
+                <div className='my-24'>
+                    <a href='' className='w-full transition-transform duration-300 hover:scale-[1.01] shadow-lg rounded-3xl flex bg-white '>
 
-            <div className='my-24'>
-                <a href='' className='w-full transition-transform duration-300 hover:scale-[1.01] shadow-lg rounded-3xl flex bg-white '>
+                        <div className='rounded-l-3xl basis-2/5 flex justify-center items-center text-center'>
+                            <div className=''>
+                                <span className='inline-block text-3xl font-semibold mb-2'>
+                                Give us the old. Save on the new.
+                                </span>
+                                <div className='w-[447px] text-left'>With Apple Trade In, you can get a great value for your current device and apply it toward a new one. If your device isn’t eligible for credit, we’ll recycle it for free.8</div>
+                                
+                                <a className='group flex items-end text-[#196899] mt-8' href="">
+                                    <div className='flex items-center mr-6'>
+                                        <div className='group-hover:underline'>See what your device is worth</div>
+                                        <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                                    </div>
+                                </a>
 
-                    <div className='rounded-l-3xl basis-2/5 flex justify-center items-center text-center'>
-                        <div className=''>
-                            <span className='inline-block text-3xl font-semibold mb-2'>
-                            Give us the old. Save on the new.
-                            </span>
-                            <div className='w-[447px] text-left'>With Apple Trade In, you can get a great value for your current device and apply it toward a new one. If your device isn’t eligible for credit, we’ll recycle it for free.8</div>
-                            
-                            <a className='group flex items-end text-[#196899] mt-8' href="">
-                                <div className='flex items-center mr-6'>
-                                    <div className='group-hover:underline'>See what your device is worth</div>
-                                    <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                                </div>
-                            </a>
+                            </div>
+                        </div>
+                        <div className='rounded-l-3xl basis-3/5 flex justify-center'>
+                        
+                            <img className=' ' src="https://www.apple.com/v/mac/home/cb/images/overview/trade_in/tradein__gbtxz5sa3cyi_xlarge.jpg" alt="" />
 
                         </div>
-                    </div>
-                    <div className='rounded-l-3xl basis-3/5 flex justify-center'>
-                    
-                        <img className=' ' src="https://www.apple.com/v/mac/home/cb/images/overview/trade_in/tradein__gbtxz5sa3cyi_xlarge.jpg" alt="" />
-
-                    </div>
-                    
-                </a>
+                        
+                    </a>
+                </div>
             </div>
 
+{/* Why Apple is the best place to buy Mac. */}
+            <div className='mb-[100px]'>
 
-            
+                <div className='pt-[140px] font-semibold store_dark_gray flex justify-between'>
+                    
+                    <div className='text-6xl text-left w-[600px]'>Why Apple is the best place to buy Mac.</div>
+
+                    <div className='text-right flex text-lg justify-end'>
+                        <a className='group flex items-end text-[#196899] ' href="">
+                            <div className='flex items-center mr-6'>
+                                <div className='group-hover:underline'>Shop Mac</div>
+                                <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                            </div>
+
+                        </a>
+                        
+                    </div>
+                </div>
+
+
+                
+
+
+
+
+
+                <div className='mt-24 ml-8'>
+                <div className='relative bg-white w-[405px] h-[300px] transition-transform duration-300 hover:scale-105 rounded-3xl shadow-lg'>
+                    
+                    <div className=' px-8 pt-6 pb-12 text-black '>
+                            <CreditCardRoundedIcon sx={{fontSize: '3.5rem'}} />
+                            <div className='text-[24px] leading-tight font-semibold '>
+                            Pay over time, interest-free</div>
+                            <div>When you choose to check out with Apple Card Monthly Installments.</div>
+                    </div>
+
+                    <div className='absolute bottom-0 right-0 mr-4 mb-4'>
+                        <AddCircleRoundedIcon className=' text-[#343436]' sx={{fontSize: '2.7rem'}} />
+                    </div>
+                </div>
+                </div>
+            </div>
+
 
 
 

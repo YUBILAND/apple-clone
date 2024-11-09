@@ -31,7 +31,7 @@ function App() {
 
             <Route path="/store" element={
               <>
-                  <Header darkMode={false}/>
+                  <Header darkMode={false} light='store'/>
                   <StorePage />
                   <Footer />
               </>
@@ -39,9 +39,9 @@ function App() {
 
             <Route path="/mac" element={
               <>
-                  <Header darkMode={false}/>
+                  <Header darkMode={false} light='mac'/>
                   <MacPage />
-                  <LineUp />
+                  {/* <LineUp /> */}
                   {/* <Footer /> */}
               </>
             }/>

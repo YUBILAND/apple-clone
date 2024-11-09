@@ -508,7 +508,7 @@ const Header = (props) => {
     
   return (
     <div className='select-none'>
-        <headercontainer className={`z-10 ${props.darkMode && 'fixed' } top-0 left-0 w-full h-[44px] ${props.darkMode ? 'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' : 'bg-[#f5f5f7] text-[#313131]'} backdrop-blur  flex`}>
+        <headercontainer className={`z-10 ${props.darkMode && 'fixed' } top-0 left-0 w-full h-[44px] ${props.darkMode ? 'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' : (props.light === 'store' ? 'bg-[#f5f5f7] text-[#313131]' : 'bg-[#fafafc] text-[#313131]')} backdrop-blur  flex`}>
             <header className='flex items-center justify-between w-[980px] mx-auto text-xs'>
                 <a href="/">
                     <AppleIcon className={`${props.darkMode ? 'glow' : 'glow_dark'}`} sx={{color: props.darkMode ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
