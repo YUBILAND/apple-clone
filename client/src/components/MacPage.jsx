@@ -69,7 +69,6 @@ const MacPage = () => {
     const [scale, setScale] = useState(1);
 
     useEffect(() => {
-
         const handleScroll = () => {
 
             // Get the current scroll position
@@ -85,16 +84,12 @@ const MacPage = () => {
               //can go down 6 scrols
             }
           };
-
             // Add the scroll event listener
         window.addEventListener('scroll', handleScroll);
-        
-
         // Cleanup event listener
         return () => {
         window.removeEventListener('scroll', handleScroll);
         };
-
     }, [])
 
     useEffect(() => {
@@ -107,9 +102,23 @@ const MacPage = () => {
         setDropDown(ind);
     }
 
+    const mac_essential_items = [
+        {
+            topText: 'Mac accessories',
+            middleText: 'Explore keyboards, mice, and other essentials.',
+            link: 'Shop Mac accessories',
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/essentials/essentials_accessories__dglhsic54owi_xlarge.jpg',
+        },
+        {
+            topText: 'Studio Display',
+            middleText: 'The 27-inch 5K Retina display pairs beautifully with any Mac.',
+            link: 'Learn more',
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/essentials/essentials_display__bk3i351qm0c2_xlarge.jpg',
+        },
+    ]
+
 
     const header_popMenu = [
-        
         [
             'Explore Mac',
             'Explore All Mac',
@@ -143,14 +152,12 @@ const MacPage = () => {
             'Mac for Business',
             'Education',
         ],
-
     ]
-    
 
   return (
     <>
 
-{/* Chapter Nav */}
+    {/* Chapter Nav */}
         <div className='bg-[#fafafc] pb-8 pt-4'>
             <div className='w-[1150px] mx-auto flex justify-between items-center'>
 
@@ -167,7 +174,7 @@ const MacPage = () => {
             </div>
         </div>
 
-{/* Title */}
+    {/* Title */}
         <div className='bg-[white] my-[80px]'>
 
             <div className='w-[1700px] mx-auto'>
@@ -182,14 +189,14 @@ const MacPage = () => {
             </div>
         </div>
 
-{/* Mac Video */}
+    {/* Mac Video */}
         <div className=''>
             <video className='w-screen h-[756px] object-cover' loop autoplay='autoplay' muted >
                 <source src='https://www.apple.com/105/media/us/mac/family/2024/b0f6d595-f4dd-4393-8316-102be97a5d1b/anim/welcome/xlarge.mp4' />
             </video>
         </div>
 
-{/* Get to know Mac + Help me choose*/}
+    {/* Get to know Mac + Help me choose*/}
         <div className='bg-[white] mb-[140px]'>
             <div className='w-[1700px] mx-auto'>
 
@@ -240,16 +247,16 @@ const MacPage = () => {
             </div>
         </div>
 
-{/* Lineup */}
+    {/* Lineup */}
         <LineUp />
 
-{/* Significant Others + Mac Essentials*/}
+    {/* Significant Others + Mac Essentials*/}
 
         <div className='bg-[white] mb-[140px]'>
 
             <div className='w-[1700px] mx-auto'>
 
-        {/* Significant Others */}
+            {/* Significant Others */}
                 <div>
                     <div className='pt-[140px] font-semibold text-6xl text-left store_dark_gray'>Significant others.</div>
 
@@ -339,48 +346,58 @@ const MacPage = () => {
                     </div>
                 </div>
 
-        {/* Mac Essentials */}
+            {/* Mac Essentials */}
                 <div>
 
-            {/* Title */}
-                    <div className='pt-[140px] font-semibold store_dark_gray flex justify-between'>
+                {/* Title Container*/}
+                    <div>
+                        <div className='pt-[140px] font-semibold store_dark_gray flex justify-between'>
 
-                {/* Title Left*/}
-                        <div className='text-6xl text-left w-[600px]'>Mac essentials.</div>
+                    {/* Title Left*/}
+                            <div className='text-6xl text-left w-[600px]'>Mac essentials.</div>
 
-                {/* Title Right */}
-                        <div className='text-right flex text-lg justify-end'>
-                            <a className='group flex items-end text-[#196899] ' href="">
-                                <div className='flex items-center mr-6'>
-                                    <div className='group-hover:underline'>All Mac accessories</div>
-                                    <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                                </div>
-                            </a>
+                    {/* Title Right */}
+                            <div className='text-right flex text-lg justify-end'>
+                                <a className='group flex items-end text-[#196899] ' href="">
+                                    <div className='flex items-center mr-6'>
+                                        <div className='group-hover:underline'>All Mac accessories</div>
+                                        <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
+                    
+                {/* Banners Container */}
+                    <div className='flex justify-between items-center'>
+                        {mac_essential_items.map(item => {
 
-            {/* Banner */}
-                    <div className='my-24 w-fit shadow-lg rounded-3xl bg-[#fafafa]'>
+                        {/* Banner */}
+                            return <div className='my-24 w-[830px] shadow-lg rounded-3xl bg-[#fafafa]'>
 
-                {/* Banner Top (Text) */}
-                        <div className='py-12 flex flex-col items-center'>
-                            <div className='text-3xl font-semibold mb-3'>Mac accessories</div>
-                            <div className='text-lg mb-3'>Explore keyboards, mice, and other essentials.</div>
+                        {/* Banner Top (Text) */}
+                                <div className='py-12 flex flex-col items-center'>
+                                    <div className='text-3xl font-semibold mb-3'>{item.topText}</div>
+                                    <div className='text-lg mb-3'>{item.middleText}</div>
 
-                            <a className='group flex text-[#196899] ' href="">
-                                <div className='flex items-center'>
-                                    <div className='group-hover:underline text-lg font-semibold'>Shop Mac accessories</div>
-                                    <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                                    <a className='group flex text-[#196899] ' href="">
+                                        <div className='flex items-center'>
+                                            <div className='group-hover:underline text-lg font-semibold'>{item.link}</div>
+                                            <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                                        </div>
+                                    </a>
+
                                 </div>
-                            </a>
 
-                        </div>
-
-                {/* Banner Bottom (Image) */}
-                        <img className='rounded-3xl w-fit  object-cover object-bottom' src="https://www.apple.com/v/mac/home/cb/images/overview/essentials/essentials_accessories__dglhsic54owi_xlarge.jpg" alt="" />
-
+                        {/* Banner Bottom (Image) */}
+                                <div className='flex justify-center'>
+                                    <img className='rounded-3xl w-fit  object-cover object-bottom' src={item.img} alt="" />
+                                </div>
+                            </div>
+                        })}
                     </div>
                 </div>
+
             </div>
 
 
@@ -394,16 +411,18 @@ const MacPage = () => {
                 <div className='mb-12 text-6xl font-semibold'>Mac</div>
                 
         {/* Mac Pop Menu */}
-                <div className='text-left w-[980px] my-10 flex'>
+                <div className='text-left w-[980px] mt-10 flex'>
                     {header_popMenu.map((col, col_i) => {
                         if (col_i === 0) { // first col, bigger text
                             return (
                                 <div className='mr-20 select-none'>
                                     {col.map((item, i) => {
                                         if (i === 0) { // title
-                                            return <div className='text-[#6E6E73] text-lg pb-[14px]'>{item}</div>
+                                            return <div className='text-[#6E6E73] text-lg mb-[14px]'>{item}</div>
+                                        } else if (i === col.length - 1 || i === col.length - 2) {
+                                            return <a href='/' className='text-[#333336] block leading-tight font-semibold text-[17px] mt-4'>{item}</a>
                                         } else {
-                                            return <a href='/' className='text-[#333336] block leading-tight font-semibold text-[28px] pb-2'>{item}</a>
+                                            return <a href='/' className='text-[#333336] block leading-tight font-semibold text-[28px] mb-2'>{item}</a>
                                         }
                                     })}
                                 </div>
@@ -414,9 +433,9 @@ const MacPage = () => {
                                 <div className='mr-12 select-none'>
                                     {col.map((item, i) => {
                                         if (i === 0) {
-                                            return <div className='text-[#6E6E73] text-lg pb-[14px]'>{item}</div>
+                                            return <div className='text-[#6E6E73] text-lg mb-[14px]'>{item}</div>
                                         } else {
-                                            return <a href='/' className='text-[#333336] block text-[17px] pb-2 font-semibold'>{item}</a>
+                                            return <a href='/' className='text-[#333336] block text-[17px] mb-2 font-semibold'>{item}</a>
                                         }
                                     })}
                                 </div>
@@ -428,15 +447,8 @@ const MacPage = () => {
             </div>
         </div>
 
-
-
-
         <Footer />
         
-
-
-
-
     </>
   )
 }
