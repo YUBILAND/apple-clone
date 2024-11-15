@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Desktops = () => {
@@ -193,8 +193,16 @@ const Desktops = () => {
         ],
     ]
 
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setVisible(true);
+        }, 300)
+    }, [])
+
   return (
-    <div className='flex'>
+    <div className={`flex ${!visible && 'opacity-0'} transition-opacity duration-700`}>
         {product_title_items.map((item, itemNum) => {
             return (
             <div className='ml-4 w-[372px]'>
@@ -207,7 +215,7 @@ const Desktops = () => {
                     
                 {/* Color and New */}
                     <div className='mt-12 text-center '>
-                        <div className={`grid grid-cols-${item.colors.length} gap-2 w-fit mx-auto h-3`}>
+                        <div className={`flex justify-between gap-2 w-fit mx-auto h-3 `}>
                             {item.colors.map(color => {
                                 return <div className={`w-3 h-3 rounded-full ${ color === 'peach' ? 'bg-orange-200' : color === 'gray' ? 'bg-gray-500' : color === 'silver' ?'bg-slate-400' : color === 'blue' ? 'bg-blue-500' : color === 'purple' ? 'bg-purple-500' : color === 'red' ? 'bg-red-500' : color === 'orange' ? 'bg-orange-400' : color === 'yellow' ? 'bg-yellow-200' : color === 'green' ? 'bg-green-400' : 'bg-black'} `}/>
                             })}

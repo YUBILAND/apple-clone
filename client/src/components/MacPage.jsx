@@ -67,6 +67,8 @@ const MacPage = () => {
     ]
 
     const [scale, setScale] = useState(1);
+    const [rounded, setRounded] = useState(0);
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -75,14 +77,29 @@ const MacPage = () => {
             const scrollY = window.scrollY - 200;
       
             // Calculate the scale based on scroll position
-            const newScale = 1 - scrollY / 1000; // Adjust the divisor to control the scaling speed
+            const newScale = 
+            (1 - scrollY / 100 * 0.02 <= 0.88) ? 0.88 :
+            (1 - scrollY / 100 * 0.02 >= 1) ? 1 : 
+            1 - scrollY / 100 * 0.02
+            // Adjust the divisor to control the scaling speed. min is 0.88 and max is 1
+
+            const newRounded = 
+            (scrollY / 100 * 0.5 <= 0) ? 0 :
+            (scrollY / 100 * 0.5 >= 3) ? 3 :
+            scrollY / 100 * 0.5
+            // Convert scrolled Y position to border radius. min is 0 and max is 3
       
             // Set a minimum scale (prevent image from disappearing)
-            if (newScale >= 0.5 && newScale <= 1) {
+            if (newScale >= 0.88 && newScale <= 1) {
               setScale(newScale);
-
               //can go down 6 scrols
             }
+            console.log(newRounded)
+            if (newRounded >= 0 && newRounded <= 3) {
+                setRounded(newRounded);
+                //can go down 6 scrols
+            }
+            
           };
             // Add the scroll event listener
         window.addEventListener('scroll', handleScroll);
@@ -92,9 +109,14 @@ const MacPage = () => {
         };
     }, [])
 
-    useEffect(() => {
-        console.log(scale)
-    }, [scale])
+
+    // useEffect(() => {
+    //     console.log(scale)
+    // }, [scale])
+
+    // useEffect(() => {
+    //     console.log(rounded)
+    // }, [rounded])
 
     const [dropDown, setDropDown] = useState(1)
 
@@ -191,7 +213,9 @@ const MacPage = () => {
 
     {/* Mac Video */}
         <div className=''>
-            <video className='w-screen h-[756px] object-cover' loop autoplay='autoplay' muted >
+            <video style={{transform: `scale(${scale}`, borderRadius: `${rounded}rem`}} className={`w-screen h-[756px] 
+            transform-scale duration-100
+            object-cover`} loop autoplay='autoplay' muted >
                 <source src='https://www.apple.com/105/media/us/mac/family/2024/b0f6d595-f4dd-4393-8316-102be97a5d1b/anim/welcome/xlarge.mp4' />
             </video>
         </div>

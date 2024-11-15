@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Laptops = () => {
@@ -115,8 +115,16 @@ const Laptops = () => {
         ],
     ]
 
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setVisible(true);
+        }, 300)
+    }, [])
+
   return (
-    <div className='flex'>
+    <div className={`flex ${!visible && 'opacity-0'} transition-opacity duration-700`}>
         {product_title_items.map((item, itemNum) => {
             return (
             <div className='ml-4 w-[372px]'>
@@ -129,7 +137,7 @@ const Laptops = () => {
                     
                 {/* Color and New */}
                     <div className='mt-12 text-center '>
-                        <div className={`grid grid-cols-${item.colors.length} gap-2 w-fit mx-auto h-3`}>
+                        <div className={`flex justify-between gap-2 w-fit mx-auto h-3`}>
                             {item.colors.map(color => {
                                 return <div className={`w-3 h-3 rounded-full ${ color === 'peach' ? 'bg-orange-200' : color === 'gray' ? 'bg-gray-500' : color === 'silver' ?'bg-slate-400' : 'bg-black'} `}/>
                             })}
@@ -145,7 +153,7 @@ const Laptops = () => {
                         <span className='inline-block mt-3 mx-auto w-[300px] text-lg'>{item.product_desc}</span>
                         <span className='inline-block mt-3 font-semibold text-lg'>{item.product_price}</span>
 
-                        <div className='mt-8 flex items-center justify-between w-[300px] mx-auto px-4 text-lg'>
+                        <div className='mt-8 flex items-center justify-between w-[260px] mx-auto px-4 text-lg'>
                             <button className='text-white rounded-full px-5 py-2  bg-[#0072e0] hover:bg-[#0077ED]'>Learn more</button>
 
                             <a className='group flex items-end text-[#196899] ' href="">

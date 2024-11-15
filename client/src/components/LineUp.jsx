@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
@@ -14,8 +14,6 @@ const LineUp = () => {
     function changeLineup(ind) {
         setLineup(ind);
     }
-
-    
 
   return (
     <div className='bg-[#f5f5f7] pb-[140px]'>
