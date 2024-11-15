@@ -1,0 +1,12 @@
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+    bottom: calc(0% + 1px);
+    right: calc(5% + 1px);
+    /* background-color: #e2e2e4;
+    color: black */
+  }
+  button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+    bottom: calc(0% + 1px);
+    left: calc(86% + 1px);
+    /* background-color: rgba(210, 210, 215, 0.64); */
+
+  }

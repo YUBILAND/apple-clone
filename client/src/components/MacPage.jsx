@@ -5,6 +5,9 @@ import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Footer from './Footer';
+import Carousel from "react-multi-carousel";
+import './MacPage.css'
+
 
 const MacPage = () => {
 
@@ -110,14 +113,6 @@ const MacPage = () => {
     }, [])
 
 
-    // useEffect(() => {
-    //     console.log(scale)
-    // }, [scale])
-
-    // useEffect(() => {
-    //     console.log(rounded)
-    // }, [rounded])
-
     const [dropDown, setDropDown] = useState(1)
 
     function changeDropDown(ind) {
@@ -176,6 +171,77 @@ const MacPage = () => {
         ],
     ]
 
+    const responsive = {
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 4,
+          slidesToSlide: 1, // optional, default to 1.
+          partialVisibilityGutter: 40
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2,
+          slidesToSlide: 2 // optional, default to 1.
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1,
+          slidesToSlide: 1 // optional, default to 1.
+        }
+      };
+
+    const carousel_items = [
+        {
+            textColor: 'black',
+            topText: 'Apple Intelligence and macOS',
+            bottomText: 'Hello, Apple Intelligence.',
+            bottomTextRainbow: true,
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_intelligence__esfi0qmvis6e_xlarge.jpg',
+        },
+        {
+            textColor: 'white',
+            topText: 'Performance and Battery Life',
+            bottomText: 'Go fast. Go far.',
+            bottomTextRainbow: false,
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_performance__dh5hyac1zf8m_xlarge.jpg',
+        },
+        {
+            textColor: 'black',
+            topText: 'Mac iPhone',
+            bottomText: 'Dream team.',
+            bottomTextRainbow: false,
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_iphone__gh1tblkt6bqm_large.jpg',
+        },
+        {
+            textColor: 'black',
+            topText: 'Compatibility',
+            bottomText: 'Mac runs your favorite apps.',
+            bottomTextRainbow: false,
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_compatibility__cu59oukz81ci_large.jpg',
+        },
+        {
+            textColor: 'white',
+            topText: 'Privacy and Security',
+            bottomText: "Your business is nobody else's.",
+            bottomTextRainbow: false,
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_security__gfwda10khdym_large.jpg',
+        },
+        {
+            textColor: 'white',
+            topText: 'Durability',
+            bottomText: 'Built to stand the test of time.',
+            bottomTextRainbow: false,
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_durability__epiwcuk7zkeq_large.jpg',
+        },
+        {
+            textColor: 'white',
+            topText: 'Apple Values',
+            bottomText: 'Our values drive everything we do.',
+            bottomTextRainbow: false,
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_values__c9gck9qi4kia_large.jpg',
+        },
+    ]
+
   return (
     <>
 
@@ -227,7 +293,7 @@ const MacPage = () => {
     {/* Get to Know Mac */}
                     <div>
                         <div className='pt-[150px] font-semibold text-6xl text-left store_dark_gray'>Get to know Mac.</div>
-                        <div className='my-24'>
+                        {/* <div className='my-24'>
                             <div className='relative w-fit transition-transform duration-300 hover:scale-105 shadow-lg rounded-3xl'>
                                 <img className='rounded-3xl w-[405px] h-[740px] object-cover object-bottom' src="https://www.apple.com/v/mac/home/cb/images/overview/consider/mac_intelligence__esfi0qmvis6e_xlarge.jpg" alt="" />
                                 <div className='absolute top-0 left-0 ml-8 mt-8'>
@@ -241,7 +307,67 @@ const MacPage = () => {
                                     <AddCircleRoundedIcon className=' text-[#343436]' sx={{fontSize: '2.7rem'}} />
                                 </div>
                             </div>
+                        </div> */}
+                <div>
+                <Carousel
+                // additionalTransform={-20 * 5}
+                // customTransition="transform 8000ms linear"
+                arrows={true}
+                // centerMode={true}
+                draggable={false}
+                // containerClass="container"
+                // dotListClass=""
+                // focusOnSelect={true}
+                // infinite
+                // itemClass=""
+                // keyBoardControl
+                // minimumTouchDrag={80}
+                // pauseOnHover
+                renderArrowsWhenDisabled={true}
+                // renderButtonGroupOutside={false}
+                renderDotsOutside={true}
+                responsive={responsive}
+                // rewind={false}
+                // rewindWithAnimation={false}
+                // rtl={false}
+                // shouldResetAutoplay={false}
+                // showDots={true}
+                // sliderClass=""
+                // slidesToSlide={1}
+                className='py-24'
+                ssr={true}
+                > 
+                {carousel_items.map(item => {
+                    return (
+                        <div className={`relative w-fit transition-transform duration-300 hover:scale-105 shadow-lg rounded-3xl ${item.textColor === 'white' && 'text-white'}`}>
+                            <img className='rounded-3xl w-[405px] h-[740px] object-cover object-bottom' src={item.img} alt="" />
+                            <div className='absolute top-0 left-0 ml-8 mt-8'>
+                                <div className='text-lg font-semibold'>
+                                {item.topText}
+                                </div>
+                                <h1 className={`font-semibold text-3xl ${item.bottomTextRainbow && 'text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310]'}`}>{item.bottomText}</h1>
+                            </div>
+
+                            <div className='absolute bottom-0 right-0 mr-4 mb-4'>
+                                <div className='group relative'>
+                                    <AddCircleRoundedIcon className=' relative text-[#343436] z-20' sx={{fontSize: '2.7rem'}} />
+                                    <div className='group-hover:bg-white transition-colors duration-300 absolute w-5 h-5 bg-[#D6D6D7] top-0 bottom-0 left-0 right-0 mx-auto my-auto z-10'/>
+                                </div>
+                            </div>
+                        
                         </div>
+                    )
+                })}
+                    {/* <div className=' bg-blue-300 w-[400px] flex justify-center items-center h-[400px]'>1</div>
+                    <div className='bg-red-300 w-[400px] h-[400px]'>2</div>
+                    <div className='bg-yellow-300 w-[400px] h-[400px]'>3</div>
+                    <div className=' bg-blue-300 w-[400px] flex justify-center items-center h-[400px]'>1</div>
+                    <div className='bg-red-300 w-[400px] h-[400px]'>2</div>
+                    <div className='bg-yellow-300 w-[400px] h-[400px]'>3</div> */}
+                        
+            </Carousel>
+            </div> 
+
                     </div>
 
     {/* Help me choose */}
