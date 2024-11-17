@@ -113,7 +113,7 @@ const MacPage = () => {
         };
     }, [])
 
-    const [dropDown, setDropDown] = useState(1)
+    const [dropDown, setDropDown] = useState(0)
 
     function changeDropDown(ind) {
         setDropDown(ind);
@@ -320,7 +320,8 @@ const MacPage = () => {
             {
                 neon: true,
                 blackText: 'Hello, Apple Intelligence.',
-                grayText: 'Apple Intelligence is the personal intelligence system that helps you write, express yourself, and get things done effortlessly. With groundbreaking privacy protections, it gives you peace of mind that no one else can access your data — not even Apple.1',
+                grayText: 'Apple Intelligence is the personal intelligence system that helps you write, express yourself, and get things done effortlessly. With groundbreaking privacy protections, it gives you peace of mind that no one else can access your data — not even Apple.',
+                sup: '1',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_intelligence_01__cpbsq0243sty_large.jpg',
                 paddingBottom: false,
             },
@@ -358,7 +359,8 @@ const MacPage = () => {
             {
                 neon: false,
                 blackText: 'Seize the day on a single charge.',
-                grayText: 'Thanks to the efficiency of Apple silicon, Mac laptops deliver up to 24 hours of battery life with incredible performance whether you’re plugged in or not.3',
+                grayText: 'Thanks to the efficiency of Apple silicon, Mac laptops deliver up to 24 hours of battery life with incredible performance whether you’re plugged in or not.',
+                sup: '3',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_performance_02__b1m37qedkb6q_large.jpg',
                 paddingBottom: false,
             },
@@ -382,14 +384,16 @@ const MacPage = () => {
             {
                 neon: false,
                 blackText: 'Use your iPhone from your Mac.',
-                grayText: 'With iPhone Mirroring, you can see and use what’s on your iPhone from your Mac — without having to reach for it.4',
+                grayText: 'With iPhone Mirroring, you can see and use what’s on your iPhone from your Mac — without having to reach for it.',
+                sup: '4',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_mac_iphone_01__d31agqfjcxiu_large.jpg',
                 paddingBottom: true,
             },
             {
                 neon: false,
                 blackText: 'Mac answers the call.',
-                grayText: 'You can answer calls or messages from your iPhone directly on your Mac. And all the messages that appear on your iPhone appear on your Mac, too.5',
+                grayText: 'You can answer calls or messages from your iPhone directly on your Mac. And all the messages that appear on your iPhone appear on your Mac, too.',
+                sup: '5',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_mac_iphone_02__bwopmn2e8rhy_large.jpg',
                 paddingBottom: false,
             },
@@ -403,7 +407,8 @@ const MacPage = () => {
             {
                 neon: false,
                 blackText: 'Start here. Finish there.',
-                grayText: 'Start an email on your iPhone and finish it on your Mac. With Handoff, when your Mac and iPhone are near each other, you can seamlessly pass what you’re doing from one device to the other.6',
+                grayText: 'Start an email on your iPhone and finish it on your Mac. With Handoff, when your Mac and iPhone are near each other, you can seamlessly pass what you’re doing from one device to the other.',
+                sup: '6',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_performance_04__gkxbhujaspme_large.jpg',
                 paddingBottom: true,
             },
@@ -414,6 +419,7 @@ const MacPage = () => {
                 neon: false,
                 blackText: 'The apps you love. Right on your Mac.',
                 grayText: 'From Microsoft 365 to Adobe Creative Cloud to Zoom,2 all your go-to apps are superfast and snappy on Mac.',
+                sup: '2',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_compatibility_01__dxaxtbfxpoia_large.jpg',
                 paddingBottom: true,
             },
@@ -479,13 +485,15 @@ const MacPage = () => {
                 neon: false,
                 blackText: 'For a better future.',
                 grayText: 'We’re transforming how we make, assemble, and recycle Mac. We use 100% recycled aluminum in the enclosures of Mac mini, MacBook Air, and MacBook Pro. MacBook Air contains 50% recycled content. And the new Mac mini is our first carbon neutral Mac.7 Because the earth won’t wait. And neither will we.',
+                sup: '7',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_values_01__bcgexiqnh1n6_large.jpg',
                 paddingBottom: true,
             },
             {
                 neon: false,
                 blackText: 'Good for you. Good for the planet.',
-                grayText: 'With Apple Trade In, you can get a great value for your current device and apply it toward a new one. If your device isn’t eligible for credit, we’ll recycle it for free.8',
+                grayText: 'With Apple Trade In, you can get a great value for your current device and apply it toward a new one. If your device isn’t eligible for credit, we’ll recycle it for free.',
+                sup: '8',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_values_02__5x3csdgu94i2_large.jpg',
                 paddingBottom: true,
             },
@@ -499,6 +507,27 @@ const MacPage = () => {
         ],
     ]
 
+    const significant_others_items = [
+        {
+            title: 'Mac and iPhone',
+            desc: 'Answer calls or messages from your iPhone directly on your Mac. See and control what’s on your iPhone from your Mac with iPhone Mirroring. Use Universal Clipboard to copy images, video, or text from your iPhone, then paste into another app on your nearby Mac. And thanks to iCloud, you can access your files from either your iPhone or your Mac. And so much more.',
+            height: '255px',
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/augment/world_mac_iphone__mr1xfuchl56e_xlarge.jpg',
+        },
+        {
+            title: 'Mac and iPad',
+            desc: 'Sketch on your iPad and have it appear instantly on your Mac. Or use your iPad as a second display, so you can work on one screen while you reference the other. You can even start a Final Cut Pro project on your iPad and continue it on your Mac.',
+            height: '178.5px',
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/augment/world_mac_ipad__d9mjiijkul0m_xlarge.jpg',
+        },
+        {
+            title: 'Mac and Apple Watch',
+            desc: 'Automatically log in to your Mac when you’re wearing your Apple Watch with Auto Unlock. No password typing required.',
+            height: '102px',
+            img: 'https://www.apple.com/v/mac/home/cb/images/overview/augment/world_mac_watch__dckn1orrpkqe_xlarge.jpg',
+        },
+    ]
+
 
   return (
 
@@ -509,8 +538,8 @@ const MacPage = () => {
             {/* Stop propagation prevents parent onclick from triggering when clicking on child */}
             <div onClick={(e) => e.stopPropagation()} className='w-[1260px] rounded-3xl mx-auto h-fit pb-[76px] my-[44px] bg-white'>
                 
-                <div className='h-[76px] flex justify-end items-center mr-4'>
-                    <div onClick={() => {closeCarouselPopUp(carouselCards.findIndex(truthy => truthy))}} className='group relative'>
+                <div className='h-[76px] flex justify-end items-center mr-4 sticky top-0'>
+                    <div onClick={() => {closeCarouselPopUp(carouselCards.findIndex(truthy => truthy))}} className='group relative cursor-pointer'>
                         <AddCircleRoundedIcon className='rotate-45 relative text-[#343436] z-20' sx={{fontSize: '2.7rem'}} />
                         <div className='group-hover:bg-white transition-colors duration-300 absolute w-5 h-5 bg-[#D6D6D7] top-0 bottom-0 left-0 right-0 mx-auto my-auto z-10'/>
                     </div>
@@ -540,7 +569,11 @@ const MacPage = () => {
                                         <div className='w-[917px] mx-auto text-[28px] pt-16 store_light_gray leading-[32px]'>
                                             <div className='apple_black float-left'>{item.blackText}</div> 
                                             &nbsp;{item.grayText}
+                                            <sup className='cursor-pointer underline hover:text-[#0066CC] text-lg font-bold'>
+                                            {item?.sup}
+                                            </sup>
                                         </div>
+
                                     {/* Image */}
                                         <img className='rounded-[24px]' src={item.img} alt="" />
 
@@ -553,6 +586,9 @@ const MacPage = () => {
                                     <div className='w-[917px] mx-auto text-[28px] store_light_gray leading-[32px]'>
                                         <div className='apple_black float-left'>{item.blackText}</div> 
                                         &nbsp;{item.grayText}
+                                        <sup className='cursor-pointer underline hover:text-[#0066CC] text-lg font-bold'>
+                                            {item?.sup}
+                                        </sup>
                                     </div>
                                 {/* Image */}
                                     <img className={`${!item.paddingBottom && 'rounded-[24px]'} pt-8`} src={item.img} alt="" />
@@ -694,84 +730,52 @@ const MacPage = () => {
                     <div className='pt-[140px] font-semibold text-6xl text-left store_dark_gray'>Significant others.</div>
 
                     <div className='mt-24 ml-4'>
-                        <div className='w-full shadow-lg rounded-3xl flex bg-[#fafafc] py-12 '>
+                        <div className='w-full shadow-lg rounded-3xl flex bg-[#fafafc] h-[784px]'>
 
                         {/* Left Text */}
                             <div className='rounded-l-3xl basis-[35%] p-[120px] text-left w-[590px] h-[756px] flex flex-col justify-center'>
 
                             {/* Dropdowns */}
                                 <div className=''>
-                                {/* Dropdown 1 */}
-                                    <div >
-                                        <div onClick={() => changeDropDown(1)} className={` ${dropDown !== 1 ? 'cursor-pointer' : 'select-none' } text-3xl font-semibold py-4 flex items-center justify-between`}>
-                                            <div >
-                                                Mac and iPhone
-                                            </div>
-                                            {dropDown === 1 ?
-                                                <ExpandLessRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
-                                            :
-                                                <ExpandMoreRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
-                                            }
 
-                                        </div>
-                                    {dropDown === 1 &&
-                                        <p className='pr-11 text-balance text-[17px] mb-6'>Answer calls or messages from your iPhone directly on your Mac. See and control what’s on your iPhone from your Mac with iPhone Mirroring. Use Universal Clipboard to copy images, video, or text from your iPhone, then paste into another app on your nearby Mac. And thanks to iCloud, you can access your files from either your iPhone or your Mac. And so much more.</p>
-                                    }
-                                    </div>
-                                    <hr className='border-[#cececf] ' />
+                                    {significant_others_items.map((item, itemNum) => {
+                                        return <>
+                                            <div>
+                                                <div onClick={() => changeDropDown(itemNum)} className={`${dropDown !== itemNum && 'cursor-pointer'} text-3xl font-semibold py-4 flex items-center justify-between`}>
+                                                    <div className={`${dropDown === itemNum && 'cursor-default'}`}>
+                                                        {item.title}
+                                                    </div>
+                                                    {dropDown === itemNum ?
+                                                        <ExpandLessRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
+                                                    :
+                                                        <ExpandMoreRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
+                                                    }
 
-                                {/* Dropdown 2 */}
-                                    <div>
-                                        <div onClick={() => changeDropDown(2)} className={`${dropDown !== 2 ? 'cursor-pointer' : 'select-none' }
-                                        text-3xl font-semibold py-4 flex items-center justify-between`}>
-                                            <div >
-                                                Mac and iPad
+                                                </div>
+                                                    <p className={`pr-11 text-balance text-[17px] ${dropDown === itemNum && 'mb-6'} transition-all transform overflow-hidden duration-500 ease-in-out ${dropDown === itemNum 
+                                                        ? 
+                                                        (dropDown === 0 
+                                                            ? 
+                                                        'max-h-[255px]'
+                                                            :
+                                                        (dropDown === 1
+                                                            ?
+                                                        'max-h-[178.5px]'
+                                                            :
+                                                        'max-h-[102px]'
+                                                        ))
+                                                        :
+                                                        'max-h-0' }`}>{item.desc}</p>
                                             </div>
-                                            {dropDown === 2 ?
-                                                <ExpandLessRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
-                                            :
-                                                <ExpandMoreRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
-                                            }
-                                        </div>
-                                    {dropDown === 2 &&
-                                        <p className='pr-11 text-balance text-[17px] mb-6'>Sketch on your iPad and have it appear instantly on your Mac. Or use your iPad as a second display, so you can work on one screen while you reference the other. You can even start a Final Cut Pro project on your iPad and continue it on your Mac.</p>
-                                    }
-                                    </div>
-                                    <hr className='border-[#cececf]' />
-                                {/* Dropdown 3 */}
-                                    <div>
-                                        <div onClick={() => changeDropDown(3)} className={`${dropDown !== 3 ? 'cursor-pointer' : 'select-none' } text-3xl font-semibold py-4 flex items-center justify-between`}>
-                                            <div >
-                                                Mac and Apple Watch
-                                            </div>
-                                            {dropDown === 3 ?
-                                                <ExpandLessRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
-                                            :
-                                                <ExpandMoreRoundedIcon sx={{fontSize: '3rem', color: '#868687'}} />
-                                            }
-                                        </div>
-                                        {dropDown === 3 &&
-                                            <p className='pr-11 text-balance text-[17px] mb-6'>Automatically log in to your Mac when you’re wearing your Apple Watch with Auto Unlock. No password typing required.</p>
-                                        }
-                                    </div>
+                                        <hr className='border-[#cececf] ' />
+                                    </>
+                                    })}
                                 </div>
                             </div>
 
                         {/* Right Image */}
                             <div className='rounded-l-3xl basis-[65%] flex items-center'>
-
-                                {dropDown === 1 &&
-                                    <img className='mx-auto' src="https://www.apple.com/v/mac/home/cb/images/overview/augment/world_mac_iphone__mr1xfuchl56e_xlarge.jpg" alt="" />
-                                }
-
-                                {dropDown === 2 &&
-                                    <img className='mx-auto' src="https://www.apple.com/v/mac/home/cb/images/overview/augment/world_mac_ipad__d9mjiijkul0m_xlarge.jpg" alt="" />
-                                } 
-
-                                {dropDown === 3 &&
-                                    <img className='mx-auto' src="https://www.apple.com/v/mac/home/cb/images/overview/augment/world_mac_watch__dckn1orrpkqe_xlarge.jpg" alt="" />
-                                }
-
+                                <img className='mx-auto' src={significant_others_items[dropDown].img} alt="" />
                             </div>
                         </div>
                     </div>
@@ -829,7 +833,7 @@ const MacPage = () => {
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
     {/* Mac Pop Menu */}
         <div className='bg-[#fafafc]'>
