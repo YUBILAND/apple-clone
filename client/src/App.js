@@ -39,7 +39,7 @@ function App() {
 
             <Route path="/mac" element={
               <>
-                  <Header darkMode={false} light='mac'/>
+                  
                   <MacPage />
                   {/* <LineUp /> */}
                   {/* <Footer /> */}

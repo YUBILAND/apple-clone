@@ -56,3 +56,7 @@
 .blur_element {
   backdrop-filter: blur(8px);
 }
+
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont;
+}

@@ -1,12 +1,26 @@
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
     bottom: calc(0% + 1px);
     right: calc(5% + 1px);
+    z-index: 5;
     /* background-color: #e2e2e4;
     color: black */
-  }
-  button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
-    bottom: calc(0% + 1px);
-    left: calc(86% + 1px);
-    /* background-color: rgba(210, 210, 215, 0.64); */
+}
 
-  }
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+bottom: calc(0% + 1px);
+left: calc(86% + 1px);
+z-index: 5;
+
+/* background-color: rgba(210, 210, 215, 0.64); */
+
+}
+
+.bg-gradient-custom {
+    background: linear-gradient(to top left, #EA2543, rgba(255, 8, 0, 0), #8F40F9), linear-gradient(to top right, #0568F1, rgba(255, 153, 150, 0.979), #EF3205);
+}
+
+/* .bg-gradient-custom:after {
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.3);
+        background: linear-gradient(to top left, #eb3347, rgba(255, 8, 0, 0), #be8ff9), linear-gradient(to top right, #70a9e7, rgba(255, 153, 150, 0), #f88d61);
+        
+} */
