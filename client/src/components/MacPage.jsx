@@ -9,6 +9,8 @@ import Carousel from "react-multi-carousel";
 import './MacPage.css'
 import Header from './Header';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 
 
 const MacPage = () => {
@@ -98,7 +100,7 @@ const MacPage = () => {
               setScale(newScale);
               //can go down 6 scrols
             }
-            console.log(newRounded)
+            // console.log(newRounded)
             if (newRounded >= 0 && newRounded <= 3) {
                 setRounded(newRounded);
                 //can go down 6 scrols
@@ -262,8 +264,6 @@ const MacPage = () => {
         body.style.paddingRight = (window.innerWidth - document.body.clientWidth) + 'px'
         body.style.overflow = 'hidden'
     }
-
-
 
     function closeCarouselPopUp(card) {
 
@@ -528,6 +528,25 @@ const MacPage = () => {
         },
     ]
 
+    const videoRef = useRef(null);
+
+    const [videoPlaying, setVideoPlaying] = useState(true);
+
+    function handleVideoClick(e) {
+        e.preventDefault();
+
+        if (videoRef.current.paused) {
+            videoRef.current.play()
+            setVideoPlaying(true);
+        } else {
+            videoRef.current.pause()
+            setVideoPlaying(false);
+        }
+        
+        }
+
+
+    
 
   return (
 
@@ -639,12 +658,34 @@ const MacPage = () => {
         </div>
 
     {/* Mac Video */}
-        <div className=''>
-            <video style={{transform: `scale(${scale}`, borderRadius: `${rounded}rem`}} className={`w-screen h-[756px] 
+        <div className=' 
             transform-scale duration-100
-            object-cover`} loop autoplay='autoplay' muted >
+             relative w-full h-[756px]'
+             style={{transform: `scale(${scale}`}}>
+                {console.log(scale)}
+            <video onClick={handleVideoClick}
+                 ref={videoRef} style={{borderRadius: `${rounded}rem`}} className={`w-full h-full object-cover`} loop autoplay='autoplay' muted >
                 <source src='https://www.apple.com/105/media/us/mac/family/2024/b0f6d595-f4dd-4393-8316-102be97a5d1b/anim/welcome/xlarge.mp4' />
+                    
             </video>
+
+            { 
+            videoPlaying 
+                ?
+            <div className='sticky bottom-0 right-0'>
+                <PauseRoundedIcon onClick={handleVideoClick} className='cursor-pointer absolute bottom-12 right-14 rounded-full bg-[#ededef] bg-opacity-[56%]' sx={{color: 'rgba(0, 0, 0, 0.56)', width: '36px', height: '36px', padding: '6px'}}/>
+            </div>
+                :
+            <div className='sticky bottom-0 right-0'>
+                <PlayArrowRoundedIcon onClick={handleVideoClick} className='cursor-pointer absolute bottom-12 right-14 rounded-full bg-[#ededef] bg-opacity-[56%]' sx={{color: 'rgba(0, 0, 0, 0.56)', width: '36px', height: '36px', padding: '4px'}}/>
+            </div>
+
+            }
+
+            
+
+            
+            
         </div>
 
     {/* Get to know Mac + Help me choose*/}
