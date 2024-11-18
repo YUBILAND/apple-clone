@@ -59,4 +59,6 @@
 
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont;
+  /* Prevent horizontal scrollbar from appearing for carousel's overflow visible */
+  overflow-x: hidden !important; 
 }

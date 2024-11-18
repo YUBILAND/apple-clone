@@ -1,18 +1,31 @@
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
     bottom: calc(0% + 1px);
-    right: calc(5% + 1px);
+    right: calc(2% + 1px);
     z-index: 5;
-    /* background-color: #e2e2e4;
-    color: black */
+    background-color: rgba(210, 210, 215, 0.64);
+    min-width: 36px;
+    min-height: 36px;
 }
 
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
-bottom: calc(0% + 1px);
-left: calc(86% + 1px);
-z-index: 5;
+    bottom: calc(0% + 1px);
+    left: calc(92% + 1px);
+    z-index: 5;
+    background-color: rgba(210, 210, 215, 0.64);
+    min-width: 36px;
+    min-height: 36px;
 
-/* background-color: rgba(210, 210, 215, 0.64); */
+}
 
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:before, 
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:before {
+    color: rgba(0, 0, 0, 0.64);
+    font-weight: 900;
+}
+
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:disabled, 
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:disabled {
+    opacity: 0.5;
 }
 
 .bg-gradient-custom {
@@ -24,3 +37,7 @@ z-index: 5;
         background: linear-gradient(to top left, #eb3347, rgba(255, 8, 0, 0), #be8ff9), linear-gradient(to top right, #70a9e7, rgba(255, 153, 150, 0), #f88d61);
         
 } */
+
+.react-multi-carousel-list {
+    overflow: visible;
+}
