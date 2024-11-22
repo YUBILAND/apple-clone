@@ -8,6 +8,9 @@ import SlideShow from './components/SlideShow';
 import StorePage from './components/StorePage';
 import MacPage from './components/MacPage';
 import LineUp from './components/LineUp';
+import { CarouselContext } from './contexts/CarouselContext';
+import { useState } from 'react';
+
 
 function App() {
 
@@ -17,7 +20,21 @@ function App() {
 
   if (isStorePage) document.body.style.background = '#f5f5f7'
 
+  const [carouselCards, showCarouselCards] = useState(
+    [false, false, false, false, false, false, false]
+  );
+
+  const [smallCarouselCards, showSmallCarouselCards] = useState(
+    [false, false, false, false, false, false, false]
+  );
+
+  const [cardDelay, setCardDelay] = useState(false);
+
+  const [smallCardDelay, setSmallCardDelay] = useState(false);
+
+
   return (
+    <CarouselContext.Provider value={{cardDelay, setCardDelay, carouselCards, showCarouselCards, smallCarouselCards, showSmallCarouselCards, smallCardDelay, setSmallCardDelay}} >
           <Routes>
             <Route path="/" element={
               <>
@@ -49,6 +66,7 @@ function App() {
 
 
           </Routes>
+    </CarouselContext.Provider>
   );
 }
 

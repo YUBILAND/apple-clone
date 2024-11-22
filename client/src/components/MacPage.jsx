@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import LineUp from './LineUp';
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
@@ -11,6 +11,8 @@ import Header from './Header';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
+import CarouselCard from './CarouselCard';
+import { CarouselContext } from '../contexts/CarouselContext';
 
 
 const MacPage = () => {
@@ -172,25 +174,6 @@ const MacPage = () => {
         ],
     ]
 
-    const responsive = {
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 4,
-          slidesToSlide: 1, // optional, default to 1.
-          partialVisibilityGutter: 40
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2,
-          slidesToSlide: 2 // optional, default to 1.
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1,
-          slidesToSlide: 1 // optional, default to 1.
-        }
-      };
-
     const carousel_items = [
         {
             textColor: 'black',
@@ -243,32 +226,16 @@ const MacPage = () => {
         },
     ]
 
-    const [carouselCards, showCarouselCards] = useState([
-        false, false, false, false, false, false, false
-    ]);
-
+    const {carouselCards, showCarouselCards} = useContext(CarouselContext);
 
     const body = document.body;
 
-    const [cardDelay, setCardDelay] = useState(false);
-
-
-    function showCarouselPopUp(card) {
-        setCardDelay(true);
-
-        showCarouselCards(prevCards => {
-            const newState = [...prevCards];
-            newState[card] = true;
-            return newState;
-        })
-        body.style.paddingRight = (window.innerWidth - document.body.clientWidth) + 'px'
-        body.style.overflow = 'hidden'
-    }
+    const {cardDelay, setCardDelay} = useContext(CarouselContext);
 
     function closeCarouselPopUp(card) {
 
         setCardDelay(false);
-
+        body.style.pointerEvents = 'none'
         
         setTimeout(() => {
             showCarouselCards(prevCards => {
@@ -279,9 +246,10 @@ const MacPage = () => {
 
             body.style.paddingRight = '0px'
             body.style.overflow = 'auto'
+            body.style.pointerEvents = 'auto'
+
         }, 500)
     }
-
 
     const card_header = [
         {
@@ -439,6 +407,8 @@ const MacPage = () => {
                 grayText: 'Mac gives you the freedom to choose what you share and how you share it, so you can use apps more securely, protect your data, and keep yourself safer on the web. With groundbreaking privacy protections, Apple Intelligence gives you peace of mind that no one else can access your data — not even Apple. And with Private Cloud Compute, your data is never stored and is used only for your requests.',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_security_01__bi7nitjtbhxy_large.png',
                 paddingBottom: true,
+                width: '134px',
+                height: '175px',
             },
             {
                 neon: false,
@@ -446,6 +416,8 @@ const MacPage = () => {
                 grayText: 'By integrating Mac with Apple silicon and macOS, Apple builds security protections into Mac from the ground up. Every Mac comes with industry-leading encryption and robust virus protections. And automatic free security updates help keep your Mac protected.',
                 img: 'https://www.apple.com/v/mac/home/cb/images/overview/consider/boc_security_04__cbsna3srpk3m_large.png',
                 paddingBottom: true,
+                width: '148px',
+                height: '177px',
             },
             {
                 neon: false,
@@ -544,8 +516,6 @@ const MacPage = () => {
         }
         
         }
-
-
     
 
   return (
@@ -568,10 +538,10 @@ const MacPage = () => {
 
                     <div>
                         <div className='text-[19px] font-semibold'>
-                            {carouselCards.findIndex(truthy => truthy) != -1 && card_header[carouselCards.findIndex(truthy => truthy)].topText}
+                            {card_header[carouselCards.findIndex(truthy => truthy)]?.topText}
                         </div>
                         <div className='text-[56px] font-semibold'>
-                        {carouselCards.findIndex(truthy => truthy) != -1 && card_header[carouselCards.findIndex(truthy => truthy)].bottomText}
+                        {card_header[carouselCards.findIndex(truthy => truthy)]?.bottomText}
                         </div>
                     </div>
 
@@ -610,8 +580,11 @@ const MacPage = () => {
                                         </sup>
                                     </div>
                                 {/* Image */}
-                                    <img className={`${!item.paddingBottom && 'rounded-[24px]'} pt-8`} src={item.img} alt="" />
-
+                                    {/* <div className=' w-[1044px] h-[500px] flex justify-center items-center'> */}
+                                        <img className={`${!item.paddingBottom && 'rounded-[24px]'} mt-8 mx-auto`} style={{
+                                            width: item?.width, 
+                                            height: item?.height}} src={item.img} alt="" />
+                                    {/* </div> */}
                                 </div>
                             )
                             })
@@ -696,40 +669,9 @@ const MacPage = () => {
                 <div>
                     <div className='pt-[150px] font-semibold text-6xl text-left store_dark_gray'>Get to know Mac.</div>
                     <div>
-                    <Carousel
-                    customTransition="transform 500ms ease-in-out"
-                    arrows={true}
-                    draggable={false}
-                    keyBoardControl
-                    renderArrowsWhenDisabled={true}
-                    renderDotsOutside={true}
-                    responsive={responsive}
-                    className='py-24'
-                    ssr={true}
-                    > 
-                    {carousel_items.map((item, itemNum) => {
-                        return (
-                            <div onClick={() => showCarouselPopUp(itemNum)} className={`cursor-pointer relative w-fit transition-transform duration-300 hover:scale-105 shadow-lg rounded-3xl ${item.textColor === 'white' && 'text-white'}`}>
-                                <img className='rounded-3xl w-[405px] h-[740px] object-cover object-bottom' src={item.img} alt="" />
-                                <div className='absolute top-0 left-0 ml-8 mt-8 w-full'>
-                                {/* TopText */}
-                                    <div className='text-lg font-semibold'>
-                                    {item.topText}
-                                    </div>
-                                {/* BottomText */}
-                                    <h1 className={`w-[60%] font-semibold text-[28px] leading-[2.1rem] ${item.bottomTextRainbow && '!w-full text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310]'}`}>{item.bottomText}</h1>
-                                </div>
+                    
+                        <CarouselCard items={carousel_items}/>
 
-                                <div className='absolute bottom-0 right-0 mr-4 mb-4'>
-                                    <div className='group relative'>
-                                        <AddCircleRoundedIcon className=' relative text-[#343436] z-20' sx={{fontSize: '2.7rem'}} />
-                                        <div className='group-hover:bg-white transition-colors duration-300 absolute w-5 h-5 bg-[#D6D6D7] top-0 bottom-0 left-0 right-0 mx-auto my-auto z-10'/>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </Carousel>
                     </div> 
                 </div>
 
@@ -760,7 +702,7 @@ const MacPage = () => {
             </div>
         </div>
 
-    {/* Lineup */}
+    {/* Lineup (Explore Lineup, Apple Trade In, Why Apple is the best*/}
         <LineUp />
 
     {/* Significant Others + Mac Essentials*/}
@@ -809,7 +751,9 @@ const MacPage = () => {
                                                         :
                                                         'max-h-0' }`}>{item.desc}</p>
                                             </div>
-                                        <hr className='border-[#cececf] ' />
+                                        {itemNum !== 2 &&
+                                        <hr className='border-[#cececf]' />
+                                        }
                                     </>
                                     })}
                                 </div>
