@@ -100,7 +100,7 @@ const StorePage = () => {
     //     },
     // ]
   return (
-    <div className='mt-[44px] select-none mb-32'>
+    <div className='mt-[44px] select-none mb-16'>
         <div className='mt-32 w-[1623px] mx-auto'>
             <div className='grid grid-cols-2'>
                 <leftgrid className='font-bold text-5xl text-left store_light_gray'><ul className='store_dark_gray inline'>Store.</ul> The best way to buy the products you love.</leftgrid>
@@ -289,9 +289,7 @@ const StorePage = () => {
                 </div>
             </div>
 
-            <div className='mt-[90px]'> 
-                Apple Intelligence 
-            </div>                        
+                                   
 
         </div>
     </div>

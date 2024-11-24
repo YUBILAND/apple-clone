@@ -1,0 +1,37 @@
+.interesting {
+    /* width: 500px !important; */
+}
+
+.buttonInteresting > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+    bottom: calc(42% + 1px);
+    right: calc(-7% + 1px);
+    z-index: 5;
+    background-color: rgba(210, 210, 215, 0.64);
+    min-width: 56px;
+    min-height: 56px;
+
+    &:hover {
+        background-color: rgba(234, 234, 240, 0.64);
+        cursor: pointer;
+    }
+}
+
+.buttonInteresting > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+    bottom: calc(42% + 1px);
+    left: calc(-7% + 1px);
+    z-index: 5;
+    background-color: rgba(210, 210, 215, 0.64);
+    min-width: 56px;
+    min-height: 56px;
+
+    &:hover {
+        background-color: rgba(234, 234, 240, 0.64);
+        cursor: pointer;
+    }
+}
+
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:before, 
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:before {
+    color: rgba(0, 0, 0, 0.64);
+    font-weight: 900;
+}

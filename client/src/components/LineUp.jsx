@@ -214,25 +214,6 @@ const LineUp = () => {
                     </div>
                 </div>
 
-                {/* <div className='mt-24 ml-8'>
-                    <div className='relative bg-white w-[405px] h-[300px] transition-transform duration-300 hover:scale-105 rounded-3xl shadow-lg'>
-                        
-                        <div className=' px-8 pt-6 pb-12 text-black '>
-                                <CreditCardRoundedIcon sx={{fontSize: '3.5rem'}} />
-                                <div className='text-[24px] leading-tight font-semibold '>
-                                Pay over time, interest-free</div>
-                                <div>When you choose to check out with Apple Card Monthly Installments.</div>
-                        </div>
-
-                        <div className='absolute bottom-0 right-0 mr-4 mb-4'>
-                            <AddCircleRoundedIcon className=' text-[#343436]' sx={{fontSize: '2.7rem'}} />
-                        </div>
-                    </div>
-                </div> */}
-
-
-
-
             {/* Carousel Pop Up */}
 
                 <div onClick={() => closeCarouselPopUp(smallCarouselCards.findIndex(truthy => truthy))} className={`fixed top-0 left-0 w-full h-full z-20 backdrop-blur-lg bg-black transition-opacity duration-500 bg-opacity-50 ${smallCardDelay ? 'opacity-100' : 'opacity-0 pointer-events-none'} overflow-auto flex flex-col justify-center items-center`}>
@@ -292,7 +273,6 @@ const LineUp = () => {
                 </div>
 
                 <SmallCarousel items={small_carousel_items}/>
-
 
             </div>
 

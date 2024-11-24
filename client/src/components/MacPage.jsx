@@ -654,10 +654,6 @@ const MacPage = () => {
             </div>
 
             }
-
-            
-
-            
             
         </div>
 

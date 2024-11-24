@@ -10,6 +10,7 @@ import MacPage from './components/MacPage';
 import LineUp from './components/LineUp';
 import { CarouselContext } from './contexts/CarouselContext';
 import { useState } from 'react';
+import NewStorePage from './components/NewStorePage';
 
 
 function App() {
@@ -49,7 +50,8 @@ function App() {
             <Route path="/store" element={
               <>
                   <Header darkMode={false} light='store'/>
-                  <StorePage />
+                  {/* <StorePage /> */}
+                  <NewStorePage />
                   <Footer />
               </>
             }/>
