@@ -86,24 +86,28 @@ const NewStorePage = () => {
     const carousel_cards = [
         [
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'iPhone 16 Pro',
                 bottomText: 'From $999 or $41.62/mo. for 24 mo.',
                 img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-iphone-pro-202411_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1729180965302',
             },
             {
+                background: true,
                 topText: '',
                 middleText: 'Apple Watch Series 10',
                 bottomText: 'From $399 or $33.25/mo. for 12 mo.',
                 img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-watch-s10-202411?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1729694064591',
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'iPad mini',
                 bottomText: 'From $499 or $41.58/mo. for 12 mo.',
                 img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-ipad-mini-202411?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1728504973912',
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'MacBook Pro',
                 bottomText: 'From $1599 or $133.25/mo. for 12 mo.',
@@ -111,6 +115,7 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'iPhone 16',
                 bottomText: 'From $799 or $33.29/mo. for 24 mo.',
@@ -118,6 +123,7 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: '',
                 middleText: 'Apple Watch Ultra 2',
                 bottomText: 'From $799 or $66.58/mo. for 12 mo.',
@@ -125,6 +131,7 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'iPad Air',
                 bottomText: 'From $599 or $49.91/mo. for 12 mo.',
@@ -132,6 +139,7 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'iMac',
                 bottomText: 'From $1299 or $108.25/mo. for 12 mo.',
@@ -139,6 +147,7 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'MacBook Air',
                 bottomText: 'From $999 or $83.25/mo. for 12 mo.',
@@ -146,6 +155,7 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'Mac mini',
                 bottomText: 'From $599 or $49.91/mo. for 12 mo.',
@@ -153,6 +163,7 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: '',
                 middleText: 'Apple Vision Pro',
                 bottomText: 'From $3499 or $291.58/mo. for 12 mo.',
@@ -160,13 +171,183 @@ const NewStorePage = () => {
                 
             },
             {
+                background: true,
                 topText: 'APPLE INTELLIGENCE',
                 middleText: 'iPad Pro',
                 bottomText: 'From $999 or $83.25/mo. for 12 mo.',
                 img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-ipad-pro-202411?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1728492745491',
             },
         ],
+        [
+            {
+                background: true,
+                middleText: 'Make their gift one of a kind.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-holiday-engraving-202411?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1728511605616',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'AirPods Max - Purple',
+                price: '549.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-202409-purple?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1724927451266',
+                colors: ['titanium', 'silver', 'black', 'peach', 'orange'],
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'AirPods Pro 2',
+                price: '249.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-hero-select-202409?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1724041669458',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'AirPods 4 with Active Noise Cancellation',
+                price: '179.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-4-anc-select-202409?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1725502639798',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'Apple Pencil Pro',
+                price: '129.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX2D3?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1713841707336',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'AirTag',
+                price: '29.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airtag-single-select-202104?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1617761671000',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'AirPods 4',
+                price: '129.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-4-select-202409?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1723685836351',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'Apple Pencil (2nd generation)',
+                price: '129.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MU8F2?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1540596407165',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'AirTag 4 Pack',
+                price: '99.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airtag-4pack-select-202104?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1617761669000',
+            },
+            {
+                product: true,
+                topText: 'Free Engraving',
+                bottomText: 'Beats Fit Pro True Wireless Earbuds — Stone Purple',
+                price: '199.99',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MK2H3?wid=400&hei=400&fmt=jpeg&qlt=95&.v=1634663497000',
+                colors: ['black', 'white', 'purple', 'gray'],
+            },
+
+        ],
+        [
+            {
+                background: true,
+                middleText: 'Surprise your favorites with these favorites.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-holiday-quick-picks-202411?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1730226657180',
+            },
+            {
+                product: true,
+                topText: 'New',
+                bottomText: 'iPhone 16 Silicone Case with MagSafe – Star Fruit',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MYY73?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1723236738435',
+                colors: ['yellow', 'blue', 'green', 'pruple', 'gray', 'brown'],
+                price: '49.00',
+
+            },
+            {
+                product: true,
+                bottomText: 'HomePod mini - White',
+                price: '99.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/homepod-mini-select-white-202110?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1632925509000',
+                colors: ['teal', 'yellow', 'blac', 'orange', 'white']
+            },
+            {
+                product: true,
+                bottomText: 'Smart Folio for iPad Air 11-inch (M2) - Sage',
+                price: '79.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MWK73?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1716915397369',
+                colors: ['green', 'green', 'blue', 'magenta']
+            },
+            {
+                product: true,
+                topText: 'New',
+                bottomText: 'Beats Solo 4 — On-Ear Wireless Headphones – Slate Blue',
+                price: '199.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MUW43?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1712255584961',
+                colors: ['black', 'blue', 'silver']
+            },
+            {
+                product: true,
+                topText: 'New',
+                bottomText: '46mm Plum Sport Loop',
+                price: '49.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MXL63?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1724186591572',
+                colors: ['pruple', 'green', 'silver', 'black', 'purple']
+            },
+            {
+                product: true,
+                topText: 'Only at Apple',
+                bottomText: 'PopSockets Magsafe Grip for iPhone - Opalescent Purple',
+                price: '34.95',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/HRZ12?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1729650109693',
+                colors: ['magenta', 'black', 'white']
+            },
+            {
+                product: true,
+                topText: 'New',
+                bottomText: 'iPhone 16 Pro Clear Case with MagSafe',
+                price: '49.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MA7E4?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1723930332796',
+            },
+            {
+                product: true,
+                topText: 'New',
+                bottomText: 'Beats iPhone 16 Pro Case with MagSafe – Riptide Blue',
+                price: '49.00',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MCFN4?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1724013477596',
+                colors: ['black', 'peach', 'teal', 'pruple']
+            },
+            {
+                product: true,
+                topText: 'Only at Apple',
+                bottomText: 'Ember Mug 2 - Blue (14 oz)',
+                price: '149.95',
+                smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/HRXA2?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1729650099141',
+            },
+            {
+                background: true,
+                topText: 'Apple Gift Card',
+                gray: true,
+                middleText: 'Great gifts are in the cards.',
+                bottomText: 'The perfect way for them to spend the holidays however they like.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-holiday-gift-card-202411?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1729714063515',
+            },
+        ],
+        [
+        ],
+        [
+        ],
+        [
+        ],
     ]
+
+    const itemsToShow_arr = [3, 4, 4, 4, 3, 4]
+
+    const partialVisibilityGutter_arr = [40, 70, 70, 40, 40, 40]
+
+    const smallCardBool_arr = [false, true, true, false, false, true ]
 
   return (
     <div className='select-none mb-16'>
@@ -233,20 +414,20 @@ const NewStorePage = () => {
                 })}
             </div>
 
-            {/* {header.map(item => {
+            {header.map((item, index) => {
                 return (
                     <div>
                         <div className='mt-[90px] font-semibold text-[28px] text-left store_light_gray'>
-                            <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310] float-left'>The latest.</h1>
-                            &nbsp;Let them unwrap wonders.
+                            <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310] float-left'>{item.neon}</h1>
+                            &nbsp;{item.grayText}
                         </div>
-
-                        <StoreCarousel items={carousel_cards[0]}/>
+                        
+                        <TestStoreCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} partialVGutter={partialVisibilityGutter_arr[index]} small={smallCardBool_arr[index]}/>
                     </div>
                 )
-            })} */}
+            })}
             {/* <StoreCarousel items={carousel_cards[0]}/> */}
-            <TestStoreCarousel items={carousel_cards[0]} itemsToShow={3} />
+            
                                
 
         </div>

@@ -1,4 +1,4 @@
-.carouselContainer > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+[class*="carouselContainer"] > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
     bottom: calc(42% + 1px);
     right: calc(-7% + 1px);
     z-index: 5;
@@ -12,7 +12,7 @@
     }
 }
 
-.carouselContainer > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+[class*="carouselContainer"] > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
     bottom: calc(42% + 1px);
     left: calc(-7% + 1px);
     z-index: 5;

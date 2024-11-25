@@ -123,13 +123,13 @@ const Footer = () => {
                         <ul className='apple_black font-bold pt-6'>Account</ul>
                         {footer_items_col_2.map((item, i) => {
                             if (i < 3) {
-                                return <abbr className='pt-2 hover:underline'>{item}</abbr>
+                                return <abbr key={i} className='pt-2 hover:underline'>{item}</abbr>
                             } else return null
                         })}
                         <ul className='apple_black font-bold pt-6'>Entertainment</ul>
                         {footer_items_col_2.map((item, i) => {
                             if (i >= 3) {
-                                return <abbr className='pt-2 hover:underline'>{item}</abbr>
+                                return <abbr key={i} className='pt-2 hover:underline'>{item}</abbr>
                             } else return null
                         })}
                     </div>
@@ -138,7 +138,7 @@ const Footer = () => {
                 <div>
                     <div className='apple_black font-bold pt-6'>Apple Store</div>
                     {footer_items_col_3.map((item, i) => {
-                        return <ul className='pt-2'>{item}</ul>
+                        return <ul key={i} className='pt-2'>{item}</ul>
                     })}
                     
                 </div>
@@ -174,13 +174,13 @@ const Footer = () => {
                     <div className='apple_black font-bold pt-6'>Apple Values</div>
                     {footer_items_col_5.map((item, i) => {
                         if (i < 7) {
-                            return <ul className='pt-2'>{item}</ul>
+                            return <ul key={i} className='pt-2'>{item}</ul>
                         } else return null
                     })}
                     <div className='apple_black font-bold pt-6'>About Apple</div>
                     {footer_items_col_5.map((item, i) => {
                         if (i >= 7) {
-                            return <ul className='pt-2'>{item}</ul>
+                            return <ul key={i} className='pt-2'>{item}</ul>
                         } else return null
                     })}
                 </div>

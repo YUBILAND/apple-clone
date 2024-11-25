@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Colors from './Colors';
 
 const Desktops = () => {
 
@@ -215,11 +216,7 @@ const Desktops = () => {
                     
                 {/* Color and New */}
                     <div className='mt-12 text-center '>
-                        <div className={`flex justify-between gap-2 w-fit mx-auto h-3 `}>
-                            {item.colors.map(color => {
-                                return <div className={`w-3 h-3 rounded-full ${ color === 'peach' ? 'bg-orange-200' : color === 'gray' ? 'bg-gray-500' : color === 'silver' ?'bg-slate-400' : color === 'blue' ? 'bg-blue-500' : color === 'purple' ? 'bg-purple-500' : color === 'red' ? 'bg-red-500' : color === 'orange' ? 'bg-orange-400' : color === 'yellow' ? 'bg-yellow-200' : color === 'green' ? 'bg-green-400' : 'bg-black'} `}/>
-                            })}
-                        </div>
+                        <Colors colors={item.colors}/>
                     </div>
 
                     <span className={`${!item.new && 'invisible'} inline-block mt-4 mb-2 font-bold text-xs text-[#BD4410]`}>New</span>
