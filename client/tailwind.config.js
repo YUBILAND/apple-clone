@@ -13,6 +13,10 @@ module.exports = {
         DEFAULT: '0 2px 4px var(--tw-shadow-color)',
         lg: '0 8px 16px var(--tw-shadow-color)',
       },
+      hovAnimation: {
+        pop: 'hover:scale-[1.02] 1s ease',
+        shadow: 'hover:shadow-xl 1s ease',
+      },
     },
   },
   plugins: [

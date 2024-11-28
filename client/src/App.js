@@ -11,6 +11,7 @@ import LineUp from './components/LineUp';
 import { CarouselContext } from './contexts/CarouselContext';
 import { useState } from 'react';
 import NewStorePage from './components/NewStorePage';
+import SwiperCarousel from './components/SwiperCarousel';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
                   {/* <StorePage /> */}
                   <NewStorePage />
                   <Footer />
+                  <SwiperCarousel />
               </>
             }/>
 

@@ -216,7 +216,7 @@ const Desktops = () => {
                     
                 {/* Color and New */}
                     <div className='mt-12 text-center '>
-                        <Colors colors={item.colors}/>
+                        <Colors colors={item.colors} desktops={true} />
                     </div>
 
                     <span className={`${!item.new && 'invisible'} inline-block mt-4 mb-2 font-bold text-xs text-[#BD4410]`}>New</span>

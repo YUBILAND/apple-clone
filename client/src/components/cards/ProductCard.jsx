@@ -3,7 +3,7 @@ import Colors from '../Colors'
 
 const ProductCard = (props) => {
   return (
-    <div className={`bg-white cursor-pointer transition-transform duration-300 hover:scale-[1.02] shadow-lg rounded-3xl w-[313px] p-[30px] h-[500px] flex flex-col items-center`}>
+    <div className={`bg-white cursor-pointer shadow-lg hover:scale-[1.02] transition-!transform duration-300 ease hover:shadow-xl rounded-3xl w-[313px] p-[30px] h-[500px] flex flex-col items-center`}>
 
     {/* Image */}
         <div className='basis-3/5 flex items-end'>
@@ -16,7 +16,7 @@ const ProductCard = (props) => {
 
             {/* Color */}
                 <div className='w-full h-[58px] pt-[19px] pb-[14px] flex justify-center items-center'>
-                    <Colors colors={props.card?.colors ? props.card.colors : []}/>
+                    <Colors colors={props.card?.colors ? props.card.colors : []} airpodsmax={props.card?.airpodsmax} />
                 </div>
             
             {/* TopText */}

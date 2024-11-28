@@ -6,6 +6,11 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import StoreCarousel from './StoreCarousel';
 import CarouselCard from './CarouselCard';
 import TestStoreCarousel from './TestStoreCarousel';
+import SwiperCarousel from './SwiperCarousel';
+import IconCard from './cards/IconCard';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn';
+import MoodIcon from '@mui/icons-material/Mood';
 
 const NewStorePage = () => {
 
@@ -190,7 +195,14 @@ const NewStorePage = () => {
                 bottomText: 'AirPods Max - Purple',
                 price: '549.00',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-202409-purple?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1724927451266',
-                colors: ['titanium', 'silver', 'black', 'peach', 'orange'],
+                colors: [
+                            'blue',
+                            'purple',
+                            'midnight',
+                            'starlight',
+                            'orange',
+                        ],
+                airpodsmax: true,
             },
             {
                 product: true,
@@ -247,7 +259,12 @@ const NewStorePage = () => {
                 bottomText: 'Beats Fit Pro True Wireless Earbuds — Stone Purple',
                 price: '199.99',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MK2H3?wid=400&hei=400&fmt=jpeg&qlt=95&.v=1634663497000',
-                colors: ['black', 'white', 'purple', 'gray'],
+                colors: [
+                            'beatblack',
+                            'beatwhite',
+                            'stonepurple',
+                            'sagegray',
+                        ],
             },
 
         ],
@@ -262,7 +279,16 @@ const NewStorePage = () => {
                 topText: 'New',
                 bottomText: 'iPhone 16 Silicone Case with MagSafe – Star Fruit',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MYY73?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1723236738435',
-                colors: ['yellow', 'blue', 'green', 'pruple', 'gray', 'brown'],
+                colors: [
+                        'starfruit',
+                        'ultramarine',
+                        'lakegreen',
+                        'fuschia',
+                        'stonegray',
+                        'plum',
+                        'black',
+                        'denim',
+                        ],
                 price: '49.00',
 
             },
@@ -271,14 +297,25 @@ const NewStorePage = () => {
                 bottomText: 'HomePod mini - White',
                 price: '99.00',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/homepod-mini-select-white-202110?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1632925509000',
-                colors: ['teal', 'yellow', 'blac', 'orange', 'white']
+                colors: [
+                            'blue',
+                            'yellow',
+                            'midnight',
+                            'orange',
+                            'white',
+                        ]
             },
             {
                 product: true,
                 bottomText: 'Smart Folio for iPad Air 11-inch (M2) - Sage',
                 price: '79.00',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MWK73?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1716915397369',
-                colors: ['green', 'green', 'blue', 'magenta']
+                colors: [
+                            'charcoalgray',
+                            'sage',
+                            'lightdenim',
+                            'lightviolet',
+                        ]
             },
             {
                 product: true,
@@ -286,7 +323,11 @@ const NewStorePage = () => {
                 bottomText: 'Beats Solo 4 — On-Ear Wireless Headphones – Slate Blue',
                 price: '199.00',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MUW43?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1712255584961',
-                colors: ['black', 'blue', 'silver']
+                colors: [
+                            'matteblack',
+                            'slateblue',
+                            'cloudpink',
+                        ]
             },
             {
                 product: true,
@@ -294,7 +335,13 @@ const NewStorePage = () => {
                 bottomText: '46mm Plum Sport Loop',
                 price: '49.00',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MXL63?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1724186591572',
-                colors: ['pruple', 'green', 'silver', 'black', 'purple']
+                colors: [
+                            'ultramarine',
+                            'lakegreen',
+                            'bluecloud',
+                            'ink',
+                            'plum',
+                        ]
             },
             {
                 product: true,
@@ -302,7 +349,11 @@ const NewStorePage = () => {
                 bottomText: 'PopSockets Magsafe Grip for iPhone - Opalescent Purple',
                 price: '34.95',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/HRZ12?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1729650109693',
-                colors: ['magenta', 'black', 'white']
+                colors: [
+                            'purple',
+                            'black',
+                            'multicolor',
+                        ]
             },
             {
                 product: true,
@@ -317,7 +368,12 @@ const NewStorePage = () => {
                 bottomText: 'Beats iPhone 16 Pro Case with MagSafe – Riptide Blue',
                 price: '49.00',
                 smallImg: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MCFN4?wid=400&hei=400&fmt=jpeg&qlt=90&.v=1724013477596',
-                colors: ['black', 'peach', 'teal', 'pruple']
+                colors: [
+                            'midnightblack',
+                            'summitstone',
+                            'riptideblue',
+                            'sunsetpurple',
+                        ]
             },
             {
                 product: true,
@@ -336,14 +392,179 @@ const NewStorePage = () => {
             },
         ],
         [
+            {
+                background: true,
+                topText: 'Starting 11.29',
+                middleText: 'The Apple Store Shopping Event',
+                bottomText: 'Get an Apple Gift Card up to $200 when you buy an eligible product.°° Offer available 11/29–12/2.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-ase-announce-202411?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1731012365282',
+            },
+            {
+                background: true,
+                middleText: 'Get gifts in time for the holidays with two-hour delivery,² free delivery, or easy pickup.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-delivery-pickup-202411?wid=960&hei=1000&fmt=jpeg&qlt=90&.v=1728401800980',
+            },
+            {
+                icon: true,
+                double: 
+                [
+                    {
+                        icon: AppleIcon,
+                        text: 'Customize your Mac and create your own style of Apple Watch.',
+                    },
+                    {
+                        icon: CreditCardIcon,
+                        text: 'Pay in full or pay over time. Your choice.',
+                    },
+                ],
+
+            },
+            {
+                icon: true,
+                double: 
+                [
+                    {
+                        icon: AssignmentReturnIcon,
+                        text: 'Free extended returns between now and 1/8/25.5',
+                    },
+                    {
+                        icon: MoodIcon,
+                        text: 'Make them yours. Engrave a mix of emoji, names, and numbers for free.',
+                    },
+                ],
+                
+            },
+            {
+                background: true,
+                topText: 'Apple Trade In',
+                gray: true,
+                middleText: 'Trade in your current device. Get credit toward a new one.3',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-trade-in-202411?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1728597151813',
+            },
+            {
+                background: true,
+                topText: 'Apple Specialist',
+                gray: true,
+                middleText: 'Find gifts with an Apple Specialist in a store or online.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-specialist-help-202411?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1728571564886',
+            },
+            {
+                background: true,
+                middleText: 'Shop with a Specialist over video to find the perfect gift.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-specialist-video-202409?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1725047826258',
+            },
+            {
+                background: true,
+                topText: 'Today at Apple',
+                gray: true,
+                middleText: 'Join free sessions at your Apple Store.',
+                bottomText: 'Learn about the latest features and how to go further with your Apple devices.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-TAA-202310?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1697149577145',
+            },
+            {
+                background: true,
+                middleText: 'Get expert service and support at the Genius Bar.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-genius-202108?wid=960&hei=1000&fmt=jpeg&qlt=90&.v=1626375544000',
+            },
         ],
         [
+            {
+                background: true,
+                topText: 'Apple Music',
+                gray: true,
+                middleText: 'Get 3 months of Apple Music free.',
+                bottomText: 'Included with the purchase of select Apple devices.+',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-apple-music-202411?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1728401815327',
+            },
+            {
+                background: true,
+                topText: 'Apple TV+',
+                white: true,
+                middleText: 'Get 3 months free when you buy an Apple device.++',
+                bottomText: 'Included with the purchase of select Apple devices.+',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-holiday-apple-tv-202411?wid=960&hei=1000&fmt=png-alpha&.v=1728401815327',
+            },
+            {
+                background: true,
+                middleText: 'Six Apple services.',
+                bottomText: 'One easy subscription.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-subscriptions-202108_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1626375546000',
+            },
+            {
+                background: true,
+                topText: 'Apple Intelligence',
+                gray: true,
+                middleText: 'New features for writing, focus, communication, and more.∆∆',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-apple-intelligence-202410_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1729187913412',
+            },
+            {
+                background: true,
+                middleText: "We've got you covered.",
+                bottomText: 'AppleCare+ now comes with unlimited repairs for accidental damage protection.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-applecare-202405?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1713313285056',
+            },
+            {
+                background: true,
+                middleText: 'Discover all the ways to use Apple Pay.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-applepay-202303?wid=960&hei=1000&fmt=jpeg&qlt=90&.v=1677655420359',
+            },
+            {
+                background: true,
+                topText: 'Home',
+                gray: true,
+                middleText: 'See how one app can control your entire home.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-homekit-202405_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1715960298510',
+            },
         ],
         [
+            {
+                background: true,
+                topText: 'Carrier Deals',
+                gray: true,
+                middleText: 'Apple. Your one-stop shop for incredible carrier deals.',
+                bottomText: 'Get up to $1000 in credit on a new iPhone with AT&T, Boost Mobile, T‑Mobile, or Verizon. Trade‑in may be required.⁴',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-carriertrade-202409?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1725466294938',
+            },
+            {
+                background: true,
+                topText: 'Education',
+                gray: true,
+                middleText: 'Buy a new Mac or iPad with education savings.1',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-bts-edu-macbook-air-ipad-air-202406?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1716334899885',
+            },
+            {
+                background: true,
+                topText: 'Business',
+                gray: true,
+                white: true,
+                middleText: "From enterprise to small business, we'll work with you.1",
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-business-202409?wid=800&hei=1000&fmt=jpeg&qlt=90&.v=1724096343921',
+            },
+            {
+                background: true,
+                topText: 'Government',
+                gray: true,
+                middleText: 'Special pricing is available for state, local, and federal agencies.1',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-gov-202402?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1707259305816',
+            },
+            {
+                background: true,
+                topText: 'Veterans and military',
+                gray: true,
+                middleText: 'Active and veteran members may be eligible for exclusive savings.1',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-veteran-202409?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1723659938034',
+            },
+            {
+                background: true,
+                topText: 'Certified Refurbished',
+                gray: true,
+                middleText: 'Shop refurbished Apple products backed by a one-year warranty.',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-refurb-202408?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1721055057263',
+            },
         ],
     ]
 
-    const itemsToShow_arr = [3, 4, 4, 4, 3, 4]
+    const itemsToShow_arr = [3, 4, 4, 3, 3, 4]
 
     const partialVisibilityGutter_arr = [40, 70, 70, 40, 40, 40]
 
@@ -369,7 +590,6 @@ const NewStorePage = () => {
             <div className='absolute top-0 left-0 bg-[linear-gradient(180deg,_rgba(245,245,247,0)_5%,_rgba(245,245,247,1)_40%)] w-full h-full z-10'></div>
 
         </div>
-        
         
         <div className='w-[1623px] mx-auto'>
             <div className='grid grid-cols-2'>
@@ -421,16 +641,53 @@ const NewStorePage = () => {
                             <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310] float-left'>{item.neon}</h1>
                             &nbsp;{item.grayText}
                         </div>
+
+                        {/* <TestStoreCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} partialVGutter={partialVisibilityGutter_arr[index]} small={smallCardBool_arr[index]}/> */}
                         
-                        <TestStoreCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} partialVGutter={partialVisibilityGutter_arr[index]} small={smallCardBool_arr[index]}/>
+                        <SwiperCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} partialVGutter={partialVisibilityGutter_arr[index]} small={smallCardBool_arr[index]}/>
                     </div>
                 )
             })}
             {/* <StoreCarousel items={carousel_cards[0]}/> */}
-            
                                
 
+        <div className='mt-[90px]'>
+            <div className='text-3xl font-semibold mb-4'>Quick Links</div>
+            <div className='flex'> 
+                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
+                    <div>
+                        Order Status
+                    </div>
+                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
+                </button>
+                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
+                    <div>
+                        Shopping Help
+                    </div>
+                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
+                </button>
+                
+                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
+                    <div>
+                    Returns
+                    </div>
+                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
+                </button>
+
+                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
+                    <div>
+                    Your Saves
+                    </div>
+                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
+                </button>
+
+            </div>
         </div>
+
+        </div>
+
+
+        
     </div>
   )
 }

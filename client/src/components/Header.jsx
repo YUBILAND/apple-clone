@@ -484,6 +484,7 @@ const Header = (props) => {
 
     function clickSearch () {
         setIsClickSearchIcon(true);
+        //focus on search bar when icon is clicked
         document.getElementById("apple-search").focus();
     }
 
@@ -494,7 +495,7 @@ const Header = (props) => {
       };
 
     useEffect(() => {
-    console.log(inputValue)
+        console.log(inputValue)
     }, [inputValue])
 
     const clearInput = () => {
