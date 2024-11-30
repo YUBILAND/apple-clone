@@ -1,4 +1,4 @@
-[class*="carouselContainer"] > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+/* [class*="carouselContainer"] > .react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
     bottom: calc(42% + 1px);
     right: calc(-7% + 1px);
     z-index: 5;
@@ -30,11 +30,11 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:befor
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:before {
     color: rgba(0, 0, 0, 0.64);
     font-weight: 900;
-}
+} */
 
 
 .swiper-button-prev {
-    bottom: calc(42% + 1px) !important;
+    /* bottom: calc(43% + 1px) !important; */
     left: calc(-7.5% + 1px) !important;
     background-color: rgba(210, 210, 215, 0.64);
     color: rgba(0, 0, 0, 0.64) !important;
@@ -42,7 +42,7 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:befo
     min-height: 56px;
     border-radius: 9999px;
     transition: opacity 500ms ease-in-out;
-    position: relative;
+    position: absolute;
 
     &:hover {
         background-color: rgba(234, 234, 240, 0.64);
@@ -51,7 +51,7 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:befo
 }
 
 .swiper-button-next {
-    bottom: calc(42% + 1px) !important;
+    /* bottom: calc(4% + 1px) !important; */
     right: calc(-7.5% + 1px) !important;
     background-color: rgba(210, 210, 215, 0.64);
     color: rgba(0, 0, 0, 0.64) !important;
@@ -59,7 +59,7 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:befo
     min-height: 56px;
     border-radius: 9999px;
     transition: opacity 500ms ease-in-out;
-    position: relative;
+    position: absolute;
 
     &:hover {
         background-color: rgba(234, 234, 240, 0.64);
@@ -75,4 +75,25 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:befo
     font-size: 30px !important;
     font-weight: 900 !important;
 }
+
+.swiper-pagination {
+    position: absolute;
+    bottom: -40px !important;
+}
+
+.swiperContainer .swiper-wrapper {
+    transition-timing-function: cubic-bezier(.75,.01,.57,.89) !important; 
+}
+
+.swiperContainer .swiper-slide {
+    opacity: 0.4;
+    transition: opacity 1s cubic-bezier(.75,.01,.57,.89);
+}
+
+.swiperContainer .swiper-slide-active {
+    opacity: 1;
+    transition: opacity 1s cubic-bezier(.75,.01,.57,.89);
+
+}
+
 

@@ -12,6 +12,7 @@ import { CarouselContext } from './contexts/CarouselContext';
 import { useState } from 'react';
 import NewStorePage from './components/NewStorePage';
 import SwiperCarousel from './components/SwiperCarousel';
+import TopBanner from './components/TopBanner';
 
 
 function App() {
@@ -40,7 +41,8 @@ function App() {
           <Routes>
             <Route path="/" element={
               <>
-                  <Header darkMode={true}/>
+                  <Header fixed={true} light />
+                  <TopBanner headerFixed/>
                   <FrontPage />
                   <Carousel />
                   <SlideShow />
@@ -50,7 +52,8 @@ function App() {
 
             <Route path="/store" element={
               <>
-                  <Header darkMode={false} light='store'/>
+                  <Header fixed={false} light />
+                  <TopBanner />
                   {/* <StorePage /> */}
                   <NewStorePage />
                   <Footer />
@@ -60,10 +63,9 @@ function App() {
 
             <Route path="/mac" element={
               <>
-                  
-                  <MacPage />
-                  {/* <LineUp /> */}
-                  {/* <Footer /> */}
+                  <Header fixed={false} />
+                  <MacPage /> 
+                  <Footer />
               </>
             }/>
 

@@ -595,9 +595,6 @@ const MacPage = () => {
             </div>
         </div> 
 
-    {/* Header */}
-        <Header darkMode={false} light='mac'/>
-
     {/* Chapter Nav */}
         <div className='bg-[#fafafc] pb-8 pt-4'>
             <div className='w-[1150px] mx-auto flex justify-between items-center'>
@@ -860,8 +857,6 @@ const MacPage = () => {
 
             </div>
         </div>
-
-        <Footer />
         
     </div>
   )

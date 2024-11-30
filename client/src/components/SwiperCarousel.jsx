@@ -131,17 +131,6 @@ const SwiperCarousel = (props) => {
             )
         })}
 
-
-
-      {/* <SwiperSlide className='!w-[300px] !h-[500px] bg-red-400'>Slide 1</SwiperSlide>
-      <SwiperSlide className='!w-[300px] !h-[500px] bg-yellow-400'>Slide 2</SwiperSlide>
-      <SwiperSlide className='!w-[300px] !h-[500px] bg-green-400'>Slide 3</SwiperSlide>
-      <SwiperSlide className='!w-[300px] !h-[500px] bg-blue-400'>Slide 4</SwiperSlide>
-      <SwiperSlide className='!w-[300px] !h-[500px] bg-red-400'>Slide 5</SwiperSlide>
-      <SwiperSlide className='!w-[300px] !h-[500px] bg-yellow-400'>Slide 6</SwiperSlide>
-      <SwiperSlide className='!w-[300px] !h-[500px] bg-green-400'>Slide 7</SwiperSlide>
-      <SwiperSlide className='!w-[300px] !h-[500px] bg-blue-400'>Slide 8</SwiperSlide> */}
-
     </Swiper>
   )
 }

@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 // import Carousel from 'react-material-ui-carousel'
 // import { Paper, Button } from '@mui/material'
-import Carousel_3 from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import './Carousel.css'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
-const Carousel = () => {
+const Carousel = (props) => {
+
     var items = [
         {
             img: 'https://is1-ssl.mzstatic.com/image/thumb/Features/v4/ed/5d/5c/ed5d5cb1-fb90-aa84-8109-313e8509872e/d37cc6c7-0707-4bf9-a907-c576cfb9cc07.png/980x551.jpg',
@@ -81,87 +86,113 @@ const Carousel = () => {
         },
     ]
 
-    var groupedItems = [
-        [
-            {
-                img: 'https://is1-ssl.mzstatic.com/image/thumb/C34jADlGtR5wObjPAMbW4w/980x551.jpg',
-                buttonLabel: 'Stream now',
-                genre: 'Comedy',
-                description: "Breakdown. Breakthrough",
-            },
-            {
-                img: 'https://is1-ssl.mzstatic.com/image/thumb/Features/v4/ed/5d/5c/ed5d5cb1-fb90-aa84-8109-313e8509872e/d37cc6c7-0707-4bf9-a907-c576cfb9cc07.png/980x551.jpg',
-                buttonLabel: 'See the schedule',
-                genre: null,
-                description: "Watch Messi, every club, and every match—live.",
-            },
-            {
-                img: 'https://is1-ssl.mzstatic.com/image/thumb/C34jADlGtR5wObjPAMbW4w/980x551.jpg',
-                buttonLabel: 'Stream now',
-                genre: 'Comedy',
-                description: "Breakdown. Breakthrough",
-            }
-        ],
-        [
-            {
-                img: 'https://is1-ssl.mzstatic.com/image/thumb/Features/v4/ed/5d/5c/ed5d5cb1-fb90-aa84-8109-313e8509872e/d37cc6c7-0707-4bf9-a907-c576cfb9cc07.png/980x551.jpg',
-                buttonLabel: 'See the schedule',
-                genre: null,
-                description: "Watch Messi, every club, and every match—live.",
-            },
-            {
-                img: 'https://is1-ssl.mzstatic.com/image/thumb/C34jADlGtR5wObjPAMbW4w/980x551.jpg',
-                buttonLabel: 'Stream now',
-                genre: 'Comedy',
-                description: "Breakdown. Breakthrough",
-            },
-            {
-                img: 'https://is1-ssl.mzstatic.com/image/thumb/C34jADlGtR5wObjPAMbW4w/980x551.jpg',
-                buttonLabel: 'Stream now',
-                genre: 'Comedy',
-                description: "Breakdown. Breakthrough",
-            }
-            ],
-    ]
+    let finalSlideIndex = null;
 
-    const responsive = {
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 1,
-          slidesToSlide: 1, // optional, default to 1.
-          partialVisibilityGutter: 40
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2,
-          slidesToSlide: 2 // optional, default to 1.
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1,
-          slidesToSlide: 1 // optional, default to 1.
-        }
-      };
-    return (
-        <div className='relative w-full pb-8 overflow-hidden'>
+    const slideIndex = useRef(0);
+
+    // useEffect(() => {
+
+    //     const handleLoad = () => { // run after DOM loads
+    //         // console.log(props.cards)
+    //         finalSlideIndex = props.cards?.length - props.itemsToShow;
+    //         console.log(finalSlideIndex)
             
 
-            {/* <Carousel_3
-             responsive={responsive}
-             showDots={true}
-             focusOnSelect={true}
-             renderDotsOutside={true}
-             infinite={true}
-             partialVisible={true}
-             keyBoardControl={true}
-             draggable={false}>
+    //         const leftArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-prev`)
+    //         const rightArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-next`)
+    //         leftArrow.style.display = 'none';
+    //         leftArrow.style.opacity = 0; 
+    //         rightArrow.style.opacity = 0;
+
+
+    //         const hoverCarousel = document.querySelector(`.swiperContainer${props.Key}`)
+
+    //         hoverCarousel.addEventListener('mouseenter', () => {
+    //             // make arrows visible
+    //             if (slideIndex.current !== 0 ) {
+    //                 leftArrow.style.opacity = 1;
+    //                 rightArrow.style.opacity = 1; 
+    //             } else {
+    //                 rightArrow.style.opacity = 1; 
+    //             } 
+    //         });
+
+    //         hoverCarousel.addEventListener('mouseleave', () => {
+    //             // make arrows invisible when you unhover container
+    //                 leftArrow.style.opacity = 0; 
+    //                 rightArrow.style.opacity = 0; 
+    //         })
+    //     }
+
+    //     window.addEventListener('load', handleLoad);
+
+    //     return () => window.removeEventListener('load', handleLoad);
+
+    // }, [])
+
+    const handleSlideChange = (slideInd) => {
+        
+        // handles left and right arrow visibility after first Arrow press since it doesn't trigger on mount
+        slideIndex.current = slideInd;
+
+        const leftArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-prev`);
+
+        const rightArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-next`);
+
+        if (leftArrow) {
+            if (slideInd > 0) {
+                setTimeout(() => {
+                    leftArrow.removeAttribute('disabled');
+                    leftArrow.style.display = 'block';
+                    leftArrow.style.opacity = 1;
+                }, 0)
+            } else {
+                setTimeout(() => {
+                    leftArrow.style.display = 'none';
+                    leftArrow.style.opacity = 0;
+                }, 0)
+            }
+        }
+
+        if (rightArrow) {
+            if (slideInd < finalSlideIndex) {
+                setTimeout(() => {
+                    rightArrow.removeAttribute('disabled');
+                    rightArrow.style.display = 'block';
+                    rightArrow.style.opacity = 1;
+                }, 0)
+            } else {
+                setTimeout(() => {
+                    rightArrow.style.display = 'none';
+                    rightArrow.style.opacity = 0;
+                }, 0)
+            }
+        }
+
+    }
+    
+    return (
+        <div className='relative w-[1623px] mx-auto pb-8 overflow-visible'>
+
+            <Swiper
+                className={`mt-8 !overflow-visible swiperContainer`}
+                modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                spaceBetween={20}
+                slidesPerView={'auto'}
+                pagination={{ clickable: true }}
+                centeredSlides
+                loop       
+                speed={1000}
+                autoplay={{ delay: 3000}}
+                // loopAdditionalSlides={30}
+                // onSlideChange={(slide) => handleSlideChange(slide.activeIndex)}
+                onSwiper={(swiper) => slideIndex.current = swiper.activeIndex}
+            >
                 {
-                    groupedItems.map(itemsArray => (
-                        <div className='grid grid-cols-[auto_1250px_auto] gap-3' key={itemsArray.id} >
-                            {itemsArray.map(item => 
-                            
-                            <div className='relative text-white'> 
-                                <img className='h-[670px] object-cover' src={item.img} alt="" /> 
+                    items.map(item => 
+                        <SwiperSlide className='!w-fit'>
+                            <div className='relative text-white !w-[1250px]'> 
+                                <img className='h-[670px] w-full object-cover' src={item.img} alt="" /> 
                                 <div className='absolute bottom-10 left-20 text-center'>
                                     <div className='flex items-center justify-center text-lg mt-2'>
                                         <button className='text-black rounded-full bg-white py-2 px-5 mr-4'>{item.buttonLabel}</button>
@@ -169,87 +200,11 @@ const Carousel = () => {
                                     </div>
                                 </div>
                             </div>
-                            )}
-                        </div>
-                ))}
-            </Carousel_3> */}
-            {/* <carousel3
-                additionalTransform={-20 * 5}
-                // customTransition="transform 8000ms linear"
-                arrows={false}
-                centerMode={true}
-                draggable={false}
-                containerClass="container"
-                dotListClass=""
-                focusOnSelect={true}
-                infinite
-                itemClass=""
-                keyBoardControl
-                minimumTouchDrag={80}
-                pauseOnHover
-                renderArrowsWhenDisabled={false}
-                renderButtonGroupOutside={false}
-                renderDotsOutside={true}
-                responsive={responsive}
-                rewind={false}
-                rewindWithAnimation={false}
-                rtl={false}
-                shouldResetAutoplay={false}
-                showDots={true}
-                sliderClass=""
-                slidesToSlide={1}
-                className='w-full mx-auto carousel'
-                ssr={true}
-                >
-                    {
-                        items.map(item => 
-                            <div className='relative text-white'> 
-                                <img className='h-[670px] w-[1250px] object-cover' src={item.img} alt="" /> 
-                                <div className='absolute bottom-10 left-20 text-center'>
-                                    <div className='flex items-center justify-center text-lg mt-2'>
-                                        <button className='text-black rounded-full bg-white py-2 px-5 mr-4'>{item.buttonLabel}</button>
-                                        {item.genre && <h2 className='font-bold'>{item.genre} •&nbsp;</h2>}      <h2>{item.description}</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            )}
-                        
-            </carousel3> */}
+                        </SwiperSlide>
+                )}
 
-
-            <Carousel_3
-                additionalTransform={-20 * 5}
-                // customTransition="transform 8000ms linear"
-                arrows={false}
-                centerMode={true}
-                draggable={false}
-                containerClass="container"
-                dotListClass=""
-                focusOnSelect={true}
-                infinite
-                itemClass=""
-                keyBoardControl
-                minimumTouchDrag={80}
-                pauseOnHover
-                renderArrowsWhenDisabled={false}
-                renderButtonGroupOutside={false}
-                renderDotsOutside={true}
-                responsive={responsive}
-                rewind={false}
-                rewindWithAnimation={false}
-                rtl={false}
-                shouldResetAutoplay={false}
-                showDots={true}
-                sliderClass=""
-                slidesToSlide={1}
-                className='w-full mx-auto carousel'
-                ssr={true}
-                >   
-                    <div className=' bg-blue-300 w-[400px] flex justify-center items-center h-[400px]'>1</div>
-                    <div className='bg-red-300 w-[400px] h-[400px]'>2</div>
-                    <div className='bg-yellow-300 w-[400px] h-[400px]'>3</div>
-                        
-            </Carousel_3>
+            </Swiper>
+           
         </div>
 
     )

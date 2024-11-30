@@ -11,6 +11,7 @@ import IconCard from './cards/IconCard';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn';
 import MoodIcon from '@mui/icons-material/Mood';
+import TopBanner from './TopBanner';
 
 const NewStorePage = () => {
 
@@ -564,27 +565,13 @@ const NewStorePage = () => {
         ],
     ]
 
-    const itemsToShow_arr = [3, 4, 4, 3, 3, 4]
-
-    const partialVisibilityGutter_arr = [40, 70, 70, 40, 40, 40]
+    const itemsToShow_arr = [3, 5, 5, 3, 3, 4] // why is index 3 3?
 
     const smallCardBool_arr = [false, true, true, false, false, true ]
 
   return (
     <div className='select-none mb-16'>
 
-    {/* Sale Banner  */}
-        <div className='w-full pt-4 pb-5 flex justify-center items-center bg-white'>
-            <img className='w-[20px] h-[20px]' src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ase-ribbon-icon-202411?wid=40&hei=40&fmt=jpeg&qlt=90&.v=1730394497415" alt="" />
-            <div className='text-[14px] px-2'>Starting 11/29, get an Apple Gift Card up to $200 when you buy an eligible product — online and in‑store.°°</div>
-            <a className='group flex text-[#196899] ' href="">
-                <div className='flex items-center'>
-                    <div className='group-hover:underline text-[14px] '>Learn more</div>
-                    <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                </div>
-            </a>
-        </div>
-        
         <div className='bg-[rgb(158,209,245)] bg-[linear-gradient(90deg,_rgba(158,209,245,1)_13%,_rgba(129,149,238,1)_30%,_rgba(161,138,236,1)_49%,_rgba(243,119,190,1)_68%,_rgba(249,171,109,1)_100%)]
  w-full h-32 relative'>
             <div className='absolute top-0 left-0 bg-[linear-gradient(180deg,_rgba(245,245,247,0)_5%,_rgba(245,245,247,1)_40%)] w-full h-full z-10'></div>
@@ -644,7 +631,7 @@ const NewStorePage = () => {
 
                         {/* <TestStoreCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} partialVGutter={partialVisibilityGutter_arr[index]} small={smallCardBool_arr[index]}/> */}
                         
-                        <SwiperCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} partialVGutter={partialVisibilityGutter_arr[index]} small={smallCardBool_arr[index]}/>
+                        <SwiperCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} small={smallCardBool_arr[index]}/>
                     </div>
                 )
             })}
