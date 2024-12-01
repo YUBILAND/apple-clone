@@ -3,6 +3,8 @@ import './ContinousCarousel.css'
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import AppleIcon from '@mui/icons-material/Apple';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
 const ContinousCarousel = () => {
 
@@ -136,7 +138,17 @@ const ContinousCarousel = () => {
 
     const currentTranslate = useRef(null);
 
-    
+    const [carouselPlaying, setCarouselPlaying] = useState(true);
+
+    const handleButtonClick = () => {
+        if (carouselPlaying) {
+            stopAnimation();
+        } else {
+            restartAnimation();
+        }
+        setCarouselPlaying(!carouselPlaying);
+
+    }
 
     const stopAnimation = () => { 
         currentTranslate.current = swiperRef.current.getTranslate();
@@ -155,65 +167,113 @@ const ContinousCarousel = () => {
 
       }; 
 
-    
+    const slowDownAnimation = () => {
+        currentTranslate.current = swiperRef.current.getTranslate();
+        console.log(currentTranslate.current)
+        swiperRef.current.setTranslate(currentTranslate.current); 
+        swiperRef.current.autoplay.stop();
+        
+        setTimeout(() => {
+            swiperRef.current.slideTo(swiperRef.current.activeIndex,
+                //   432 because width (417) + gap between (15) = 432
+            ( ( currentTranslate.current + 432 ) * 20000 ) / 432
+            , false)
+            swiperRef.current.autoplay.start();
+        
+            swiperRef.current.params.speed = 20000;
+        }, 0)
 
+    }
+
+    const speedUpAnimation = () => {
+        currentTranslate.current = swiperRef.current.getTranslate();
+        console.log(currentTranslate.current)
+        swiperRef.current.setTranslate(currentTranslate.current); 
+        swiperRef.current.autoplay.stop();
+
+        setTimeout(() => {
+            swiperRef.current.slideTo(swiperRef.current.activeIndex,
+                //   432 because width (417) + gap between (15) = 432
+            ( ( currentTranslate.current + 432 ) * 6000 ) / 432
+            , false)
+            swiperRef.current.autoplay.start();
+
+            swiperRef.current.params.speed = 6000;
+        }, 0)
+
+    }
         
     return (
-        <div className='relative w-full pb-8 overflow-visible' 
-        onMouseEnter={() => {
-            stopAnimation();
-          }}
-          onMouseLeave={() => {
-            restartAnimation();
-          }}>
-
-            <Swiper
-                className={`mt-8 !overflow-visible swiperContinous`}
-                modules={[Autoplay]}
-                spaceBetween={15}
-                slidesPerView={'auto'}
-                loop
-                allowTouchMove={false}
-                speed={8000}
-                autoplay={{ delay: 0}}
-                
-                // onSlideChange={(slide) => handleSlideChange(slide.activeIndex)}
-                onSwiper={(swiper) => swiperRef.current = swiper}
+        <div>
+            <div className='relative w-full overflow-visible' 
+            onMouseEnter={() => {
+                if (carouselPlaying) slowDownAnimation();
+            }}
+            onMouseLeave={() => {
+                if (carouselPlaying) speedUpAnimation();
+            }}
             >
-                {
-                    items.map(item => 
-                        <SwiperSlide className='!w-fit cursor-pointer'>
-                            <div className='relative text-white w-[417px] h-[236px]'> 
-                                {item.img 
-                                    ?
-                                    <img className='w-full h-full object-cover' src={item.img} alt="" />
-                                    :
-                                    <div className={`w-full h-full ${item.backgroundColor} grid grid-cols-2`}>
-                                        <div className='flex justify-end items-center'>
-                                            <img className='w-[196px] h-[196px] object-cover rounded-xl' src={item.albumImg} alt="" />
+                <Swiper
+                    className={`mt-8 !overflow-visible swiperContinous`}
+                    modules={[Autoplay]}
+                    spaceBetween={15}
+                    slidesPerView={'auto'}
+                    loop
+                    allowTouchMove={false}
+                    speed={6000}
+                    autoplay={{ delay: 0}}
+                    
+                    // onSlideChange={(slide) => handleSlideChange(slide.activeIndex)}
+                    onSwiper={(swiper) => swiperRef.current = swiper}
+                >
+                    {
+                        items.map(item => 
+                            <SwiperSlide className='!w-fit cursor-pointer'>
+                                <div className='relative text-white w-[417px] h-[236px]'> 
+                                    {item.img 
+                                        ?
+                                        <img className='w-full h-full object-cover' src={item.img} alt="" />
+                                        :
+                                        <div className={`w-full h-full ${item.backgroundColor} grid grid-cols-2`}>
+                                            <div className='flex justify-end items-center'>
+                                                <img className='w-[196px] h-[196px] object-cover rounded-xl' src={item.albumImg} alt="" />
+                                            </div>
+                                            <div className='flex justify-center items-center'>
+                                                <h1 className='w-full ml-4'>{item.albumCaption}</h1>
+                                            </div>
                                         </div>
-                                        <div className='flex justify-center items-center'>
-                                            <h1 className='w-full ml-4'>{item.albumCaption}</h1>
-                                        </div>
+                                    }
+
+                                    <div className='absolute bottom-0 right-0 pb-[20px] pr-[15px] flex justify-center items-center'>
+                                        <AppleIcon />
+                                        <div className='text-[17px]'>{item.appleGenre}</div>
                                     </div>
-                                }
 
-                                <div className='absolute bottom-0 right-0 pb-[20px] pr-[15px] flex justify-center items-center'>
-                                    <AppleIcon />
-                                    <div className='text-[17px]'>{item.appleGenre}</div>
+                                    <div className='absolute top-0 left-0 w-full h-full bg-[rgba(0,_0,_0,_0)] hover:bg-[rgba(0,_0,_0,_0.4)] duration-300 transition-all flex justify-center items-center group'>
+                                        <button className='bg-white rounded-full text-black py-2 px-5 transition-opacity duration-300 group-hover:opacity-100 opacity-0'>{item.hoverText}</button>
+                                    </div>
+
+                                    
                                 </div>
+                            </SwiperSlide>
+                    )}
 
-                                <div className='absolute top-0 left-0 w-full h-full bg-[rgba(0,_0,_0,_0)] hover:bg-[rgba(0,_0,_0,_0.4)] duration-300 transition-all flex justify-center items-center group'>
-                                    <button className='bg-white rounded-full text-black py-2 px-5 transition-opacity duration-300 group-hover:opacity-100 opacity-0'>{item.hoverText}</button>
-                                </div>
+                </Swiper>
+            
+            </div>
 
-                                
-                            </div>
-                        </SwiperSlide>
-                )}
-
-            </Swiper>
-           
+            <div className='text-right mt-4 mr-4'>
+                <div onClick={() => handleButtonClick()}>
+                    {carouselPlaying 
+                    ?
+                        <PauseIcon className='rounded-full bg-[#d0cfd3] p-1 cursor-pointer hover:bg-[#C8C8CE]' />
+                    :
+                        <PlayArrowIcon className='rounded-full bg-[#d0cfd3] p-1 cursor-pointer hover:bg-[#C8C8CE]'  />
+                        
+                    }
+                </div>
+                
+            </div>
         </div>
 
     )
