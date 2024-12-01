@@ -1,45 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Colors from './Colors';
+import Colors from '../Colors';
 
-const Desktops = () => {
+const Laptops = () => {
 
     const product_title_items = [
         {
-            product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_imac_24__inq0od011wuq_large.png',
-            colors: ['blue', 'purple', 'red', 'orange', 'yellow', 'green', 'silver'],
+            product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mbp_14_16__bkl8zusnkpw2_large.png',
+            colors: ['black', 'silver'],
             new: true,
-            product_header: 'iMac',
-            product_subheader : 'M4 chip',
-            product_desc: 'A stunning all-in-one desktop for creativity and productivity.',
-            product_price: 'From $1299 or $108.25/mo. for 12 mo.*',
+            product_header: 'MacBook Pro 14" and 16"',
+            product_subheader : 'M4, M4 Pro, or M4 Max chip',
+            product_desc: 'The most advanced Mac laptops for demanding workflows.',
+            product_price: 'From $1599 or $133.25/mo. for 12 mo.*',
         },
         {
-            product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mac_mini__c4284n3j25w2_large.png',
-            colors: [],
-            new: true,
+            product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mba_13_15__fx2g3qlubdym_large.png',
+            colors: ['black', 'peach', 'gray', 'silver'],
+            new: false,
             product_header: 'MacBook Air 13” and 15”',
             product_subheader : 'M2 or M3 chip',
             product_desc: 'Strikingly thin and fast so you can work, play, or create anywhere.',
             product_price: 'From $999 or $83.25/mo. for 12 mo.*',
-        },
-        {
-            product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mac_studio__c24lhkuq4vee_large.png',
-            colors: [],
-            new: false,
-            product_header: 'Mac Studio',
-            product_subheader : 'M2 Max or M2 Ultra chip',
-            product_desc: 'Powerful performance and extensive connectivity for pro workflows.',
-            product_price: 'From $1999 or $166.58/mo. for 12 mo.*',
-        },
-        {
-            product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mac_pro__6q3qt8073f6e_large.png',
-            colors: [],
-            new: false,
-            product_header: 'Mac Pro',
-            product_subheader : 'M2 Ultra chip',
-            product_desc: 'A pro workstation with PCIe expansion for demanding workflows.',
-            product_price: 'From $6999 or $583.25/mo. for 12 mo.*',
         },
     ]
 
@@ -47,16 +29,16 @@ const Desktops = () => {
         [
             {
                 topText: '',
-                middleText: '24”',
+                middleText: '14.2” or 16.2”',
                 img: '',
                 width: '',
-                bottomText: '4.5K Retina display with 500 nits of brightness delivers sharp and vibrant detail.11',
+                bottomText: 'Liquid Retina XDR display with up to 1600 nits peak brightness, 1,000,000:1 contrast ratio, and up to 120Hz refresh rates9',
             },
             {
                 topText: '',
                 middleText: '',
-                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_m4__dneah1uqjlme_large.png',
-                width: '38px',
+                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_m4_pro_max__d90fsmfhy6ky_large.png',
+                width: '122px',
                 bottomText: 'Apple M4, M4 Pro, or M4 Max chip',
             },
             {
@@ -67,129 +49,69 @@ const Desktops = () => {
                 bottomText: 'Apple Intelligence1',
             },
             {
-                topText: '',
-                middleText: '—',
+                topText: 'Up to',
+                middleText: '24 hours',
                 img: '',
                 width: '',
-                bottomText: '',
+                bottomText: 'battery life3',
+            },
+            {
+                topText: '',
+                middleText: '7 ports',
+                img: '',
+                width: '',
+                bottomText: '3x Thunderbolt 4 (USB‑C) or 3x Thunderbolt 5 (USB‑C), HDMI, SDXC, headphone jack, MagSafe',
+            },
+            {
+                topText: '',
+                middleText: '3.4 lb. or 4.7 lb.',
+                img: '',
+                width: '',
+                bottomText: 'Weight',
+            },
+        ],
+        [
+            {
+                topText: '',
+                middleText: '13.6” or 15.3”',
+                img: '',
+                width: '',
+                bottomText: 'Liquid Retina display with 500 nits of brightness and support for 1 billion colors9',
+            },
+            {
+                topText: '',
+                middleText: '',
+                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_m2_m3__jo6w8mbgmmye_large.png',
+                width: '80px',
+                bottomText: 'Apple M2 or M3 chip',
+            },
+            {
+                topText: '',
+                middleText: '',
+                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_apple_intelligence__cjf0r385lhaq_large.png',
+                width: '55px',
+                bottomText: 'Apple Intelligence1',
             },
             {
                 topText: 'Up to',
-                middleText: '6 ports',
+                middleText: '18 hours',
                 img: '',
                 width: '',
-                bottomText: '2x Thunderbolt / USB 4 or 4x Thunderbolt 4, Gigabit Ethernet, headphone jack',
+                bottomText: 'battery life3',
             },
-        ],
-        [
             {
                 topText: '',
-                middleText: '—',
+                middleText: '4 ports',
                 img: '',
                 width: '',
-                bottomText: '',
+                bottomText: '2x Thunderbolt / USB 4, headphone jack, MagSafe',
             },
             {
                 topText: '',
-                middleText: '',
-                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_m4_pro__elktsjpc0ui6_large.png',
-                width: '80px',
-                bottomText: 'Apple M4 or M4 Pro chip',
-            },
-            {
-                topText: '',
-                middleText: '',
-                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_apple_intelligence__cjf0r385lhaq_large.png',
-                width: '55px',
-                bottomText: 'Apple Intelligence1',
-            },
-            {
-                topText: '',
-                middleText: '—',
+                middleText: '2.7 lb. or 3.3 lb.',
                 img: '',
                 width: '',
-                bottomText: '',
-            },
-            {
-                topText: '',
-                middleText: '8 ports',
-                img: '',
-                width: '',
-                bottomText: '3x Thunderbolt 4 or 3x Thunderbolt 5, 2x USB‑C, HDMI, Gigabit Ethernet, headphone jack',
-            },
-        ],
-        [
-            {
-                topText: '',
-                middleText: '—',
-                img: '',
-                width: '',
-                bottomText: '',
-            },
-            {
-                topText: '',
-                middleText: '',
-                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_m2_max_m2_ultra__d0wnaf44m6qa_large.png',
-                width: '80px',
-                bottomText: 'Apple M2 Max or M2 Ultra chip',
-            },
-            {
-                topText: '',
-                middleText: '',
-                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_apple_intelligence__cjf0r385lhaq_large.png',
-                width: '55px',
-                bottomText: 'Apple Intelligence1',
-            },
-            {
-                topText: '',
-                middleText: '—',
-                img: '',
-                width: '',
-                bottomText: '',
-            },
-            {
-                topText: '',
-                middleText: '12 ports',
-                img: '',
-                width: '',
-                bottomText: 'Up to 6x Thunderbolt 4, 2x USB‑A, up to 2x USB‑C, HDMI, 10Gb Ethernet, SDXC, headphone jack',
-            },
-        ],
-        [
-            {
-                topText: '',
-                middleText: '—',
-                img: '',
-                width: '',
-                bottomText: '',
-            },
-            {
-                topText: '',
-                middleText: '',
-                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_m2_ultra__4mmsok50gvmu_large.png',
-                width: '36px',
-                bottomText: 'Apple M2 Ultra chip',
-            },
-            {
-                topText: '',
-                middleText: '',
-                img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_icon_apple_intelligence__cjf0r385lhaq_large.png',
-                width: '55px',
-                bottomText: 'Apple Intelligence1',
-            },
-            {
-                topText: '',
-                middleText: 'PCIe',
-                img: '',
-                width: '',
-                bottomText: 'Features seven expansion slots, six of which are PCle gen 4',
-            },
-            {
-                topText: '',
-                middleText: '18 ports',
-                img: '',
-                width: '',
-                bottomText: '8x Thunderbolt 4, 3x USB‑A, 2x HDMI, 2x 10Gb Ethernet, 2x Serial ATA, headphone jack',
+                bottomText: 'Weight',
             },
         ],
     ]
@@ -207,16 +129,18 @@ const Desktops = () => {
         {product_title_items.map((item, itemNum) => {
             return (
             <div className='ml-4 w-[372px]'>
-                <div className=' mt-28 text-center '>
+                <div className=' mt-20 text-center '>
 
                 {/* Image */}
-                    <div className='h-[270px] flex flex-col justify-end'>
+                    <div className='h-[190px] flex flex-col justify-end'>
                         <img className='mx-auto transition-transform duration-300 hover:scale-105' src={item.product_img} alt="" />
                     </div>
                     
                 {/* Color and New */}
                     <div className='mt-12 text-center '>
-                        <Colors colors={item.colors} desktops={true} />
+                        
+                        <Colors colors={item.colors}/>
+                        
                     </div>
 
                     <span className={`${!item.new && 'invisible'} inline-block mt-4 mb-2 font-bold text-xs text-[#BD4410]`}>New</span>
@@ -263,4 +187,4 @@ const Desktops = () => {
   )
 }
 
-export default Desktops
+export default Laptops

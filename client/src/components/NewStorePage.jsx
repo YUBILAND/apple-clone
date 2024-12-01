@@ -3,9 +3,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import AppleIcon from '@mui/icons-material/Apple';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-import StoreCarousel from './StoreCarousel';
 import CarouselCard from './CarouselCard';
-import TestStoreCarousel from './TestStoreCarousel';
 import SwiperCarousel from './SwiperCarousel';
 import IconCard from './cards/IconCard';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
@@ -629,13 +627,11 @@ const NewStorePage = () => {
                             &nbsp;{item.grayText}
                         </div>
 
-                        {/* <TestStoreCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} partialVGutter={partialVisibilityGutter_arr[index]} small={smallCardBool_arr[index]}/> */}
-                        
                         <SwiperCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} small={smallCardBool_arr[index]}/>
+
                     </div>
                 )
             })}
-            {/* <StoreCarousel items={carousel_cards[0]}/> */}
                                
 
         <div className='mt-[90px]'>

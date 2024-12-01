@@ -5,13 +5,13 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Laptops from './Laptops';
 import Desktops from './Desktops';
 import Displays from './Displays';
-import SmallCarousel from './SmallCarousel';
+import SmallCarousel from '../SmallCarousel';
 import ImportantDevicesRoundedIcon from '@mui/icons-material/ImportantDevicesRounded';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import ContactEmergencyOutlinedIcon from '@mui/icons-material/ContactEmergencyOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import { CarouselContext } from '../contexts/CarouselContext';
+import { CarouselContext } from '../../contexts/CarouselContext';
 
 const LineUp = () => {
 

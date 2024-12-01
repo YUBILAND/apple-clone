@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import LineUp from './LineUp';
+import LineUp from './lineup/LineUp';
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';

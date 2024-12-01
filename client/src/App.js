@@ -1,18 +1,16 @@
 import { BrowserRouter as Router, Routes, useLocation, Route } from 'react-router-dom';
 import './App.css';
-import Carousel from './components/Carousel';
 import Footer from './components/Footer';
 import FrontPage from './components/FrontPage';
 import Header from './components/Header';
-import SlideShow from './components/SlideShow';
-import StorePage from './components/StorePage';
 import MacPage from './components/MacPage';
-import LineUp from './components/LineUp';
 import { CarouselContext } from './contexts/CarouselContext';
 import { useState } from 'react';
 import NewStorePage from './components/NewStorePage';
 import SwiperCarousel from './components/SwiperCarousel';
 import TopBanner from './components/TopBanner';
+import BigCarousel from './components/BigCarousel';
+import ContinousCarousel from './components/ContinousCarousel';
 
 
 function App() {
@@ -44,8 +42,8 @@ function App() {
                   <Header fixed={true} light />
                   <TopBanner headerFixed/>
                   <FrontPage />
-                  <Carousel />
-                  <SlideShow />
+                  <BigCarousel />
+                  <ContinousCarousel />
                   <Footer />
               </>
             }/>
@@ -54,7 +52,6 @@ function App() {
               <>
                   <Header fixed={false} light />
                   <TopBanner />
-                  {/* <StorePage /> */}
                   <NewStorePage />
                   <Footer />
                   <SwiperCarousel />

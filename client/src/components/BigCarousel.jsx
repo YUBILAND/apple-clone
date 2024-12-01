@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 // import Carousel from 'react-material-ui-carousel'
 // import { Paper, Button } from '@mui/material'
-import './Carousel.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -9,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const Carousel = (props) => {
+const BigCarousel = (props) => {
 
     var items = [
         {
@@ -190,7 +189,7 @@ const Carousel = (props) => {
             >
                 {
                     items.map(item => 
-                        <SwiperSlide className='!w-fit'>
+                        <SwiperSlide className='!w-fit cursor-pointer'>
                             <div className='relative text-white !w-[1250px]'> 
                                 <img className='h-[670px] w-full object-cover' src={item.img} alt="" /> 
                                 <div className='absolute bottom-10 left-20 text-center'>
@@ -210,4 +209,4 @@ const Carousel = (props) => {
     )
 }
 
-export default Carousel
+export default BigCarousel

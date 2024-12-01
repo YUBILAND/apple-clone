@@ -8,6 +8,7 @@ import 'swiper/css/scrollbar';
 import BackgroundCard from './cards/BackgroundCard';
 import ProductCard from './cards/ProductCard';
 import IconCard from './cards/IconCard';
+import './SwiperCarousel.css'
 
 const SwiperCarousel = (props) => {
 
