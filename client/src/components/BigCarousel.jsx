@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import './BigCarousel.css'
 
 const BigCarousel = (props) => {
 
@@ -84,94 +85,10 @@ const BigCarousel = (props) => {
             description: "We're all different people at work.",
         },
     ]
-
-    let finalSlideIndex = null;
-
-    const slideIndex = useRef(0);
-
-    // useEffect(() => {
-
-    //     const handleLoad = () => { // run after DOM loads
-    //         // console.log(props.cards)
-    //         finalSlideIndex = props.cards?.length - props.itemsToShow;
-    //         console.log(finalSlideIndex)
-            
-
-    //         const leftArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-prev`)
-    //         const rightArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-next`)
-    //         leftArrow.style.display = 'none';
-    //         leftArrow.style.opacity = 0; 
-    //         rightArrow.style.opacity = 0;
-
-
-    //         const hoverCarousel = document.querySelector(`.swiperContainer${props.Key}`)
-
-    //         hoverCarousel.addEventListener('mouseenter', () => {
-    //             // make arrows visible
-    //             if (slideIndex.current !== 0 ) {
-    //                 leftArrow.style.opacity = 1;
-    //                 rightArrow.style.opacity = 1; 
-    //             } else {
-    //                 rightArrow.style.opacity = 1; 
-    //             } 
-    //         });
-
-    //         hoverCarousel.addEventListener('mouseleave', () => {
-    //             // make arrows invisible when you unhover container
-    //                 leftArrow.style.opacity = 0; 
-    //                 rightArrow.style.opacity = 0; 
-    //         })
-    //     }
-
-    //     window.addEventListener('load', handleLoad);
-
-    //     return () => window.removeEventListener('load', handleLoad);
-
-    // }, [])
-
-    const handleSlideChange = (slideInd) => {
-        
-        // handles left and right arrow visibility after first Arrow press since it doesn't trigger on mount
-        slideIndex.current = slideInd;
-
-        const leftArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-prev`);
-
-        const rightArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-next`);
-
-        if (leftArrow) {
-            if (slideInd > 0) {
-                setTimeout(() => {
-                    leftArrow.removeAttribute('disabled');
-                    leftArrow.style.display = 'block';
-                    leftArrow.style.opacity = 1;
-                }, 0)
-            } else {
-                setTimeout(() => {
-                    leftArrow.style.display = 'none';
-                    leftArrow.style.opacity = 0;
-                }, 0)
-            }
-        }
-
-        if (rightArrow) {
-            if (slideInd < finalSlideIndex) {
-                setTimeout(() => {
-                    rightArrow.removeAttribute('disabled');
-                    rightArrow.style.display = 'block';
-                    rightArrow.style.opacity = 1;
-                }, 0)
-            } else {
-                setTimeout(() => {
-                    rightArrow.style.display = 'none';
-                    rightArrow.style.opacity = 0;
-                }, 0)
-            }
-        }
-
-    }
-    
+   
     return (
-        <div className='relative w-[1623px] mx-auto pb-8 overflow-visible'>
+
+        <div className='relative w-full pb-8 overflow-hidden'>
 
             <Swiper
                 className={`mt-8 !overflow-visible swiperContainer`}
@@ -185,16 +102,16 @@ const BigCarousel = (props) => {
                 autoplay={{ delay: 3000}}
                 // loopAdditionalSlides={30}
                 // onSlideChange={(slide) => handleSlideChange(slide.activeIndex)}
-                onSwiper={(swiper) => slideIndex.current = swiper.activeIndex}
+                // onSwiper={(swiper) => slideIndex.current = swiper.activeIndex}
             >
                 {
                     items.map(item => 
                         <SwiperSlide className='!w-fit cursor-pointer'>
-                            <div className='relative text-white !w-[1250px]'> 
-                                <img className='h-[670px] w-full object-cover' src={item.img} alt="" /> 
+                            <div className='relative text-white 2xl:!w-[1250px] lg:!w-[980px] md:!w-[690px] !w-[274px]'> 
+                                <img className='2xl:h-[670px] lg:h-[520px] md:h-[370px] h-[495px] w-full object-cover' src={item.img} alt="" /> 
                                 <div className='absolute bottom-10 left-20 text-center'>
                                     <div className='flex items-center justify-center text-lg mt-2'>
-                                        <button className='text-black rounded-full bg-white py-2 px-5 mr-4'>{item.buttonLabel}</button>
+                                        <button className='text-black rounded-full py-2 px-5 mr-4 bg-[#f3f6f6] hover:bg-white'>{item.buttonLabel}</button>
                                         {item.genre && <h2 className='font-bold'>{item.genre} •&nbsp;</h2>}      <h2>{item.description}</h2>
                                     </div>
                                 </div>

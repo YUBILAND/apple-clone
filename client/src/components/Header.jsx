@@ -8,6 +8,10 @@ import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import DragHandleIcon from '@mui/icons-material/DragHandle';
+import MediaQuery from "react-responsive";
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from './IconButton';
 
 const Header = (props) => {
     // header items
@@ -348,7 +352,10 @@ const Header = (props) => {
     const [isClickShoppingBagIcon, setIsClickShoppingBagIcon] = useState(false);
     const [isHoverShoppingBag, setIsHoverShoppingBag] = useState(false);
 
-    
+    const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 768);
+
+    const [isHoverSmallBurger, setIsHoverSmallBurger] = useState(false);
+
 
     useEffect(() => { // hover on header icon, loads after DOM
         header_items_to_href.map(item => {
@@ -380,10 +387,6 @@ const Header = (props) => {
             searchIconElement.addEventListener('click', () => {
                 setIsHoverSearch(true);
 
-                // searchIconElement.addEventListener('mouseenter', () => {
-                //     setIsHoverSearch(true);
-                // });
-
                 searchIconElement.addEventListener('mouseleave', () => {
                     setIsHoverSearch(false);
                 });
@@ -405,7 +408,7 @@ const Header = (props) => {
                 });
             });
         }
-    }, [])
+    }, [isLargeScreen])
 
     useEffect(() => { // hover on pop menu
         const popMenu = document.getElementById('popMenu');
@@ -482,10 +485,25 @@ const Header = (props) => {
         'Apple Trade In'
     ]
 
+    const myProfile = [
+        'Orders',
+        'Your Saves',
+        'Account',
+        'Sign In',
+    ]
+
+    const myProfileIcons = [
+        ViewInArIcon,
+        BookmarkBorderIcon,
+        SettingsIcon,
+        AccountCircleOutlinedIcon,
+    ]
+
     function clickSearch () {
         setIsClickSearchIcon(true);
         //focus on search bar when icon is clicked
         document.getElementById("apple-search").focus();
+        document.body.style.overflow = 'hidden'
     }
 
     const [inputValue, setInputValue] = useState('');
@@ -505,35 +523,93 @@ const Header = (props) => {
 
     function clickShoppingBag () {
         setIsClickShoppingBagIcon(true);
+        document.body.style.overflow = 'hidden'
     }
+
+    const clickSmallBurger = () => {
+        setIsHoverSmallBurger(true);
+        document.body.style.overflow = 'hidden'
+    }
+
+    const updateMedia = () => {
+        setLargeScreen(window.innerWidth > 768);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+      }, []);
+
+    const closeSearch = () => {
+        setIsHoverSearch(false);
+        clearInput(); // clear searchbar on unhover
+        document.body.style.overflow = 'auto'
+    }
+
+    const closeShopping = () => {
+        setIsHoverShoppingBag(false);
+        document.body.style.overflow = 'auto'
+    }
+
+    const closeSmallBurger = () => {
+        setIsHoverSmallBurger(false)
+        document.body.style.overflow = 'auto'
+    }
+
+
+
+      
     
   return (
     <div className='select-none'>
-        <headercontainer className={`z-10 ${props.fixed && 'fixed'} top-0 left-0 w-full h-[44px] 
+        <headercontainer className={`z-10 ${props.fixed && 'fixed'} top-0 left-0 w-screen h-[44px] 
         ${props.dark  ? 'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' : 
         (props.light ? 'bg-[rgba(245,_245,_247,_0.8)] text-[#313131]' : 
-        'bg-[[rgba(250,_250,_252,_0.8)]] text-[#313131]')} backdrop-blur flex`}>
-            <header className='flex items-center justify-between w-[980px] mx-auto text-xs'>
-                <a href="/">
-                    <AppleIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
-                </a>
-                
-                {/* header_item_icons */}
-                {header_items.map((item, i) => {
-                    return (
-                        <a id={header_items_to_href[i]} className={`${props.dark ? 'glow' : 'glow_dark'} h-full`} href={header_items_to_href[i]}>
-                        <span id='child' className='px-2 leading-[44px] align-middle'>{item}</span>
-                        </a>
-                    )
-                })} 
-                
-                <div id='search' className='h-full cursor-pointer flex items-center'>
-                    <SearchIcon onClick={clickSearch} className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
-                </div>
-                <div id='shoppingBag' className='h-full cursor-pointer flex items-center'>
-                    <WorkOutlineIcon onClick={clickShoppingBag} className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
-                </div>
-            </header>
+        'bg-[[rgba(250,_250,_252,_0.8)]] text-[#313131]')} backdrop-blur`}>
+
+            {isLargeScreen 
+            ?
+                <header className='flex items-center justify-between max-w-[980px] w-full mx-auto text-xs px-2'>
+                    <a href="/">
+                        <AppleIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                    </a>
+                    
+                    {/* header_item_icons */}
+                    {header_items.map((item, i) => {
+                        return (
+                            <a id={header_items_to_href[i]} className={`${props.dark ? 'glow' : 'glow_dark'} h-full
+                            md:block hidden`} href={header_items_to_href[i]}>
+                            <span id='child' className='px-2 leading-[44px] align-middle'>{item}</span>
+                            </a>
+                        )
+                    })} 
+                    
+                    <div id='search' className='h-full cursor-pointer flex items-center'>
+                        <SearchIcon onClick={clickSearch} className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                    </div>
+                    <div id='shoppingBag' className='h-full cursor-pointer flex items-center'>
+                        <WorkOutlineIcon onClick={clickShoppingBag} className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                    </div>
+                </header>
+            :
+                <header className='flex items-center justify-between w-full h-full text-xs px-4'>
+                    <a href="/">
+                        <AppleIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                    </a>
+
+                    <div className='grid grid-cols-3 gap-6 items-center'>
+                        <div id='search'>
+                            <SearchIcon onClick={clickSearch} className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                        </div>
+                        <WorkOutlineIcon id='shoppingBag' onClick={clickShoppingBag} className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                        
+                        <DragHandleIcon onClick={() => clickSmallBurger()}/>
+                    </div>
+                </header>
+
+            }
+
+
         </headercontainer>
 
         { isHoverHeader && // when header icon is hovered on
@@ -578,65 +654,87 @@ const Header = (props) => {
         })}
 
         { isHoverSearch && //when search icon is hovered on
-        <>
-            <searchhover id='searchPopMenu'>
-                <div className={`select-none z-10 fixed top-0 left-0 w-full mt-[44px] ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'} text-center text-white mb-6`}>
-                    <div className='text-left w-[980px] mx-auto my-10  '>
-                        <div className='flex items-center mb-8'>
-                            <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? (props.dark ? 'white' : 'black') : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
-                            <input value={inputValue} onChange={handleChange} id='apple-search' placeholder='Search apple.com' className={`leading-none placeholder-[#86868B]
-                            ${props.dark ? 'header_color text-white' : 'white_header_color text-[#313131]'} font-semibold w-full outline-none text-2xl`} type="text" />
-                            <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} ${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
+            <>
+                <searchhover className='fixed top-0 left-0 w-screen md:mt-[44px] mt-4 z-30 md:z-10' id='searchPopMenu'>
+                    {!isLargeScreen &&
+                        <div className='flex justify-end'>
+                            <CloseIcon onClick={() => closeSearch()} className='text-[#86868B]'/>
                         </div>
-                        <div className='text-xs'>
-                            <div className='dark_gray mb-2'>Quick Links</div>
-                            {quickLinks.map(item => {
-                                return <a className={`group ${props.dark ? 'text-[#e6e6e6] hover:text-white hover:bg-[#1D1D1F]' : 'text-[#333336] hover:text-black hover:bg-[#F5F5F7]'} flex items-center mb-1 py-1 rounded-md`} href="">
-                                <EastIcon className={`${props.dark ? 'group-hover:text-white' : 'group-hover:text-black'}`} sx={{ fontSize: '0.7rem', marginRight: '8px', color: '#86868B', marginTop: '3px',}}/>
-                                <ul>{item}</ul>
-                            </a>
-                            })}
+                    }
+                    <div className={`select-none ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'} text-center text-white mb-6 px-12`}>
+                        <div className='text-left max-w-[980px] w-full mx-auto md:my-10 '>
+                            
+                            <div className='flex items-center mb-8'>
+                                <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? (props.dark ? 'white' : 'black') : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
+                                <input value={inputValue} onChange={handleChange} id='apple-search' placeholder={`${isLargeScreen ? 'Search apple.com' : 'Search'}`} className={`leading-none placeholder-[#86868B]
+                                ${props.dark ? 'header_color text-white' : 'white_header_color text-[#313131]'} font-semibold w-full outline-none md:text-2xl text-3xl`} type="text" />
+                                <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} ${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
+                            </div>
+                            <div className='md:text-xs text-xl'>
+                                <div className='dark_gray mb-2'>Quick Links</div>
+                                {quickLinks.map(item => {
+                                    return <a className={`group ${props.dark ? 'text-[#e6e6e6] hover:text-white hover:bg-[#1D1D1F]' : 'text-[#333336] hover:text-black hover:bg-[#F5F5F7]'} flex items-center mb-1 py-1 rounded-md`} href="">
+                                    <EastIcon className={`${props.dark ? 'group-hover:text-white' : 'group-hover:text-black'}`} sx={{ fontSize: '0.7rem', marginRight: '8px', color: '#86868B', marginTop: '3px',}}/>
+                                    <ul>{item}</ul>
+                                </a>
+                                })}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </searchhover>
-            <div className='fixed w-screen h-screen backdrop-blur z-[5]'></div>
-        </>
+                </searchhover>
+                <div className='fixed top-0 left-0 w-screen h-screen md:backdrop-blur md:z-[5] z-20 md:bg-transparent bg-white'></div>
+            </>
         }
 
         { isHoverShoppingBag && // when shopping bag icon is hovered on
-        <>
-            <shoppingbaghover id='shoppingBagPopMenu'>
-                <div className={`select-none z-10 fixed top-0 left-0 w-full mt-[44px] ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'} text-center text-white pb-10`}>
-                    <div className='text-left w-[980px] mx-auto my-10  '>
-                        <div className='text-2xl mb-5'>Your Bag is empty.</div>
-                        <div className='text-xs mb-8 dark_gray'>
-                            <a className='underline text-[#2997FF]' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
-                        <div className='flex flex-col text-xs'>
-                            <div className='mb-3 dark_gray'>My Profile</div>
-                            <a href='' className={`mb-1 flex items-center w-fit group ${props.dark ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
-                                <ViewInArIcon className={`${props.dark ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
-                                <ul className={`${props.dark ? 'hover:text-white almost_white' : 'hover:text-black'}`}>Orders</ul>
-                            </a>
-                            <a href='' className={`mb-1 flex items-center w-fit group ${props.dark ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
-                                <BookmarkBorderIcon className={`${props.dark ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
-                                <ul className={`${props.dark ? 'hover:text-white almost_white' : 'hover:text-black'}`} href="">Your Saves</ul>
-                            </a>
-                            <a href='' className={`mb-1 flex items-center w-fit group ${props.dark ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
-                                <SettingsIcon className={`${props.dark ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
-                                <ul className={`${props.dark ? 'hover:text-white almost_white' : 'hover:text-black'}`} href="">Account</ul>
-                            </a>
-                            <a href='' className={`mb-1 flex items-center w-fit group ${props.dark ? 'text-[#e6e6e6]' : 'text-[#333336]'}`}>
-                                <AccountCircleOutlinedIcon className={`${props.dark ? 'group-hover:text-white' : 'group-hover:text-black'} pr-3`}/>
-                                <ul className={`${props.dark ? 'hover:text-white almost_white' : 'hover:text-black'}`} href="">Sign In</ul>
-                            </a>
+            <>
+                <shoppingbaghover className='fixed top-0 left-0 w-screen md:mt-[44px] mt-4 z-30 md:z-10' id='shoppingBagPopMenu'>
+                    {!isLargeScreen &&
+                        <div className='flex justify-end'>
+                            <CloseIcon onClick={() => closeShopping()} className='text-[#86868B]'/>
                         </div>
+                    }
+                    <div className={`select-none ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'} text-center text-white pb-10 px-12`}>
+                        <div className='text-left w-[980px] mx-auto md:my-10  '>
+                            <div className='md:text-2xl text-3xl mb-5 text-black'>Your Bag is empty.</div>
+                            <div className='md:text-xs text-lg mb-8 dark_gray'>
+                                <a className='underline text-[#2997FF]' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
+                            <div className='flex flex-col md:text-xs text-xl'>
+                                <div className='mb-3 dark_gray'>My Profile</div>
+                                {myProfile.map((text, index) => {
+                                    return <IconButton icon={myProfileIcons[index]} text={text} dark={props.dark} isLargeScreen={isLargeScreen}/>
+                                })}
+                            </div>
 
+                        </div>
                     </div>
+                </shoppingbaghover>
+                <div className='fixed top-0 left-0 w-screen h-screen md:backdrop-blur md:z-[5] z-20 md:bg-transparent bg-white'></div>
+            </>
+        }
+
+        { isHoverSmallBurger && // when shopping bag icon is hovered on
+            <>
+                <div className='fixed top-0 left-0 w-screen md:mt-[44px] mt-4 z-30 md:z-10' >
+                    {!isLargeScreen &&
+                        <div className='flex justify-end'>
+                            <CloseIcon onClick={() => closeSmallBurger()} className='text-[#86868B]'/>
+                        </div>
+                    }
+
+                    <div className='flex flex-col mx-8 text-2xl font-semibold'>
+                        {header_items.map((item, i) => {
+                            return (
+                                <a id={header_items_to_href[i]} className={`${props.dark ? 'glow' : 'glow_dark'} h-full`} href={header_items_to_href[i]}>
+                                <span id='child' className='px-2 leading-[44px] align-middle'>{item}</span>
+                                </a>
+                            )
+                        })} 
+                    </div>
+                
                 </div>
-            </shoppingbaghover>
-            <div className='fixed w-screen h-screen backdrop-blur z-[5]'></div>
-        </>
+                <div className='fixed top-0 left-0 w-screen h-screen md:backdrop-blur md:z-[5] z-20 md:bg-transparent bg-white'></div>
+            </>
         }
 
 

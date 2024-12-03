@@ -1,5 +1,4 @@
 import React from 'react'
-import './FrontPage.css'
 import AppleIcon from '@mui/icons-material/Apple';
 import LargeProductBanner from './Product Banners/LargeProductBanner';
 import SmallProductBanner from './Product Banners/SmallProductBanner';
@@ -9,6 +8,21 @@ function FrontPage() {
 
 
     const largeProductBannerArr= [
+        {
+            header: 'Purchase with purpose.',
+            subheader: 'Join us and (RED) in the fight against AIDS.',
+            blackHeader: true,
+            bg: 'https://www.apple.com/v/home/bv/images/heroes/world-aids-day/choose_red_hero__bnqcrkgq6kia_large.jpg',
+        },
+        {
+            bottom: true,
+            header: 'The Apple Store Shopping Event',
+            subheader: 'Get an Apple Gift Card up to $200 with an eligible purchase.2',
+            blackHeader: true,
+            date: 'Now through 12.2',
+            customButton: 'Shop',
+            bg: 'https://www.apple.com/v/home/bv/images/heroes/ase-2024/hero_ase24_offer__c9ynlpm0aymq_large.jpg',
+        },
         {
             header: 'iPhone 16 Pro',
             subheader: 'Hello, Apple Intelligence',
@@ -35,7 +49,6 @@ function FrontPage() {
             header: 'Airpods Pro 2',
             subheader: 'Now with a Hearing Aid feature.',
             sup: '2',
-            blueButton: true,
             bg: 'https://www.apple.com/v/home/bv/images/promos/airpods-pro-2/promo_airpods_pro_2_avail__vkitqi3okwie_large.jpg',
         },
         {
@@ -76,21 +89,19 @@ function FrontPage() {
         },
     ]
 
-
-
-
-
   return (
     <div className='select-none'>
 
         {/* 3 Large Product Banners */}
+        <div className='w-full'>
         {largeProductBannerArr.map(banner => {
             return <LargeProductBanner banner={banner} />
         })}
+        </div>
 
         {/* six box */}
 
-        <div className='grid grid-cols-2 gap-3 mx-3 mb-3'>
+        <div className='grid lg:grid-cols-2 grid-cols-1 gap-3 lg:mx-3 mb-3'>
             {smallProductBannerArr.map(banner => {
                 return <SmallProductBanner banner={banner} />
             })}

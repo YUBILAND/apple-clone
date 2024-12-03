@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Footer.css'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const Footer = () => {
     var footer_items_col_1= [
@@ -76,9 +77,39 @@ const Footer = () => {
         'Events',
         'Contact Apple',
     ]
+
+    const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 1024);
+    const [isMediumScreen, setMediumScreen] = useState(window.innerWidth >= 834);
+    
+    const updateMedia = () => {
+        setMediumScreen(window.innerWidth >= 834);
+        setLargeScreen(window.innerWidth >= 1024);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+      }, []);
+
+      const compactFooterMenu = [
+        'Shop and Learn',
+        'Apple Wallet',
+        'Account',
+        'Entertainment',
+        'Apple Store',
+        'For Business',
+        'For Education',
+        'For Healthcare',
+        'For Government',
+        'Apple Values',
+        'About Apple',
+      ]
+
+
+
   return (
-    <div className='bg-[#f5f5f7] pb-8'>
-        <div className='w-[1000px] mx-auto'>
+    <div className='bg-[#f5f5f7] pb-8 w-screen'>
+        <div className='max-w-[1000px] w-full mx-auto px-4'>
             <div className='footer_light text-xs'>
                 <div className='pt-4'>1. Hearing Aid and Hearing Test: The Hearing Aid feature has received FDA authorization. The Hearing Test and Hearing Aid features are supported on AirPods Pro 2 with the latest firmware paired with a compatible iPhone or iPad with iOS 18 or iPadOS 18 and later and are intended for people 18 years old or older. The Hearing Aid feature is also supported on a compatible Mac with macOS Sequoia and later. It is intended for people with perceived mild to moderate hearing loss.</div>
 
@@ -100,6 +131,9 @@ const Footer = () => {
 
             </div>
             <hr className='border-[#cececf] mt-6' />
+
+            {isMediumScreen 
+            ?
             <div className='grid grid-cols-5 text-xs footer_light mb-8'>
                 <div>
                     <div className='flex flex-col'>
@@ -185,9 +219,25 @@ const Footer = () => {
                     })}
                 </div>
             </div>
+            :
+            <div className='py-4'>
+                {compactFooterMenu.map(item => {
+                return (
+                    <div className='flex justify-between border-b-2 py-2'>
+                        <span className='text-sm'>{item}</span>
+                        <KeyboardArrowDownIcon />
+                    </div>
+                )
+                })}
+
+            </div>
+            }
             
             <div className='text-xs footer_light'>More ways to shop: <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="/retail">Find an Apple Store</a> or <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="/locate">other retailer</a> near you. Or call 1-800-MY-APPLE.</div>
             <hr className='border-[#cececf] my-5' />
+
+            {isLargeScreen ?
+
             <div className='flex text-xs footer_light'>
                 <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
                 <div className='flex justify-between text-center w-[420px]'>
@@ -204,6 +254,28 @@ const Footer = () => {
                     </div>
                 <a className='flex-1 text-right hover:underline' href='/choose-country-region'>United States</a>
             </div>
+            :
+            <div className='flex text-xs footer_light'>
+                <div>
+                    <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
+                    <div className='flex justify-between text-center w-[420px]'>
+                        <a className='hover:underline ' href="/privacy">Privacy Policy</a>
+                        |
+                        <a className='hover:underline' href="/terms">Terms of Use</a>
+                        |
+                        <a className='hover:underline' href="/sales_refunds">Sales and Refunds</a>
+                        |
+                        <a className='hover:underline' href="/legal">Legal</a>
+                        |
+                        <a className='hover:underline' href="/sitemap">Site Map</a>
+
+                    </div>
+                </div>
+                {isMediumScreen &&
+                <a className='flex-1 text-right hover:underline' href='/choose-country-region'>United States</a>
+                }
+            </div>
+            }
         </div>
     </div>
   )

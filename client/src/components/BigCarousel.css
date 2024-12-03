@@ -1,0 +1,22 @@
+.swiper-pagination {
+  position: absolute;
+  bottom: -30px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.swiperContainer .swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.75, 0.01, 0.57, 0.89) !important;
+}
+
+.swiperContainer .swiper-slide {
+  opacity: 0.4;
+  transition: opacity 1s cubic-bezier(0.75, 0.01, 0.57, 0.89);
+}
+
+.swiperContainer .swiper-slide-active {
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.75, 0.01, 0.57, 0.89);
+}

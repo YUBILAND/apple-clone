@@ -10,129 +10,51 @@ const ContinousCarousel = () => {
 
     var items = [
         {
-            albumImg: 'https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/b3/7e/dd/b37eddb0-4623-289a-d461-e2190db26636/03157421-d1ee-415e-9053-70f473ac4d98.png/196x196SC.DN01.jpg?l=en-US',
-            backgroundColor: 'bg-[rgb(38,38,38)]',
-            albumCaption: 'Alpha',
-            appleGenre: 'Music',
-            hoverText: 'Listen now',
-        },
-        {
-            img: 'https://is1-ssl.mzstatic.com/image/thumb/Video211/v4/21/a9/dc/21a9dcf7-3e65-05c4-6e4a-7b338d6544f2/media-HI_BC_0090-9535223-Artwork-iOS-316496.png/417x236.jpg',
-            caption: 'HIIT with Brian',
-            appleGenre: 'Fitness+',
-            hoverText: 'Watch now',
-        },
-        {
             img: 'https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/bd/60/67/bd6067ae-64ac-04df-dc96-4757069c37dd/6610be22-3caa-493c-90b0-a8f73520c9bf.png/417x236.jpg',
             caption: 'NBA 2K25 Arcade Edition',
             appleGenre: 'Arcade',
             hoverText: 'Play now',
+            bottomShadow: true,
         },
         {
-            albumImg: 'https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/b1/c8/27/b1c827e0-861e-4660-9b17-4251a73e0b46/35ae0484-c5ac-42f5-b162-5b4f4158b2a3.png/196x196cc.jpg',
-            backgroundColor: 'bg-[rgb(37,68,148)]',
-            albumCaption: 'New in Holiday',
-            appleGenre: 'Music',
-            hoverText: 'Listen now',
-        },
-        {
-            img: 'https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/b7/52/00/b7520011-8ec1-f579-0d0c-c69203873d1e/e12fda86-52fb-4d7d-8017-260155a31696.png/417x236.jpg',
-            caption: 'Travel-Friendly Workouts',
+            img: 'https://is1-ssl.mzstatic.com/image/thumb/Features126/v4/4f/7b/a4/4f7ba464-a015-0990-5ea6-787983ee4424/6c7b6096-c386-4b28-962f-b449a14ee94a.png/834x472.jpg',
+            caption: 'Improve Your Posture with Pilates',
             appleGenre: 'Fitness+',
             hoverText: 'Watch now',
+            bottomShadow: true,
+        },
+
+        {
+            albumImg: 'https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/f8/63/ad/f863adff-a4fc-0d4b-c6a4-c0a807dfba34/d30964d4-1295-41b7-a3a3-a7f3a64ab442.png/392x392SC.DN01.jpg?l=en-US',
+            backgroundColor: 'bg-[rgb(235,231,224)]',
+            albumCaption: "Today's Country",
+            appleGenre: 'Music',
+            hoverText: 'Listen now',
+            dark: true,
         },
         {
             img: 'https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/5b/b3/4a/5bb34a60-695c-a96f-75ec-8a957fc2a20b/45899847-e52c-44a1-9ce5-09aedebb7a78.png/417x236.jpg',
             caption: 'Hello Kitty Island Adventure',
             appleGenre: 'Arcade',
             hoverText: 'Play now',
+            bottomShadow: true,
+        },
+        {
+            img: 'https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/15/cc/06/15cc06e6-f756-e170-4525-3886ff0ea46b/media-ST_KN_0073-9431976-Artwork-iOS-312273.png/834x472.jpg',
+            caption: 'Strengthen with Kim',
+            appleGenre: 'Fitness+',
+            hoverText: 'Watch now',
+            bottomShadow: true,
+        },
+        
+        {
+            albumImg: 'https://is1-ssl.mzstatic.com/image/thumb/Features122/v4/e0/3d/ef/e03def81-ea3a-16d6-7910-2f37060c6342/f01eda0f-9b8c-4b34-bb6f-fd4fa703c9da.png/196x196SC.DN01.jpg?l=en-US',
+            backgroundColor: 'bg-[rgb(226,127,109)]',
+            albumCaption: 'The Crate',
+            appleGenre: 'Music',
+            hoverText: 'Listen now',
         },
     ]
-
-    let finalSlideIndex = null;
-
-    const slideIndex = useRef(0);
-
-    // useEffect(() => {
-
-    //     const handleLoad = () => { // run after DOM loads
-    //         // console.log(props.cards)
-    //         finalSlideIndex = props.cards?.length - props.itemsToShow;
-    //         console.log(finalSlideIndex)
-            
-
-    //         const leftArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-prev`)
-    //         const rightArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-next`)
-    //         leftArrow.style.display = 'none';
-    //         leftArrow.style.opacity = 0; 
-    //         rightArrow.style.opacity = 0;
-
-
-    //         const hoverCarousel = document.querySelector(`.swiperContainer${props.Key}`)
-
-    //         hoverCarousel.addEventListener('mouseenter', () => {
-    //             // make arrows visible
-    //             if (slideIndex.current !== 0 ) {
-    //                 leftArrow.style.opacity = 1;
-    //                 rightArrow.style.opacity = 1; 
-    //             } else {
-    //                 rightArrow.style.opacity = 1; 
-    //             } 
-    //         });
-
-    //         hoverCarousel.addEventListener('mouseleave', () => {
-    //             // make arrows invisible when you unhover container
-    //                 leftArrow.style.opacity = 0; 
-    //                 rightArrow.style.opacity = 0; 
-    //         })
-    //     }
-
-    //     window.addEventListener('load', handleLoad);
-
-    //     return () => window.removeEventListener('load', handleLoad);
-
-    // }, [])
-
-    // const handleSlideChange = (slideInd) => {
-        
-    //     // handles left and right arrow visibility after first Arrow press since it doesn't trigger on mount
-    //     slideIndex.current = slideInd;
-
-    //     const leftArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-prev`);
-
-    //     const rightArrow = document.querySelector(`.swiperContainer${props.Key} > .swiper-button-next`);
-
-    //     if (leftArrow) {
-    //         if (slideInd > 0) {
-    //             setTimeout(() => {
-    //                 leftArrow.removeAttribute('disabled');
-    //                 leftArrow.style.display = 'block';
-    //                 leftArrow.style.opacity = 1;
-    //             }, 0)
-    //         } else {
-    //             setTimeout(() => {
-    //                 leftArrow.style.display = 'none';
-    //                 leftArrow.style.opacity = 0;
-    //             }, 0)
-    //         }
-    //     }
-
-    //     if (rightArrow) {
-    //         if (slideInd < finalSlideIndex) {
-    //             setTimeout(() => {
-    //                 rightArrow.removeAttribute('disabled');
-    //                 rightArrow.style.display = 'block';
-    //                 rightArrow.style.opacity = 1;
-    //             }, 0)
-    //         } else {
-    //             setTimeout(() => {
-    //                 rightArrow.style.display = 'none';
-    //                 rightArrow.style.opacity = 0;
-    //             }, 0)
-    //         }
-    //     }
-
-    // }
 
     const swiperRef = useRef(null);
 
@@ -202,10 +124,21 @@ const ContinousCarousel = () => {
         }, 0)
 
     }
+
+    const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 1024);
+    
+    const updateMedia = () => {
+        setLargeScreen(window.innerWidth >= 1024);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+      }, []);
         
     return (
         <div>
-            <div className='relative w-full overflow-visible' 
+            <div className='relative w-full overflow-hidden' 
             onMouseEnter={() => {
                 if (carouselPlaying) slowDownAnimation();
             }}
@@ -229,24 +162,44 @@ const ContinousCarousel = () => {
                     {
                         items.map(item => 
                             <SwiperSlide className='!w-fit cursor-pointer'>
-                                <div className='relative text-white w-[417px] h-[236px]'> 
+                                <div className='flex flex-col'>
+                                <div className='relative text-white lg:w-[417px] lg:h-[236px] md:w-[286px] md:h-[161px] w-[238px] h-[134px]'> 
                                     {item.img 
                                         ?
-                                        <img className='w-full h-full object-cover' src={item.img} alt="" />
+                                    // IMG
+                                    <img className='w-full h-full object-cover' src={item.img} alt="" />
                                         :
-                                        <div className={`w-full h-full ${item.backgroundColor} grid grid-cols-2`}>
-                                            <div className='flex justify-end items-center'>
-                                                <img className='w-[196px] h-[196px] object-cover rounded-xl' src={item.albumImg} alt="" />
-                                            </div>
-                                            <div className='flex justify-center items-center'>
-                                                <h1 className='w-full ml-4'>{item.albumCaption}</h1>
-                                            </div>
+                                    // Otherwise Album
+                                    isLargeScreen ?
+                                    <div className={`w-full h-full ${item.backgroundColor} grid grid-cols-2`}>
+                                        <div className='flex justify-end items-center'>
+                                            <img className='lg:w-[196px] lg:h-[196px] w-[131px] h-[131px] object-cover rounded-xl' src={item.albumImg} alt="" />
                                         </div>
+                                        <div className='flex justify-center items-center font-semibold'>
+                                            <h1 className={`w-full ml-4 ${item?.dark && 'apple_black'}`}>{item.albumCaption}</h1>
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className={`w-full h-full ${item.backgroundColor} flex justify-center items-center`}>
+                                        <img className='w-[131px] h-[131px] object-cover rounded-xl' src={item.albumImg} alt="" />
+                                    </div>
                                     }
 
-                                    <div className='absolute bottom-0 right-0 pb-[20px] pr-[15px] flex justify-center items-center'>
-                                        <AppleIcon />
-                                        <div className='text-[17px]'>{item.appleGenre}</div>
+                                    {item?.bottomShadow && 
+                                    <div className='absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_bottom,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0)_50%,_rgba(0,0,0,0.4)_100%)]'>
+                                        {/* shadow component */}
+                                    </div>
+                                    }
+
+                                    {(item?.caption && isLargeScreen) && 
+                                    <div className='absolute bottom-0 left-0 pb-[20px] pl-[15px]'>
+                                        <div className={`text-[17px] font-semibold ${item?.dark && 'apple_black'}`}>{item.caption}</div>
+                                    </div>
+                                    }
+
+                                    <div className='absolute bottom-0 right-0 lg:pb-[20px] pb-[10px] pr-[15px] flex justify-center items-center'>
+                                        <AppleIcon className={`${item?.dark && 'apple_black'} lg:!w-4 !w-2`}/>
+                                        <div className={`lg:text-[17px] text-sm lg:font-semibold ${item?.dark && 'apple_black'}`}>{item.appleGenre}</div>
                                     </div>
 
                                     <div className='absolute top-0 left-0 w-full h-full bg-[rgba(0,_0,_0,_0)] hover:bg-[rgba(0,_0,_0,_0.4)] duration-300 transition-all flex justify-center items-center group'>
@@ -255,6 +208,11 @@ const ContinousCarousel = () => {
 
                                     
                                 </div>
+                                {!isLargeScreen && 
+                                <div className='pt-2 text-[14px] font-semibold'>{item?.albumCaption ? item.albumCaption : item.caption}</div>
+                        
+                        }
+                        </div>
                             </SwiperSlide>
                     )}
 

@@ -1,63 +1,43 @@
 .swiper-button-prev {
-    /* bottom: calc(43% + 1px) !important; */
-    left: calc(-7.5% + 1px) !important;
-    background-color: rgba(210, 210, 215, 0.64);
-    color: rgba(0, 0, 0, 0.64) !important;
-    min-width: 56px;
-    min-height: 56px;
-    border-radius: 9999px;
-    transition: opacity 500ms ease-in-out;
-    position: absolute;
+  /* bottom: calc(43% + 1px) !important; */
+  left: calc(-7.5% + 1px) !important;
+  background-color: rgba(210, 210, 215, 0.64);
+  color: rgba(0, 0, 0, 0.64) !important;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 9999px;
+  transition: opacity 500ms ease-in-out;
+  position: absolute;
 
-    &:hover {
-        background-color: rgba(234, 234, 240, 0.64);
-        cursor: pointer;
-    }
+  &:hover {
+    background-color: rgba(234, 234, 240, 0.64);
+    cursor: pointer;
+  }
 }
 
 .swiper-button-next {
-    /* bottom: calc(4% + 1px) !important; */
-    right: calc(-7.5% + 1px) !important;
-    background-color: rgba(210, 210, 215, 0.64);
-    color: rgba(0, 0, 0, 0.64) !important;
-    min-width: 56px;
-    min-height: 56px;
-    border-radius: 9999px;
-    transition: opacity 500ms ease-in-out;
-    position: absolute;
+  /* bottom: calc(4% + 1px) !important; */
+  right: calc(-7.5% + 1px) !important;
+  background-color: rgba(210, 210, 215, 0.64);
+  color: rgba(0, 0, 0, 0.64) !important;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 9999px;
+  transition: opacity 500ms ease-in-out;
+  position: absolute;
 
-    &:hover {
-        background-color: rgba(234, 234, 240, 0.64);
-        cursor: pointer;
-    }
+  &:hover {
+    background-color: rgba(234, 234, 240, 0.64);
+    cursor: pointer;
+  }
 }
 
-.swiper-button-prev:after, .swiper-button-next:after {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    place-items: center;
-    font-size: 30px !important;
-    font-weight: 900 !important;
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  font-size: 30px !important;
+  font-weight: 900 !important;
 }
-
-.swiper-pagination {
-    position: absolute;
-    bottom: -40px !important;
-}
-
-.swiperContainer .swiper-wrapper {
-    transition-timing-function: cubic-bezier(.75,.01,.57,.89) !important; 
-}
-
-.swiperContainer .swiper-slide {
-    opacity: 0.4;
-    transition: opacity 1s cubic-bezier(.75,.01,.57,.89);
-}
-
-.swiperContainer .swiper-slide-active {
-    opacity: 1;
-    transition: opacity 1s cubic-bezier(.75,.01,.57,.89);
-
-}
-
