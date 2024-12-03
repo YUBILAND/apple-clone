@@ -61,6 +61,8 @@ const ContinousCarousel = () => {
     const currentTranslate = useRef(null);
 
     const [carouselPlaying, setCarouselPlaying] = useState(true);
+    const carouselPlayingRef = useRef(true);
+
 
     const handleButtonClick = () => {
         if (carouselPlaying) {
@@ -69,36 +71,57 @@ const ContinousCarousel = () => {
             restartAnimation();
         }
         setCarouselPlaying(!carouselPlaying);
+        carouselPlayingRef.current = !carouselPlayingRef.current
 
     }
 
+    const translateNextSlide = useRef(0)
+
     const stopAnimation = () => { 
+        setTimeout(() => {
+
         currentTranslate.current = swiperRef.current.getTranslate();
-        console.log(currentTranslate.current)
+        const swiperWidth = ( isLargeScreen ? 432 : isMediumScreen ? 301 : 253 )
+
+        //how many slides the translate goes to, correlate to modulo
+        translateNextSlide.current = Math.floor(currentTranslate.current / -swiperWidth)
+
+        // currentTranslate.current = currentTranslate.current % swiperWidth
+
+        console.log((((currentTranslate.current + swiperWidth ) * 6000 ) / swiperWidth) + 6000 * translateNextSlide.current)
         swiperRef.current.setTranslate(currentTranslate.current); 
         swiperRef.current.autoplay.stop();
+        swiperRef.current.params.speed = 6000;
+    }, 0)
 
     };
 
     const restartAnimation = () => {
-        swiperRef.current.slideTo(swiperRef.current.activeIndex,
             //   432 because width (417) + gap between (15) = 432
-        ( ( currentTranslate.current + 432 ) * 8000 ) / 432
-        , false)
-        swiperRef.current.autoplay.start();
+        setTimeout(() => {
 
+            const swiperWidth = ( isLargeScreen ? 432 : isMediumScreen ? 301 : 253 )
+            swiperRef.current.slideTo(swiperRef.current.activeIndex,(((currentTranslate.current + swiperWidth ) * 6000 ) / swiperWidth) + 6000 * translateNextSlide.current, false)
+            // console.log('IMPORTANT HERE', ( ( (currentTranslate.current + swiperWidth * translateNextSlide.current ) * 6000 ) / swiperWidth * translateNextSlide.current ) )
+            
+            swiperRef.current.autoplay.start();
+            swiperRef.current.params.speed = 6000;
+            // console.log((currentTranslate.current + swiperWidth ) * 6000 / swiperWidth)
+        }, 0)
+
+
+        
       }; 
 
     const slowDownAnimation = () => {
         currentTranslate.current = swiperRef.current.getTranslate();
-        console.log(currentTranslate.current)
         swiperRef.current.setTranslate(currentTranslate.current); 
         swiperRef.current.autoplay.stop();
         
         setTimeout(() => {
-            swiperRef.current.slideTo(swiperRef.current.activeIndex,
-                //   432 because width (417) + gap between (15) = 432
-            ( ( currentTranslate.current + 432 ) * 20000 ) / 432
+            //   432 because width (417) + gap between (15) = 432
+            const swiperWidth = ( isLargeScreen ? 432 : isMediumScreen ? 301 : 253 )
+            swiperRef.current.slideTo(swiperRef.current.activeIndex, (( currentTranslate.current + swiperWidth ) * 20000 ) / swiperWidth
             , false)
             swiperRef.current.autoplay.start();
         
@@ -109,14 +132,14 @@ const ContinousCarousel = () => {
 
     const speedUpAnimation = () => {
         currentTranslate.current = swiperRef.current.getTranslate();
-        console.log(currentTranslate.current)
         swiperRef.current.setTranslate(currentTranslate.current); 
         swiperRef.current.autoplay.stop();
 
         setTimeout(() => {
+            const swiperWidth = ( isLargeScreen ? 432 : isMediumScreen ? 301 : 253 )
             swiperRef.current.slideTo(swiperRef.current.activeIndex,
                 //   432 because width (417) + gap between (15) = 432
-            ( ( currentTranslate.current + 432 ) * 6000 ) / 432
+            ( ( currentTranslate.current + swiperWidth ) * 6000 ) / swiperWidth
             , false)
             swiperRef.current.autoplay.start();
 
@@ -126,10 +149,24 @@ const ContinousCarousel = () => {
     }
 
     const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 1024);
+
+    const [isMediumScreen, setMediumScreen] = useState(window.innerWidth >= 768);
     
     const updateMedia = () => {
         setLargeScreen(window.innerWidth >= 1024);
+        setMediumScreen(window.innerWidth >= 768);
+        console.log(carouselPlayingRef.current)
+        if(carouselPlayingRef.current) {
+            restartAnimation();
+        } else {
+            stopAnimation();
+        }
     };
+
+    useEffect(() => {
+        const swiperWidth = ( isLargeScreen ? 432 : isMediumScreen ? 301 : 253 )
+        console.log(swiperWidth)
+    }, [isLargeScreen, isMediumScreen])
 
     useEffect(() => {
         window.addEventListener("resize", updateMedia);
@@ -221,15 +258,13 @@ const ContinousCarousel = () => {
             </div>
 
             <div className='text-right mt-4 mr-4'>
-                <div onClick={() => handleButtonClick()}>
-                    {carouselPlaying 
-                    ?
-                        <PauseIcon className='rounded-full bg-[#d0cfd3] p-1 cursor-pointer hover:bg-[#C8C8CE]' />
-                    :
-                        <PlayArrowIcon className='rounded-full bg-[#d0cfd3] p-1 cursor-pointer hover:bg-[#C8C8CE]'  />
-                        
-                    }
-                </div>
+                {carouselPlaying 
+                ?
+                    <PauseIcon onClick={() => handleButtonClick()} className='rounded-full bg-[#d0cfd3] p-1 cursor-pointer hover:bg-[#C8C8CE] ' />
+                :
+                    <PlayArrowIcon onClick={() => handleButtonClick()} className='rounded-full bg-[#d0cfd3] p-1 cursor-pointer hover:bg-[#C8C8CE]'  />
+                    
+                }
                 
             </div>
         </div>
