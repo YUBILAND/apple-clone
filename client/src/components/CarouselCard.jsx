@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Carousel from "react-multi-carousel";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import { CarouselContext } from '../contexts/CarouselContext';
+import "react-multi-carousel/lib/styles.css";
 
 
 const CarouselCard = (props) => {

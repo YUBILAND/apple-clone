@@ -1,35 +1,35 @@
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
-    bottom: calc(0% + 1px);
-    right: calc(2% + 1px);
-    z-index: 5;
-    background-color: rgba(210, 210, 215, 0.64);
-    min-width: 36px;
-    min-height: 36px;
+  bottom: calc(0% + 1px);
+  right: calc(2% + 1px);
+  z-index: 5;
+  background-color: rgba(210, 210, 215, 0.64);
+  min-width: 36px;
+  min-height: 36px;
 }
 
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
-    bottom: calc(0% + 1px);
-    left: calc(92% + 1px);
-    z-index: 5;
-    background-color: rgba(210, 210, 215, 0.64);
-    min-width: 36px;
-    min-height: 36px;
-
+  bottom: calc(0% + 1px);
+  left: calc(92% + 1px);
+  z-index: 5;
+  background-color: rgba(210, 210, 215, 0.64);
+  min-width: 36px;
+  min-height: 36px;
 }
 
-button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:before, 
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:before,
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:before {
-    color: rgba(0, 0, 0, 0.64);
-    font-weight: 900;
+  color: rgba(0, 0, 0, 0.64);
+  font-weight: 900;
 }
 
-button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:disabled, 
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:disabled,
 button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:disabled {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .bg-gradient-custom {
-    background: linear-gradient(to top left, #EA2543, rgba(255, 8, 0, 0), #8F40F9), linear-gradient(to top right, #0568F1, rgba(255, 153, 150, 0.979), #EF3205);
+  background: linear-gradient(to top left, #ea2543, rgba(255, 8, 0, 0), #8f40f9),
+    linear-gradient(to top right, #0568f1, rgba(255, 153, 150, 0.979), #ef3205);
 }
 
 /* .bg-gradient-custom:after {
@@ -39,5 +39,5 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:disa
 } */
 
 .react-multi-carousel-list {
-    overflow: visible;
+  overflow: visible !important;
 }

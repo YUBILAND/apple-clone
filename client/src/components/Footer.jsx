@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Footer.css'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
+import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 
 const Footer = () => {
     var footer_items_col_1= [
@@ -78,6 +80,96 @@ const Footer = () => {
         'Contact Apple',
     ]
 
+    const footer_items = [
+        [
+            'Store',
+            'Mac',
+            'iPad',
+            'iPhone',
+            'Watch',
+            'Vision',
+            'Airpods',
+            'TV & Home',
+            'AirTag',
+            'Accessories',
+            'Gift Cards',
+        ],
+        [
+            'Wallet',
+            'Apple Card',
+            'Apple Pay',
+            'Apple Cash'
+        ],
+        [
+            'Manage Your Apple Account',
+            'Apple Store Account',
+            'iCloud.com',
+        ],
+        [
+            'Apple One',
+            'Apple TV+',
+            'Apple Music',
+            'Apple Arcade',
+            'Apple Fitness+',
+            'Apple News+',
+            'Apple Podcasts',
+            'Apple Books',
+            'App Store',
+        ],
+        [
+            'Find a Store',
+            'Genius Bar',
+            'Today at Apple',
+            'Group Reservations',
+            'Apple Camp',
+            'Apple Store App',
+            'Certified Refurbished',
+            'Apple Trade In',
+            'Financing',
+            'Carrier Deals at Apple',
+            'Order Status',
+            'Shopping Help',
+        ],
+        [
+            'Apple and Business',
+            'Shop for Business',
+        ],
+        [
+            'Apple and Education',
+            'Shop for K-12',
+            'Shop for College',
+        ],
+        [
+            'Apple in Healthcare',
+            'Mac in Healthcare',
+            'Health on Apple Watch',
+            'Health Records on iPhone and iPad',
+        ],
+        [
+            'Shop for Government',
+            'Shop for Veterans and Military',
+        ],
+        [
+            'Accessibility',
+            'Education',
+            'Environment',
+            'Inclusion and Diversity',
+            'Privacy',
+            'Racial Equity and Justice',
+            'Supply Chain',
+        ],
+        [
+            'Newsroom',
+            'Apple Leadership',
+            'Career Opportunities',
+            'Investors',
+            'Ethics & Compliance',
+            'Events',
+            'Contact Apple',
+        ],
+
+    ]
+
     const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 1024);
     const [isMediumScreen, setMediumScreen] = useState(window.innerWidth >= 834);
     
@@ -91,21 +183,26 @@ const Footer = () => {
         return () => window.removeEventListener("resize", updateMedia);
       }, []);
 
-      const compactFooterMenu = [
-        'Shop and Learn',
-        'Apple Wallet',
-        'Account',
-        'Entertainment',
-        'Apple Store',
-        'For Business',
-        'For Education',
-        'For Healthcare',
-        'For Government',
-        'Apple Values',
-        'About Apple',
-      ]
+    const compactFooterMenu = [
+    'Shop and Learn',
+    'Apple Wallet',
+    'Account',
+    'Entertainment',
+    'Apple Store',
+    'For Business',
+    'For Education',
+    'For Healthcare',
+    'For Government',
+    'Apple Values',
+    'About Apple',
+    ]
 
+    const [dropDownArray, setDropdownArray] = useState(compactFooterMenu.map( _ => false))
 
+    const clickDropDown = (index) => {
+        setDropdownArray(prevItems => prevItems.map((item, i) => i === index ? !item : item) ) // sets dropdown index to true
+
+    }
 
   return (
     <div className='bg-[#f5f5f7] pb-8 w-screen'>
@@ -133,148 +230,170 @@ const Footer = () => {
             <hr className='border-[#cececf] mt-6' />
 
             {isMediumScreen 
-            ?
-            <div className='grid grid-cols-5 text-xs footer_light mb-8'>
-                <div>
-                    <div className='flex flex-col'>
-                        <ul className='apple_black font-bold pt-6'>Shop and Learn</ul>
-                        {footer_items_col_1.map((item, i) => {
-                            if (i < 11) {
-                                return <a className='pt-2'>{item}</a>
-                            } else return null
-                        })}
-                        <ul className='apple_black font-bold pt-6'>Apple Wallet</ul>
-                        {footer_items_col_1.map((item, i) => {
-                            if (i >= 11) {
-                                return <a className='pt-2'>{item}</a>
-                            } else return null
-                        })}
+                ?
+                    <div className='grid grid-cols-5 text-xs footer_light mb-8'>
+                        <div>
+                            <div className='flex flex-col'>
+                                <ul className='apple_black font-bold pt-6'>Shop and Learn</ul>
+                                {footer_items_col_1.map((item, i) => {
+                                    if (i < 11) {
+                                        return <a className='pt-2'>{item}</a>
+                                    } else return null
+                                })}
+                                <ul className='apple_black font-bold pt-6'>Apple Wallet</ul>
+                                {footer_items_col_1.map((item, i) => {
+                                    if (i >= 11) {
+                                        return <a className='pt-2'>{item}</a>
+                                    } else return null
+                                })}
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className='flex flex-col'>
+                                <ul className='apple_black font-bold pt-6'>Account</ul>
+                                {footer_items_col_2.map((item, i) => {
+                                    if (i < 3) {
+                                        return <abbr key={i} className='pt-2 hover:underline'>{item}</abbr>
+                                    } else return null
+                                })}
+                                <ul className='apple_black font-bold pt-6'>Entertainment</ul>
+                                {footer_items_col_2.map((item, i) => {
+                                    if (i >= 3) {
+                                        return <abbr key={i} className='pt-2 hover:underline'>{item}</abbr>
+                                    } else return null
+                                })}
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className='apple_black font-bold pt-6'>Apple Store</div>
+                            {footer_items_col_3.map((item, i) => {
+                                return <ul key={i} className='pt-2'>{item}</ul>
+                            })}
+                            
+                        </div>
+
+                        <div>
+                            <div className='apple_black font-bold pt-6'>For Business</div>
+                            {footer_items_col_4.map((item, i) => {
+                                if (i < 2) {
+                                    return <ul className='pt-2'>{item}</ul>
+                                } else return null
+                            })}
+                            <div className='apple_black font-bold pt-6'>For Education</div>
+                            {footer_items_col_4.map((item, i) => {
+                                if (i >= 2 && i < 5) {
+                                    return <ul className='pt-2'>{item}</ul>
+                                } else return null
+                            })}
+                            <div className='apple_black font-bold pt-6'>For Healthcare</div>
+                            {footer_items_col_4.map((item, i) => {
+                                if (i >= 5 && i < 9) {
+                                    return <ul className='pt-2'>{item}</ul>
+                                } else return null
+                            })}
+                            <div className='apple_black font-bold pt-6'>For Government</div>
+                            {footer_items_col_4.map((item, i) => {
+                                if (i >= 9) {
+                                    return <ul className='pt-2'>{item}</ul>
+                                } else return null
+                            })}
+                        </div>
+
+                        <div>
+                            <div className='apple_black font-bold pt-6'>Apple Values</div>
+                            {footer_items_col_5.map((item, i) => {
+                                if (i < 7) {
+                                    return <ul key={i} className='pt-2'>{item}</ul>
+                                } else return null
+                            })}
+                            <div className='apple_black font-bold pt-6'>About Apple</div>
+                            {footer_items_col_5.map((item, i) => {
+                                if (i >= 7) {
+                                    return <ul key={i} className='pt-2'>{item}</ul>
+                                } else return null
+                            })}
+                        </div>
                     </div>
-                </div>
+                :
+                // Compact Footer Menu
+                    <div className='py-4'>
+                        {compactFooterMenu.map((item, index) => {
+                        return (
+                            <>
+                                <div onClick={() => clickDropDown(index)} className={`flex justify-between ${!dropDownArray[index] && 'border-b-2'}  py-2`}>
+                                    <span className='text-sm'>{item}</span>
+                                    {dropDownArray[index] 
+                                        ?
+                                            <ExpandLessRoundedIcon />
+                                        :
+                                            <ExpandMoreRoundedIcon />
 
-                <div>
-                    <div className='flex flex-col'>
-                        <ul className='apple_black font-bold pt-6'>Account</ul>
-                        {footer_items_col_2.map((item, i) => {
-                            if (i < 3) {
-                                return <abbr key={i} className='pt-2 hover:underline'>{item}</abbr>
-                            } else return null
+                                    }
+                                </div>
+                                {dropDownArray[index] &&
+                                    <div className={`flex flex-col py-2 pl-4 text-[12px] footer_light transition-all transform overflow-hidden duration-500 ease-in-out 
+                                    
+                                    
+                                    
+                                    `}>
+                                        {footer_items[index].map(item => {
+                                            return <a className='leading-6 text-[12px]' href="">{item}</a>
+                                        })
+                                        
+                                        }
+                                    </div>
+                                }
+                            </>
+                        )
                         })}
-                        <ul className='apple_black font-bold pt-6'>Entertainment</ul>
-                        {footer_items_col_2.map((item, i) => {
-                            if (i >= 3) {
-                                return <abbr key={i} className='pt-2 hover:underline'>{item}</abbr>
-                            } else return null
-                        })}
+
                     </div>
-                </div>
-
-                <div>
-                    <div className='apple_black font-bold pt-6'>Apple Store</div>
-                    {footer_items_col_3.map((item, i) => {
-                        return <ul key={i} className='pt-2'>{item}</ul>
-                    })}
-                    
-                </div>
-
-                <div>
-                    <div className='apple_black font-bold pt-6'>For Business</div>
-                    {footer_items_col_4.map((item, i) => {
-                        if (i < 2) {
-                            return <ul className='pt-2'>{item}</ul>
-                        } else return null
-                    })}
-                    <div className='apple_black font-bold pt-6'>For Education</div>
-                    {footer_items_col_4.map((item, i) => {
-                        if (i >= 2 && i < 5) {
-                            return <ul className='pt-2'>{item}</ul>
-                        } else return null
-                    })}
-                    <div className='apple_black font-bold pt-6'>For Healthcare</div>
-                    {footer_items_col_4.map((item, i) => {
-                        if (i >= 5 && i < 9) {
-                            return <ul className='pt-2'>{item}</ul>
-                        } else return null
-                    })}
-                    <div className='apple_black font-bold pt-6'>For Government</div>
-                    {footer_items_col_4.map((item, i) => {
-                        if (i >= 9) {
-                            return <ul className='pt-2'>{item}</ul>
-                        } else return null
-                    })}
-                </div>
-
-                <div>
-                    <div className='apple_black font-bold pt-6'>Apple Values</div>
-                    {footer_items_col_5.map((item, i) => {
-                        if (i < 7) {
-                            return <ul key={i} className='pt-2'>{item}</ul>
-                        } else return null
-                    })}
-                    <div className='apple_black font-bold pt-6'>About Apple</div>
-                    {footer_items_col_5.map((item, i) => {
-                        if (i >= 7) {
-                            return <ul key={i} className='pt-2'>{item}</ul>
-                        } else return null
-                    })}
-                </div>
-            </div>
-            :
-            <div className='py-4'>
-                {compactFooterMenu.map(item => {
-                return (
-                    <div className='flex justify-between border-b-2 py-2'>
-                        <span className='text-sm'>{item}</span>
-                        <KeyboardArrowDownIcon />
-                    </div>
-                )
-                })}
-
-            </div>
             }
             
             <div className='text-xs footer_light'>More ways to shop: <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="/retail">Find an Apple Store</a> or <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="/locate">other retailer</a> near you. Or call 1-800-MY-APPLE.</div>
             <hr className='border-[#cececf] my-5' />
 
-            {isLargeScreen ?
+            {isLargeScreen 
+                ?
+                    <div className='flex text-xs footer_light'>
+                        <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
+                        <div className='flex justify-between text-center w-[420px]'>
+                            <a className='hover:underline ' href="/privacy">Privacy Policy</a>
+                            |
+                            <a className='hover:underline' href="/terms">Terms of Use</a>
+                            |
+                            <a className='hover:underline' href="/sales_refunds">Sales and Refunds</a>
+                            |
+                            <a className='hover:underline' href="/legal">Legal</a>
+                            |
+                            <a className='hover:underline' href="/sitemap">Site Map</a>
 
-            <div className='flex text-xs footer_light'>
-                <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
-                <div className='flex justify-between text-center w-[420px]'>
-                    <a className='hover:underline ' href="/privacy">Privacy Policy</a>
-                    |
-                    <a className='hover:underline' href="/terms">Terms of Use</a>
-                    |
-                    <a className='hover:underline' href="/sales_refunds">Sales and Refunds</a>
-                    |
-                    <a className='hover:underline' href="/legal">Legal</a>
-                    |
-                    <a className='hover:underline' href="/sitemap">Site Map</a>
-
+                            </div>
+                        <a className='flex-1 text-right hover:underline' href='/choose-country-region'>United States</a>
                     </div>
-                <a className='flex-1 text-right hover:underline' href='/choose-country-region'>United States</a>
-            </div>
-            :
-            <div className='flex text-xs footer_light'>
-                <div>
-                    <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
-                    <div className='flex justify-between text-center w-[420px]'>
-                        <a className='hover:underline ' href="/privacy">Privacy Policy</a>
-                        |
-                        <a className='hover:underline' href="/terms">Terms of Use</a>
-                        |
-                        <a className='hover:underline' href="/sales_refunds">Sales and Refunds</a>
-                        |
-                        <a className='hover:underline' href="/legal">Legal</a>
-                        |
-                        <a className='hover:underline' href="/sitemap">Site Map</a>
+                :
+                    <div className='flex text-xs footer_light'>
+                        <div>
+                            <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
+                            <div className='flex justify-between text-center w-[420px]'>
+                                <a className='hover:underline ' href="/privacy">Privacy Policy</a>
+                                |
+                                <a className='hover:underline' href="/terms">Terms of Use</a>
+                                |
+                                <a className='hover:underline' href="/sales_refunds">Sales and Refunds</a>
+                                |
+                                <a className='hover:underline' href="/legal">Legal</a>
+                                |
+                                <a className='hover:underline' href="/sitemap">Site Map</a>
 
+                            </div>
+                        </div>
+                        {isMediumScreen &&
+                        <a className='flex-1 text-right hover:underline' href='/choose-country-region'>United States</a>
+                        }
                     </div>
-                </div>
-                {isMediumScreen &&
-                <a className='flex-1 text-right hover:underline' href='/choose-country-region'>United States</a>
-                }
-            </div>
             }
         </div>
     </div>
