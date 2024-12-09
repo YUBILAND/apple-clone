@@ -13,6 +13,8 @@ import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import CarouselCard from './CarouselCard';
 import { CarouselContext } from '../contexts/CarouselContext';
+import ChapterNav from './ChapterNav';
+import SwiperCard from './SwiperCard';
 
 
 const MacPage = () => {
@@ -520,10 +522,10 @@ const MacPage = () => {
 
   return (
 
-    <div className='apple_black'>
+    <div className='apple_black w-screen overflow-hidden'>
 
     {/* Carousel Card Pop Up */}
-        <div onClick={() => closeCarouselPopUp(carouselCards.findIndex(truthy => truthy))} className={`fixed w-full h-full z-20 backdrop-blur-lg bg-black transition-opacity duration-500 bg-opacity-50 ${cardDelay ? 'opacity-100' : 'opacity-0 pointer-events-none'} overflow-auto`}>
+        <div onClick={() => closeCarouselPopUp(carouselCards.findIndex(truthy => truthy))} className={`top-0 left-0 fixed w-full h-full z-20 backdrop-blur-lg bg-black transition-opacity duration-500 bg-opacity-50 ${cardDelay ? 'opacity-100' : 'opacity-0 pointer-events-none'} overflow-auto`}>
             {/* Stop propagation prevents parent onclick from triggering when clicking on child */}
             <div onClick={(e) => e.stopPropagation()} className='w-[1260px] rounded-3xl mx-auto h-fit pb-[76px] my-[44px] bg-white'>
                 
@@ -596,30 +598,16 @@ const MacPage = () => {
         </div> 
 
     {/* Chapter Nav */}
-        <div className='bg-[#fafafc] pb-8 pt-4'>
-            <div className='w-[1150px] mx-auto flex justify-between items-center'>
-
-                {chapterNav_items.map(item => {
-                    return (
-                        <a href='' className='relative flex flex-col items-center'>
-                            <img className={item.title === 'Sequoia' && 'w-[35px] object-fit'} src={item.img} alt="" />
-                            <span className='text-sm'>{item.title}</span>
-                            {item.new && <span className='absolute w-fit bottom-[-14px] left-0 right-0 mx-auto text-xs text-[#BD4410]'>New</span>}
-                        </a>
-                    )
-                })}
-
-            </div>
-        </div>
+        {/* <ChapterNav items={chapterNav_items}/> */}
 
     {/* Title */}
         <div className='bg-[white] my-[80px]'>
 
-            <div className='w-[1700px] mx-auto'>
+            <div className='w-screen px-[6.25%]'>
                 <div className='grid grid-cols-2'>
-                    <leftgrid className='font-bold text-7xl text-left store_dark_gray'>Mac</leftgrid>
-                    <div className='font-semibold text-3xl text-right ml-auto store_dark_gray'>
-                        <div className='w-[300px] text-left'>
+                    <div className='font-bold text-7xl leading-tight text-left store_dark_gray'>Mac</div>
+                    <div className='font-semibold text-[28px] text-right ml-auto store_dark_gray'>
+                        <div className='text-left w-[280px]'>
                             If you can dream it, Mac can do it.
                         </div>
                     </div>
@@ -656,14 +644,14 @@ const MacPage = () => {
 
     {/* Get to know Mac + Help me choose*/}
         <div className='bg-[white] mb-[140px]'>
-            <div className='w-[1700px] mx-auto'>
+            <div className='w-screen px-[6.25%]'>
 
             {/* Get to Know Mac + Carousel*/}
                 <div>
                     <div className='pt-[150px] font-semibold text-6xl text-left store_dark_gray'>Get to know Mac.</div>
                     <div>
-                    
-                        <CarouselCard items={carousel_items}/>
+
+                        <SwiperCard className='!overflow-visible' items={carousel_items} itemsToShow={5}/>
 
                     </div> 
                 </div>
@@ -700,7 +688,7 @@ const MacPage = () => {
 
     {/* Significant Others + Mac Essentials*/}
         <div className='bg-[white] mb-[140px]'>
-            <div className='w-[1700px] mx-auto'>
+            <div className='w-screen px-[6.25%]'>
 
             {/* Significant Others */}
                 <div>
@@ -816,7 +804,7 @@ const MacPage = () => {
 
     {/* Mac Pop Menu */}
         <div className='bg-[#fafafc]'>
-            <div className='w-[1700px] mx-auto py-32'>
+            <div className='w-screen px-[6.25%] py-32'>
 
         {/* Title */}
                 <div className='mb-12 text-6xl font-semibold'>Mac</div>

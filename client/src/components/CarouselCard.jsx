@@ -53,7 +53,7 @@ const CarouselCard = (props) => {
         renderArrowsWhenDisabled={true}
         renderDotsOutside={true}
         responsive={responsive}
-        className='py-24'
+        className='py-24 !overflow-visible w-[1680px]'
         ssr={true}
         > 
         {props.items.map((item, itemNum) => {

@@ -1,6 +1,5 @@
-.swiper-button-prev {
-  /* bottom: calc(43% + 1px) !important; */
-  left: calc(-7.5% + 1px) !important;
+.swiperNormal .swiper-button-prev {
+  left: calc(-7% + 1px) !important;
   background-color: rgba(210, 210, 215, 0.64);
   color: rgba(0, 0, 0, 0.64) !important;
   min-width: 56px;
@@ -15,9 +14,8 @@
   }
 }
 
-.swiper-button-next {
-  /* bottom: calc(4% + 1px) !important; */
-  right: calc(-7.5% + 1px) !important;
+.swiperNormal .swiper-button-next {
+  right: calc(9.5% + 1px) !important;
   background-color: rgba(210, 210, 215, 0.64);
   color: rgba(0, 0, 0, 0.64) !important;
   min-width: 56px;
@@ -32,8 +30,8 @@
   }
 }
 
-.swiper-button-prev:after,
-.swiper-button-next:after {
+.swiperNormal .swiper-button-prev:after,
+.swiperNormal .swiper-button-next:after {
   display: grid;
   width: 100%;
   height: 100%;

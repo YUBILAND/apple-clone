@@ -7,7 +7,7 @@ import GradientIcon from '../custom/GradientIcon';
 
 const IconCard = (props) => {
   return (
-    <div className='bg-white w-[313px] h-[240px] cursor-pointer shadow-lg hover:scale-[1.02] transition-!transform duration-300 ease hover:shadow-xl rounded-3xl'>
+    <div className={`bg-white ${props.width} ${props.height} cursor-pointer shadow-lg hover:scale-[1.02] transition-!transform duration-300 ease hover:shadow-xl rounded-3xl`}>
         <div className='px-8 pt-6 pb-12 text-black'>
             <div>
                 {/* <props.icon className='rounded-full' sx={{fontSize: '3rem', background: 'linear-gradient(135deg, rgba(158,209,245,1) 13%, rgba(129,149,238,1) 30%, rgba(161,138,236,1) 49%, rgba(243,119,190,1) 68%, rgba(249,171,109,1) 100%)'}} /> */}

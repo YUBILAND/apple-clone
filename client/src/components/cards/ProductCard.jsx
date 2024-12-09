@@ -3,7 +3,7 @@ import Colors from '../Colors'
 
 const ProductCard = (props) => {
   return (
-    <div className={`bg-white cursor-pointer shadow-lg hover:scale-[1.02] transition-!transform duration-300 ease hover:shadow-xl rounded-3xl w-[313px] p-[30px] h-[500px] flex flex-col items-center`}>
+    <div className={`bg-white cursor-pointer shadow-lg hover:scale-[1.02] transition-!transform duration-300 ease hover:shadow-xl rounded-3xl  p-[30px] ${props.width} ${props.height} flex flex-col items-center`}>
 
     {/* Image */}
         <div className='basis-3/5 flex items-end'>

@@ -1,14 +1,13 @@
 .apple_black {
   color: #1d1d1f;
-  
 }
 
 .dark_gray {
-  color: #86868B;
+  color: #86868b;
 }
 
 .light_gray {
-  color: #C6C6CA;
+  color: #c6c6ca;
 }
 
 .store_light_gray {
@@ -19,13 +18,12 @@
   color: #211b1d;
 }
 
-
 .hover_highlight {
-  background-color: #1D1D1F;
+  background-color: #1d1d1f;
 }
 
 .almost_white {
-  color: #E3E3E8;
+  color: #e3e3e8;
 }
 
 .glow {
@@ -50,7 +48,7 @@
 }
 
 .white_header_color {
-  background-color: #FAFAFC;
+  background-color: #fafafc;
 }
 
 .blur_element {
@@ -60,5 +58,5 @@
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont;
   /* Prevent horizontal scrollbar from appearing for carousel's overflow visible */
-  overflow-x: hidden !important; 
+  overflow-x: hidden !important;
 }

@@ -51,17 +51,16 @@ function App() {
             <Route path="/store" element={
               <>
                   <Header fixed={false} light />
-                  <TopBanner />
+                  <TopBanner stretch={true}/>
                   <NewStorePage />
                   <Footer />
-                  <SwiperCarousel />
               </>
             }/>
 
             <Route path="/mac" element={
               <>
                   <Header fixed={false} />
-                  <MacPage /> 
+                  <MacPage />
                   <Footer />
               </>
             }/>
