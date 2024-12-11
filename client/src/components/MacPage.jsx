@@ -516,8 +516,18 @@ const MacPage = () => {
             videoRef.current.pause()
             setVideoPlaying(false);
         }
-        
-        }
+    }
+
+    const [isMediumScreen, setMediumScreen] = useState(window.screen.width >= 736);
+
+    const updateMedia = () => {
+        setMediumScreen(window.screen.width >= 736);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+      }, []);
     
 
   return (
@@ -598,16 +608,16 @@ const MacPage = () => {
         </div> 
 
     {/* Chapter Nav */}
-        {/* <ChapterNav items={chapterNav_items}/> */}
+        <ChapterNav items={chapterNav_items}/>
 
     {/* Title */}
-        <div className='bg-[white] my-[80px]'>
+        <div className='bg-[white] md:my-[80px] my-[56px]'>
 
             <div className='w-screen px-[6.25%]'>
-                <div className='grid grid-cols-2'>
-                    <div className='font-bold text-7xl leading-tight text-left store_dark_gray'>Mac</div>
-                    <div className='font-semibold text-[28px] text-right ml-auto store_dark_gray'>
-                        <div className='text-left w-[280px]'>
+                <div className={'grid md:grid-cols-2 grid-cols-1'}>
+                    <div className='font-bold lg:text-7xl md:text-6xl text-5xl leading-tight text-left store_dark_gray'>Mac</div>
+                    <div className='font-semibold lg:text-[28px] md:text-[24px] text-[21px] leading-[28px] md:ml-auto store_dark_gray flex items-center '>
+                        <div className='text-left lg:w-[250px] md:w-[220px] w-[220px] md:pt-0 pt-2'>
                             If you can dream it, Mac can do it.
                         </div>
                     </div>

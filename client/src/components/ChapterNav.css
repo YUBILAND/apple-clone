@@ -1,13 +1,15 @@
 .chapterNavSwiper .swiper-button-prev {
-  top: calc(0% + 1px) !important;
-  left: calc(-7% + 1px) !important;
+  bottom: unset;
+  left: unset;
+  top: 10% !important;
+  right: 100% !important;
   background-color: #fafafc;
   color: rgba(0, 0, 0, 0.64) !important;
-  min-width: 56px;
+  min-width: 36px;
   min-height: 100px;
   border-radius: 0px;
   border-right-width: 1px;
-  border-color: rgba(0, 0, 0, 0.64);
+  border-color: #d2d2d7;
   transition: opacity 500ms ease-in-out;
   position: absolute;
 
@@ -19,15 +21,17 @@
 }
 
 .chapterNavSwiper .swiper-button-next {
-  top: calc(0% + 1px) !important;
-  right: calc(-5% + 1px) !important;
+  bottom: unset;
+  right: unset;
+  top: 10% !important;
+  left: 100% !important;
   background-color: #fafafc;
   color: rgba(0, 0, 0, 0.64) !important;
-  min-width: 56px;
+  min-width: 36px;
   min-height: 100px;
   border-radius: 0px;
   border-left-width: 1px;
-  border-color: rgba(0, 0, 0, 0.64);
+  border-color: #d2d2d7;
   transition: opacity 500ms ease-in-out;
   position: absolute;
 
@@ -44,4 +48,8 @@
   place-items: center;
   font-size: 15px !important;
   font-weight: 900 !important;
+}
+
+.chapterNavSwiper > .swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.3, 0.59, 0.45, 1) !important;
 }

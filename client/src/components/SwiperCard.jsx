@@ -90,6 +90,7 @@ const SwiperCard = (props) => {
             > 
             {props.items.map((item, itemNum) => {
                 return (
+
                     <SwiperSlide className='!w-[405px] !h-[740px]'>
                         <div onClick={() => showCarouselPopUp(itemNum)} className={`cursor-pointer relative  transition-transform duration-300 hover:scale-105 shadow-lg rounded-3xl ${item.textColor === 'white' && 'text-white'} !w-[405px] !h-[740px]`}>
                             <img className='rounded-3xl w-[405px] h-[740px] object-cover object-bottom' src={item.img} alt="" />
@@ -110,6 +111,7 @@ const SwiperCard = (props) => {
                             </div>
                         </div>
                     </SwiperSlide>
+                    
                 )
             })}
         </Swiper>
