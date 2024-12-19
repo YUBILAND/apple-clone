@@ -12,6 +12,7 @@ import ContactEmergencyOutlinedIcon from '@mui/icons-material/ContactEmergencyOu
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { CarouselContext } from '../../contexts/CarouselContext';
+import Title from '../Title';
 
 const LineUp = () => {
 
@@ -117,42 +118,36 @@ const LineUp = () => {
         }, 500)
     }
 
+    const [isMediumScreen, setMediumScreen] = useState(window.screen.width >= 836);
+    const [isLargeScreen, setLargeScreen] = useState(window.screen.width >= 1068);
+    const [isExtraLargeScreen, setExtraLargeScreen] = useState(window.screen.width >= 1442);
+
+    const updateMedia = () => {
+        setMediumScreen(window.screen.width >= 836);
+        setLargeScreen(window.screen.width >= 1068);
+        setExtraLargeScreen(window.screen.width >= 1442);
+
+
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+      }, []);
+
 
   return (
-    <div className='bg-[#f5f5f7] pb-[140px]'>
+    <div className='bg-[#f5f5f7] lg:pb-[150px] md:pb-[120px] pb-[90px]'>
         
-        <div className='w-[1700px] mx-auto'>
+        <div className='w-screen px-[6.25%] '>
 
         {/* Explore the lineup */}
-            <div className='pt-[150px] font-semibold   store_dark_gray flex justify-between'>
-                
-                <div className='text-left text-6xl'>
-                Explore the lineup.
-                </div>
-
-                <div className='text-right flex text-lg justify-end'>
-                
-                    <a className='group flex items-end text-[#196899] ' href="">
-                        <div className='flex items-center mr-6'>
-                            <div className='group-hover:underline'>Help me choose</div>
-                            <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                        </div>
-                    </a>
-
-                    <a className='group flex items-end text-[#196899]' href="">
-                        <div className='flex items-center ml-6'>
-                            <div className='group-hover:underline'>Compare all models</div>
-                            <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                        </div>
-                    </a>
-                        
-                </div>
-
-            </div>
-
+        
+            <Title title='Explore the lineup.' hyperlink={['Help me choose', 'Compare all models']}/>
+            
         {/* Lineup */}
-            <div className='pl-4 mt-24'>
-                <div className='bg-white rounded-full flex w-fit text-lg'>
+            <div className=' lg:mt-[80px] md:mt-[64px] mt-[48px]'>
+                <div className='bg-white rounded-full flex w-fit md:text-lg text-sm'>
                     <button onClick={() => changeLineup(1)} className={`${lineup === 1 && 'bg-[#272729] text-white select-none'} rounded-full mr-4 px-6 py-2`}>Laptops</button>
                     <button onClick={() => changeLineup(2)} className={`${lineup === 2 && 'bg-[#272729] text-white select-none'} rounded-full mr-4 px-6 py-2`}>Desktops</button>
                     <button onClick={() => changeLineup(3)} className={`${lineup === 3 && 'bg-[#272729] text-white select-none'} rounded-full px-6 py-2`}>Displays</button>
@@ -165,21 +160,29 @@ const LineUp = () => {
             </div>
 
         {/* Apple Trade In */}
-            <div>
-                <div className='pt-[140px] font-semibold text-6xl text-left store_dark_gray'>Apple Trade In</div>
+            <div className='lg:pt-[150px] md:pt-[120px] pt-[90px]'>
 
-                <div className='my-24'>
-                    <a href='' className='w-full transition-transform duration-300 hover:scale-[1.01] shadow-lg rounded-3xl flex bg-white '>
+            <Title title='Apple Trade In'/>
 
-                        <div className='rounded-l-3xl basis-2/5 flex justify-center items-center text-center'>
+            {/* Card */}
+                <div className='lg:mt-[80px] md:mt-[64px] mt-[48px]'>
+                    <a href='' className={`w-full transition-transform duration-300 hover:scale-[1.01] shadow-lg rounded-3xl flex ${isLargeScreen ? 'pl-12' : 'flex-col items-center py-[56px] px-[24px]'} gap-8 bg-white`}>
+
+                    {/* Description */}
+                        <div className='rounded-l-3xl basis-2/5 flex justify-center items-center max-w-[480px] '>
                             <div className=''>
-                                <span className='inline-block text-3xl font-semibold mb-2'>
+
+                                {/* TopText */}
+                                <div className={`${isLargeScreen ? 'text-left text-3xl' : 'text-center md:text-2xl text-xl'}  font-semibold mb-4`}>
                                 Give us the old. Save on the new.
-                                </span>
-                                <div className='w-[447px] text-left'>With Apple Trade In, you can get a great value for your current device and apply it toward a new one. If your device isn’t eligible for credit, we’ll recycle it for free.8</div>
-                                
-                                <a className='group flex items-end text-[#196899] mt-8' href="">
-                                    <div className='flex items-center mr-6'>
+                                </div>
+
+                                {/* BottomText */}
+                                <div className={`max-w-[447px] ${isLargeScreen ? 'text-left' : 'text-center'} md:text-base text-sm`}>With Apple Trade In, you can get a great value for your current device and apply it toward a new one. If your device isn’t eligible for credit, we’ll recycle it for free.8</div>
+
+                                {/* Hyperlink */}
+                                <a className='group flex text-[#196899] mt-8 ' href="">
+                                    <div className={`flex items-center ${isLargeScreen ? 'justify-start' : 'justify-center'} w-full`}>
                                         <div className='group-hover:underline'>See what your device is worth</div>
                                         <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
                                     </div>
@@ -187,32 +190,22 @@ const LineUp = () => {
 
                             </div>
                         </div>
-                        <div className='rounded-l-3xl basis-3/5 flex justify-center'>
-                        
-                            <img className=' ' src="https://www.apple.com/v/mac/home/cb/images/overview/trade_in/tradein__gbtxz5sa3cyi_xlarge.jpg" alt="" />
 
+                    {/* Image */}
+                        <div className={` xl:basis-3/5  flex overflow-hidden ${!isExtraLargeScreen && isLargeScreen ? 'max-w-[476px]' : 'md:max-w-[738px] w-full max-w-[545px] flex justify-center'} w-full mx-auto`}>
+                            <img className={`${isExtraLargeScreen ? 'min-w-[790px]' : isLargeScreen ? 'max-w-[476px]' : 'md:max-w-[738px] max-w-[545px] md:w-fit w-full'} `} src={isExtraLargeScreen ? 'https://www.apple.com/v/mac/home/cb/images/overview/trade_in/tradein__gbtxz5sa3cyi_xlarge.jpg' : isLargeScreen ? 'https://www.apple.com/v/mac/home/cb/images/overview/trade_in/tradein__gbtxz5sa3cyi_large_2x.jpg' : 'https://www.apple.com/v/mac/home/cb/images/overview/trade_in/tradein__gbtxz5sa3cyi_medium_2x.jpg'} alt="" />
                         </div>
                         
                     </a>
                 </div>
+
             </div>
 
         {/* Why Apple is the best place to buy Mac. */}
             <div className='mb-[100px]'>
 
-                <div className='pt-[140px] font-semibold store_dark_gray flex justify-between'>
-                    
-                    <div className='text-6xl text-left w-[600px]'>Why Apple is the best place to buy Mac.</div>
-
-                    <div className='text-right flex text-lg justify-end'>
-                        <a className='group flex items-end text-[#196899] ' href="">
-                            <div className='flex items-center mr-6'>
-                                <div className='group-hover:underline'>Shop Mac</div>
-                                <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                
+                <Title title='Why Apple is the best place to buy Mac.' hyperlink={['Shop Mac']}/>
 
             {/* Carousel Pop Up */}
 

@@ -1,8 +1,8 @@
 .swiperButtonOnBottom .swiper-button-prev {
   top: unset;
   left: unset;
-  bottom: calc(-10% + 1px) !important;
-  right: calc(17% + 1px) !important;
+  bottom: -75px !important;
+  right: unset;
   z-index: 30;
   background-color: rgba(210, 210, 215, 0.64);
   color: rgba(0, 0, 0, 0.64) !important;
@@ -15,8 +15,9 @@
 .swiperButtonOnBottom .swiper-button-next {
   top: unset;
   left: unset;
-  bottom: calc(-10% + 1px) !important;
-  right: calc(14% + 1px) !important;
+  bottom: -75px !important;
+  /* right: calc(14% + 1px) !important; */
+  right: unset;
   z-index: 30;
   background-color: rgba(210, 210, 215, 0.64);
   color: rgba(0, 0, 0, 0.64) !important;

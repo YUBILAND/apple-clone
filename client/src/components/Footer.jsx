@@ -354,7 +354,7 @@ const Footer = () => {
                 ?
                     <div className='flex text-xs footer_light'>
                         <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
-                        <div className='flex justify-between text-center w-[420px]'>
+                        <div className='flex justify-between text-center max-w-[420px] w-full apple_black'>
                             <a className='hover:underline ' href="/privacy">Privacy Policy</a>
                             |
                             <a className='hover:underline' href="/terms">Terms of Use</a>
@@ -371,23 +371,26 @@ const Footer = () => {
                 :
                     <div className='flex text-xs footer_light'>
                         <div>
-                            <div className='flex-1 text-left'>Copyright © 2024 Apple Inc. All rights reserved.</div>
-                            <div className='flex justify-between text-center w-[420px]'>
+                            <div className='mb-4'>
+                                <a className='flex-1 text-left hover:underline ' href='/choose-country-region'>United States</a>
+                            </div>
+                            <div className='flex-1 text-left mb-2'>Copyright © 2024 Apple Inc. All rights reserved.</div>
+                            <div className='flex justify-start text-center max-w-[420px] flex-wrap gap-x-2 apple_black'>
                                 <a className='hover:underline ' href="/privacy">Privacy Policy</a>
                                 |
-                                <a className='hover:underline' href="/terms">Terms of Use</a>
+                                <a className='hover:underline ' href="/terms">Terms of Use</a>
                                 |
-                                <a className='hover:underline' href="/sales_refunds">Sales and Refunds</a>
+                                <a className='hover:underline ' href="/sales_refunds">Sales and Refunds</a>
                                 |
                                 <a className='hover:underline' href="/legal">Legal</a>
                                 |
-                                <a className='hover:underline' href="/sitemap">Site Map</a>
+                                <a className='hover:underline ' href="/sitemap">Site Map</a>
 
                             </div>
                         </div>
-                        {isMediumScreen &&
+                        {/* {isMediumScreen &&
                         <a className='flex-1 text-right hover:underline' href='/choose-country-region'>United States</a>
-                        }
+                        } */}
                     </div>
             }
         </div>

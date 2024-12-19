@@ -15,6 +15,7 @@ import CarouselCard from './CarouselCard';
 import { CarouselContext } from '../contexts/CarouselContext';
 import ChapterNav from './ChapterNav';
 import SwiperCard from './SwiperCard';
+import Title from './Title';
 
 
 const MacPage = () => {
@@ -137,6 +138,7 @@ const MacPage = () => {
             middleText: 'The 27-inch 5K Retina display pairs beautifully with any Mac.',
             link: 'Learn more',
             img: 'https://www.apple.com/v/mac/home/cb/images/overview/essentials/essentials_display__bk3i351qm0c2_xlarge.jpg',
+            mediumImg: 'https://www.apple.com/v/mac/home/cb/images/overview/essentials/essentials_display__bk3i351qm0c2_large_2x.jpg'
         },
     ]
 
@@ -519,9 +521,17 @@ const MacPage = () => {
     }
 
     const [isMediumScreen, setMediumScreen] = useState(window.screen.width >= 736);
+    const [isLargeScreen, setLargeScreen] = useState(window.screen.width >= 1068);
+    const [isExtraLargeScreen, setExtraLargeScreen] = useState(window.screen.width >= 1442);
+
+
 
     const updateMedia = () => {
         setMediumScreen(window.screen.width >= 736);
+        setLargeScreen(window.screen.width >= 1068);
+        setExtraLargeScreen(window.screen.width >= 1442);
+
+
     };
 
     useEffect(() => {
@@ -537,71 +547,73 @@ const MacPage = () => {
     {/* Carousel Card Pop Up */}
         <div onClick={() => closeCarouselPopUp(carouselCards.findIndex(truthy => truthy))} className={`top-0 left-0 fixed w-full h-full z-20 backdrop-blur-lg bg-black transition-opacity duration-500 bg-opacity-50 ${cardDelay ? 'opacity-100' : 'opacity-0 pointer-events-none'} overflow-auto`}>
             {/* Stop propagation prevents parent onclick from triggering when clicking on child */}
-            <div onClick={(e) => e.stopPropagation()} className='w-[1260px] rounded-3xl mx-auto h-fit pb-[76px] my-[44px] bg-white'>
-                
-                <div className='h-[76px] flex justify-end items-center mr-4 sticky top-0'>
-                    <div onClick={() => {closeCarouselPopUp(carouselCards.findIndex(truthy => truthy))}} className='group relative cursor-pointer'>
-                        <AddCircleRoundedIcon className='rotate-45 relative text-[#343436] z-20' sx={{fontSize: '2.7rem'}} />
-                        <div className='group-hover:bg-white transition-colors duration-300 absolute w-5 h-5 bg-[#D6D6D7] top-0 bottom-0 left-0 right-0 mx-auto my-auto z-10'/>
-                    </div>
-                </div>
-
-                <div className='px-[76px]'>
-
-                    <div>
-                        <div className='text-[19px] font-semibold'>
-                            {card_header[carouselCards.findIndex(truthy => truthy)]?.topText}
-                        </div>
-                        <div className='text-[56px] font-semibold'>
-                        {card_header[carouselCards.findIndex(truthy => truthy)]?.bottomText}
+            <div className='px-[6.25%]'>
+                <div onClick={(e) => e.stopPropagation()} className='max-w-[1260px] w-full rounded-3xl mx-auto h-fit pb-[76px] my-[44px] bg-white'>
+                    
+                    <div className='h-[76px] flex justify-end items-center mr-4 sticky top-0'>
+                        <div onClick={() => {closeCarouselPopUp(carouselCards.findIndex(truthy => truthy))}} className='group relative cursor-pointer'>
+                            <AddCircleRoundedIcon className='rotate-45 relative text-[#343436] z-20' sx={{fontSize: '2.7rem'}} />
+                            <div className='group-hover:bg-white transition-colors duration-300 absolute w-5 h-5 bg-[#D6D6D7] top-0 bottom-0 left-0 right-0 mx-auto my-auto z-10'/>
                         </div>
                     </div>
 
-                    <div className='relative mt-16 '>
-                        
-                        {carouselCards.findIndex(truthy => truthy) != -1 && card_items[carouselCards.findIndex(truthy => truthy)].map(item => {
-                            return(
-                                item.neon 
-                                ?
-                                <div class=" bg-gradient-custom font-semibold rounded-[24px] w-full h-[862px] flex justify-center items-center after:rounded-[24px] content-none after:w-[calc(100%-7px)] after:h-[calc(100%-7px)] after:absolute">
-                                    <div className='w-[calc(100%-24px)] h-[calc(100%-24px)] bg-white rounded-[24px] z-20 flex flex-col justify-between'>
+                    <div className='px-[76px]'>
+
+                        <div>
+                            <div className='text-[19px] font-semibold'>
+                                {card_header[carouselCards.findIndex(truthy => truthy)]?.topText}
+                            </div>
+                            <div className='text-[56px] font-semibold'>
+                            {card_header[carouselCards.findIndex(truthy => truthy)]?.bottomText}
+                            </div>
+                        </div>
+
+                        <div className='relative mt-16 '>
+                            
+                            {carouselCards.findIndex(truthy => truthy) != -1 && card_items[carouselCards.findIndex(truthy => truthy)].map(item => {
+                                return(
+                                    item.neon 
+                                    ?
+                                    <div class=" bg-gradient-custom font-semibold rounded-[24px] w-full h-[862px] flex justify-center items-center after:rounded-[24px] content-none after:w-[calc(100%-7px)] after:h-[calc(100%-7px)] after:absolute">
+                                        <div className='w-[calc(100%-24px)] h-[calc(100%-24px)] bg-white rounded-[24px] z-20 flex flex-col justify-between'>
+
+                                        {/* TopText */}
+                                            <div className='w-full lg:px-[100px] px-[8%] text-[28px] pt-16 store_light_gray leading-[32px]'>
+                                                <div className='apple_black float-left'>{item.blackText}</div> 
+                                                &nbsp;{item.grayText}
+                                                <sup className='cursor-pointer underline hover:text-[#0066CC] text-lg font-bold'>
+                                                {item?.sup}
+                                                </sup>
+                                            </div>
+
+                                        {/* Image */}
+                                            <img className='rounded-[24px]' src={item.img} alt="" />
+
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className={`${item.paddingBottom ? 'py-16' : 'pt-16'} bg-[#fafafa] rounded-[24px] z-20 flex flex-col justify-between font-semibold mt-4`}>
 
                                     {/* TopText */}
-                                        <div className='w-[917px] mx-auto text-[28px] pt-16 store_light_gray leading-[32px]'>
+                                        <div className='w-full lg:px-[100px] px-[8%] md:text-[28px] text-[21px] store_light_gray md:leading-[32px] leading-[26px]'>
                                             <div className='apple_black float-left'>{item.blackText}</div> 
                                             &nbsp;{item.grayText}
                                             <sup className='cursor-pointer underline hover:text-[#0066CC] text-lg font-bold'>
-                                            {item?.sup}
+                                                {item?.sup}
                                             </sup>
                                         </div>
-
                                     {/* Image */}
-                                        <img className='rounded-[24px]' src={item.img} alt="" />
-
+                                        {/* <div className=' w-[1044px] h-[500px] flex justify-center items-center'> */}
+                                            <img className={`${!item.paddingBottom && 'rounded-[24px]'} mt-8 mx-auto`} style={{
+                                                width: item?.width, 
+                                                height: item?.height}} src={item.img} alt="" />
+                                        {/* </div> */}
                                     </div>
-                                </div>
-                                :
-                                <div className={`${item.paddingBottom ? 'py-16' : 'pt-16'} bg-[#fafafa] rounded-[24px] z-20 flex flex-col justify-between font-semibold mt-4`}>
+                                )
+                                })
+                            }
 
-                                {/* TopText */}
-                                    <div className='w-[917px] mx-auto text-[28px] store_light_gray leading-[32px]'>
-                                        <div className='apple_black float-left'>{item.blackText}</div> 
-                                        &nbsp;{item.grayText}
-                                        <sup className='cursor-pointer underline hover:text-[#0066CC] text-lg font-bold'>
-                                            {item?.sup}
-                                        </sup>
-                                    </div>
-                                {/* Image */}
-                                    {/* <div className=' w-[1044px] h-[500px] flex justify-center items-center'> */}
-                                        <img className={`${!item.paddingBottom && 'rounded-[24px]'} mt-8 mx-auto`} style={{
-                                            width: item?.width, 
-                                            height: item?.height}} src={item.img} alt="" />
-                                    {/* </div> */}
-                                </div>
-                            )
-                            })
-                        }
-
+                        </div>
                     </div>
                 </div>
             </div>
@@ -653,62 +665,79 @@ const MacPage = () => {
         </div>
 
     {/* Get to know Mac + Help me choose*/}
-        <div className='bg-[white] mb-[140px]'>
-            <div className='w-screen px-[6.25%]'>
+        <div className='w-screen px-[6.25%] bg-[white]'>
+            
+        {/* Get to Know Mac + Carousel*/}
+            <div>
+                <Title title='Get to know Mac.'/>
 
-            {/* Get to Know Mac + Carousel*/}
-                <div>
-                    <div className='pt-[150px] font-semibold text-6xl text-left store_dark_gray'>Get to know Mac.</div>
-                    <div>
+                <SwiperCard className='!overflow-visible' items={carousel_items} itemsToShow={5}/>
+            </div>
 
-                        <SwiperCard className='!overflow-visible' items={carousel_items} itemsToShow={5}/>
+        {/* Help me choose */}
+            <div>
+                <Title title='Help me choose.'/>
+                <div className='lg:pb-[150px] md:pb-[120px] pb-[90px] lg:mt-[80px] md:mt-[64px] mt-[48px]'>
 
-                    </div> 
-                </div>
-
-            {/* Help me choose */}
-                <div>
-                    <div className='pt-[140px] font-semibold text-6xl text-left store_dark_gray'>Help me choose.</div>
-                    <div className='my-24'>
-                        <a href='' className='w-full transition-transform duration-300 hover:scale-[1.01] shadow-lg rounded-3xl flex bg-[#f5f5f7] py-12'>
-
+                    {isLargeScreen 
+                        ?
+                        <a href='' className='w-full xl:h-[580px] h-[480px] transition-transform duration-300 hover:scale-[1.01] shadow-lg rounded-3xl flex bg-[#f5f5f7] py-12'>
                             <div className='rounded-l-3xl basis-2/5 flex justify-center items-center text-center'>
                                 <div className=''>
-                                    <div className='w-[440px] text-3xl font-semibold mb-8'>
+                                    <div className='w-[440px] text-3xl font-semibold mb-8 2xl:text-wrap text-balance'>
                                     Answer a few questions to find the best Mac for you.
                                     </div>
                                     <button className='text-white rounded-full px-5 py-2 text-lg bg-[#0072e0] hover:bg-[#0077ED]'>Get started</button>
                                 </div>
                             </div>
-                            <div className='rounded-l-3xl basis-3/5'>
-                            
-                                <img className=' ' src="https://www.apple.com/v/mac/home/cb/images/overview/help-me-choose/help_me_choose__0cunyw534bmm_xlarge.jpg" alt="" />
+                            <div className='rounded-l-3xl basis-3/5 overflow-hidden'>
+                                <img className='xl:min-w-[910px] min-w-[750px] ' src="https://www.apple.com/v/mac/home/cb/images/overview/help-me-choose/help_me_choose__0cunyw534bmm_xlarge.jpg" alt="" />
+                            </div>
+                        </a>
+                        :
+                        <a href='' className='w-full h-fit transition-transform duration-300 hover:scale-[1.01] shadow-lg rounded-3xl flex flex-col items-center bg-[#f5f5f7] py-12'>
 
+                            <div className='rounded-l-3xl overflow-hidden mb-4'>
+                                <img className='max-w-[509px] w-full' src="https://www.apple.com/v/mac/home/cb/images/overview/help-me-choose/help_me_choose__0cunyw534bmm_xlarge.jpg" alt="" />
+                            </div>
+
+                            <div className='rounded-l-3xl flex justify-center items-center text-center'>
+                                <div className=''>
+                                    <div className='max-w-[440px] px-4 text-2xl font-semibold mb-8 text-wrap'>
+                                    Answer a few questions to find the best Mac for you.
+                                    </div>
+                                    <button className='text-white rounded-full px-5 py-2 text-lg bg-[#0072e0] hover:bg-[#0077ED]'>Get started</button>
+                                </div>
                             </div>
                             
+                            
                         </a>
-                    </div>
+                    }
                 </div>
-
             </div>
+
         </div>
 
     {/* Lineup (Explore Lineup, Apple Trade In, Why Apple is the best*/}
         <LineUp />
 
     {/* Significant Others + Mac Essentials*/}
-        <div className='bg-[white] mb-[140px]'>
+        <div className='bg-[white] mb-[90px]'>
             <div className='w-screen px-[6.25%]'>
 
             {/* Significant Others */}
                 <div>
-                    <div className='pt-[140px] font-semibold text-6xl text-left store_dark_gray'>Significant others.</div>
+                    <Title title='Significant others.'/>
 
-                    <div className='mt-24 ml-4'>
-                        <div className='w-full shadow-lg rounded-3xl flex bg-[#fafafc] h-[784px]'>
+                    {/* Dropdown Card */}
+                    <div className='lg:mt-[80px] md:mt-[64px] mt-[48px] ml-4'>
+
+                        {isLargeScreen ? 
+
+                        <div className='min-w-[1410px] shadow-lg rounded-3xl flex bg-[#fafafc] h-[784px]'>
 
                         {/* Left Text */}
-                            <div className='rounded-l-3xl basis-[35%] p-[120px] text-left w-[590px] h-[756px] flex flex-col justify-center'>
+                            <div className='rounded-l-3xl basis-[35%] p-[120px] text-left min-w-[590px] h-[756px] flex flex-col justify-center'>
 
                             {/* Dropdowns */}
                                 <div className=''>
@@ -751,106 +780,184 @@ const MacPage = () => {
                             </div>
 
                         {/* Right Image */}
-                            <div className='rounded-l-3xl basis-[65%] flex items-center'>
+                            <div className='rounded-l-3xl basis-[65%] flex items-center '>
                                 <img className='mx-auto' src={significant_others_items[dropDown].img} alt="" />
                             </div>
                         </div>
+                    :
+                        <div className='w-full shadow-lg rounded-3xl flex bg-[#fafafc] h-fit'>
+                            <div className='rounded-l-3xl p-[45px] text-left flex flex-col justify-center'>
+
+                            {/* Dropdowns */}
+                                <div className=''>
+
+                                    {significant_others_items.map((item, itemNum) => {
+                                        return <>
+                                            <div>
+                                                <div onClick={() => changeDropDown(itemNum)} className={`${dropDown !== itemNum && 'cursor-pointer'} md:text-3xl text-lg font-semibold py-4 flex items-center justify-between`}>
+                                                    <div className={`${dropDown === itemNum && 'cursor-default'}`}>
+                                                        {item.title}
+                                                    </div>
+                                                    {dropDown === itemNum ?
+                                                        <ExpandLessRoundedIcon className='md:!text-[3rem] !text-[2rem]' sx={{color: '#868687'}} />
+                                                    :
+                                                        <ExpandMoreRoundedIcon className='md:!text-[3rem] !text-[2rem]' sx={{color: '#868687'}} />
+                                                    }
+
+                                                </div>
+
+                                                <div className={`${dropDown === itemNum ? (dropDown === 0 ? 'max-h-[500px]' : dropDown === 1 ? 'max-h-[600px]' : 'max-h-[440px]') : 'max-h-0'} transition-all transform overflow-hidden duration-700 ease-in-out ' }`}>
+                                                    <p className={`h-full pr-11 md:text-[17px] text-[15px] mb-6 md:leading-normal leading-tight md:tracking-normal tracking-tighter`}>{item.desc}</p>
+                                                    <img className={`w-full ${ itemNum === 0 ? 'md:h-[324px] h-[146px]' : itemNum === 1 ? 'md:h-[459px] h-[186px]' : 'md:h-[289px] h-[143px]'}  object-contain mx-auto mb-6`} src={item.img} alt="" />
+                                                 </div>
+
+                                            </div>
+                                        {itemNum !== 2 &&
+                                        <hr className='border-[#cececf]' />
+                                        }
+                                    </>
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    }
                     </div>
                 </div>
 
             {/* Mac Essentials */}
                 <div>
 
-            {/* Title Container*/}
-                <div>
-                    <div className='pt-[140px] font-semibold store_dark_gray flex justify-between'>
+                    <Title title='Mac essentials.' hyperlink={['All Mac accessories']}/>
+                        
+                {/* Banners Container */}
+                    <div className='lg:mt-[80px] md:mt-[64px] mt-[48px] flex justify-between items-center gap-6 '>
+                        {mac_essential_items.map(item => {
 
-                {/* Title Left*/}
-                        <div className='text-6xl text-left w-[600px]'>Mac essentials.</div>
+                        {/* Banner */}
+                            return <div className=' w-full flex flex-col justify-between
+                            xl-apl:max-w-[812.5px] xl-apl:h-[620px]
+                            md:max-w-[620px] md:h-[560px] 
+                            max-w-[312px] h-[480px]
+                            shadow-lg rounded-3xl bg-[#fafafa] overflow-hidden'>
 
-                {/* Title Right */}
-                        <div className='text-right flex text-lg justify-end'>
-                            <a className='group flex items-end text-[#196899] ' href="">
-                                <div className='flex items-center mr-6'>
-                                    <div className='group-hover:underline'>All Mac accessories</div>
-                                    <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                            {/* Banner Top (Text) */}
+                                <div className='md:pt-12 pt-8 flex flex-col items-center'>
+                                    <div className='lg:text-[28px] md:text-2xl text-[21px] font-semibold mb-3'>{item.topText}</div>
+                                    <div className='md:text-[17px] text-sm mb-3 text-center xl-apl:w-fit max-w-[400px] w-full'>{item.middleText}</div>
+
+                                    <a className='group flex text-[#196899] ' href="">
+                                        <div className='flex items-center'>
+                                            <div className='group-hover:underline md:text-[17px] text-sm font-semibold'>{item.link}</div>
+                                            <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                                        </div>
+                                    </a>
+
                                 </div>
-                            </a>
-                        </div>
+
+                            {/* Banner Bottom (Image) */}
+                                <div className='flex justify-center'>
+                                    
+                                    {isExtraLargeScreen ?
+                                        <img className='rounded-3xl xl-apl:min-h-[416px] lg:min-h-[324px] min-h-[252px] object-cover object-bottom' src={item.img} alt="" />
+                                    : (item?.mediumImg ?
+                                        <img className='rounded-3xl xl-apl:min-h-[416px] lg:min-h-[324px] min-h-[252px] object-cover object-bottom' src={item.mediumImg} alt="" />
+                                        :
+                                        <img className='rounded-3xl xl-apl:min-h-[416px] lg:min-h-[324px] min-h-[252px] object-cover object-bottom' src={item.img} alt="" />
+                                    )
+
+                                    }
+                                </div>
+                            </div>
+                        })}
                     </div>
                 </div>
-                    
-            {/* Banners Container */}
-                <div className='flex justify-between items-center'>
-                    {mac_essential_items.map(item => {
 
-                    {/* Banner */}
-                        return <div className='my-24 w-[830px] shadow-lg rounded-3xl bg-[#fafafa]'>
-
-                    {/* Banner Top (Text) */}
-                            <div className='py-12 flex flex-col items-center'>
-                                <div className='text-3xl font-semibold mb-3'>{item.topText}</div>
-                                <div className='text-lg mb-3'>{item.middleText}</div>
-
-                                <a className='group flex text-[#196899] ' href="">
-                                    <div className='flex items-center'>
-                                        <div className='group-hover:underline text-lg font-semibold'>{item.link}</div>
-                                        <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                    {/* Banner Bottom (Image) */}
-                            <div className='flex justify-center'>
-                                <img className='rounded-3xl w-fit  object-cover object-bottom' src={item.img} alt="" />
-                            </div>
-                        </div>
-                    })}
-                </div>
             </div>
-        </div>
         </div>
 
     {/* Mac Pop Menu */}
         <div className='bg-[#fafafc]'>
             <div className='w-screen px-[6.25%] py-32'>
 
-        {/* Title */}
-                <div className='mb-12 text-6xl font-semibold'>Mac</div>
+            {/* Title */}
+                <Title title='Mac'/>
                 
-        {/* Mac Pop Menu */}
-                <div className='text-left w-[980px] mt-10 flex'>
-                    {header_popMenu.map((col, col_i) => {
-                        if (col_i === 0) { // first col, bigger text
-                            return (
-                                <div className='mr-20 select-none'>
-                                    {col.map((item, i) => {
-                                        if (i === 0) { // title
-                                            return <div className='text-[#6E6E73] text-lg mb-[14px]'>{item}</div>
-                                        } else if (i === col.length - 1 || i === col.length - 2) {
-                                            return <a href='/' className='text-[#333336] block leading-tight font-semibold text-[17px] mt-4'>{item}</a>
-                                        } else {
-                                            return <a href='/' className='text-[#333336] block leading-tight font-semibold text-[28px] mb-2'>{item}</a>
-                                        }
-                                    })}
-                                </div>
-                            )
-                        } 
-                        else {
-                            return (
-                                <div className='mr-12 select-none'>
-                                    {col.map((item, i) => {
-                                        if (i === 0) {
-                                            return <div className='text-[#6E6E73] text-lg mb-[14px]'>{item}</div>
-                                        } else {
-                                            return <a href='/' className='text-[#333336] block text-[17px] mb-2 font-semibold'>{item}</a>
-                                        }
-                                    })}
-                                </div>
-                            )
-                        }
-                    })}
+            {/* Mac Pop Menu */}
+                <div className='text-left mt-10 flex lg-apl:flex-row flex-col gap-6'>
+                    {!isLargeScreen && isMediumScreen ?
+
+                    <div className='flex flex-col gap-8'>
+                        {header_popMenu.map((col, col_i) => {
+                            if (col_i === 0) { // first col, bigger text
+                                return (
+                                    <div className='mr-20 select-none'>
+                                        {col.map((item, i) => {
+                                            if (i === 0) { // title
+                                                return <div className='text-[#6E6E73] md:text-[17px] text-[14px] mb-[14px] w-fit'>{item}</div>
+                                            } else if (i === col.length - 1 || i === col.length - 2) { // last two items are smaller
+                                                return <a href='/' className='text-[#333336] block leading-tight font-semibold lg-apl:text-[17px] md-apl:text-[14px] mt-4 w-fit'>{item}</a>
+                                            } else { // normal
+                                                return <a href='/' className='text-[#333336] block leading-tight font-semibold lg-apl:text-[28px] md-apl:text-2xl text-[21px] mb-2 w-fit'>{item}</a>
+                                            }
+                                        })}
+                                    </div>
+                                )
+                            }
+                        })}
+
+                        <div className='flex'>
+                            {header_popMenu.map((col, col_i) => {
+                                if (col_i > 0) {
+                                    return (
+                                        <div className='mr-12 select-none '>
+                                            {col.map((item, i) => {
+                                                if (i === 0) {
+                                                    return <div className='text-[#6E6E73] text-lg mb-[14px] w-fit'>{item}</div>
+                                                } else {
+                                                    return <a href='/' className='text-[#333336] block text-[17px] mb-2 font-semibold w-fit'>{item}</a>
+                                                }
+                                            })}
+                                        </div>
+                                    )
+                                }
+                            })}
+                        </div>
+                    </div>
+                    
+                    :
+                        header_popMenu.map((col, col_i) => {
+                            if (col_i === 0) { // first col, bigger text
+                                return (
+                                    <div className='mr-20 select-none'>
+                                        {col.map((item, i) => {
+                                            if (i === 0) { // title
+                                                return <div className='text-[#6E6E73] md:text-[17px] text-[14px] mb-[14px] w-fit'>{item}</div>
+                                            } else if (i === col.length - 1 || i === col.length - 2) { // last two items are smaller
+                                                return <a href='/' className='text-[#333336] block leading-tight font-semibold lg-apl:text-[17px] md-apl:text-[14px] mt-4 w-fit'>{item}</a>
+                                            } else { // normal
+                                                return <a href='/' className='text-[#333336] block leading-tight font-semibold lg-apl:text-[28px] md-apl:text-2xl text-[21px] mb-2 w-fit'>{item}</a>
+                                            }
+                                        })}
+                                    </div>
+                                )
+                            } 
+                            else {
+                                return (
+                                    <div className='mr-12 select-none '>
+                                        {col.map((item, i) => {
+                                            if (i === 0) { //title
+                                                return <div className='text-[#6E6E73] lg-apl:text-[17px] text-[14px] mb-[14px] w-fit'>{item}</div>
+                                            } else {
+                                                return <a href='/' className='text-[#333336] block lg-apl:text-[17px] text-[14px] mb-2 font-semibold w-fit'>{item}</a>
+                                            }
+                                        })}
+                                    </div>
+                                )
+                            }
+                        })
+
+                    }
+
                 </div>
 
             </div>

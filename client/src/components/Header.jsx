@@ -352,31 +352,68 @@ const Header = (props) => {
     const [isClickShoppingBagIcon, setIsClickShoppingBagIcon] = useState(false);
     const [isHoverShoppingBag, setIsHoverShoppingBag] = useState(false);
 
-    const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 768);
+    const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 834);
 
     const [isHoverSmallBurger, setIsHoverSmallBurger] = useState(false);
 
+    const [animationDelayBuffer, setAnimationDelayBuffer] = useState({
+        'store': false, 'mac': false, 'ipad': false, 'iphone': false, 'watch': false, 'vision': false, 'airpods': false, 'tv-home': false, 'entertainment': false, 'accessories': false, 'support': false, 'search' : false, 'shoppingbag' : false
+    }) // when you hover over search pop menu and trigger mouse leave, even if you reenter within animation period it won't trigger event listener
 
-    useEffect(() => { // hover on header icon, loads after DOM
+    const animationDelayBufferRef = useRef({
+        'store': false, 'mac': false, 'ipad': false, 'iphone': false, 'watch': false, 'vision': false, 'airpods': false, 'tv-home': false, 'entertainment': false, 'accessories': false, 'support': false, 'search' : false, 'shoppingbag' : false
+    }) //ref to check if animationDelayBuffer is still true when event listener is triggered, delay needs to finish before event listener can be triggered again
+
+    const ref1 = useRef(false);
+
+    useEffect(() => { // add event listeners to icons, loads after DOM
         header_items_to_href.map(item => {
             const headerIconElement = document.getElementById(item);
+            const headerElement = document.getElementById('header');
+
             if (headerIconElement) {
                 headerIconElement.addEventListener('mouseenter', () => {
                     // Code to execute when the mouse enters the element
-                    // console.log('Hovering over the element');
+
                     setIsHoverHeader((prev) => ({
-                        ...prev,
-                        [item] : true
-                    }))
+                        ...Object.keys(prev).reduce((acc, key) => {
+                            acc[key] = false; // set everything to false
+                            return acc;
+                        }, {}),
+                        [item]: true // set item to true
+                    }));
+
+                    setAnimationDelayBuffer((prev) => ({
+                        ...Object.keys(prev).reduce((acc, key) => {
+                            acc[key] = false; // set everything to false
+                            return acc;
+                        }, {}),
+                        [item]: true // set item to true
+                    }));
+                    
+
                 });
+
+                headerElement.addEventListener('mouseover', () => {
+                    ref1.current = true;
+                })
+
+                headerElement.addEventListener('mouseleave', () => {
+                    ref1.current = false;
+                })
+
                 headerIconElement.addEventListener('mouseleave', () => {
                     // Code to execute when the mouse leaves the element
-                    // console.log('No longer hovering over element');
-                    setIsHoverHeader((prev) => ({
-                        ...prev,
-                        [item] : false
-                    }))
-                    
+                    if (!ref1.current) {
+                        setIsHoverHeader((prev) => ({
+                            ...prev,
+                            [item] : false
+                        }))
+                        setAnimationDelayBuffer((prev) => ({
+                            ...prev,
+                            [item] : false
+                        }));
+                    }
                 });
             }
         })
@@ -386,9 +423,14 @@ const Header = (props) => {
         if (searchIconElement) {
             searchIconElement.addEventListener('click', () => {
                 setIsHoverSearch(true);
+                setAnimationDelayBuffer(((prev) => ({
+                    ...prev,
+                    'search' : true
+                })))
+
                 searchIconElement.addEventListener('mouseleave', () => {
-                    setIsHoverSearch(false);
-                    console.log("GOING HERE")
+                    closeSearch();
+                    
                 });
             });
         }
@@ -398,51 +440,91 @@ const Header = (props) => {
         if (shoppingBagIconElement) {
             shoppingBagIconElement.addEventListener('click', () => {
                 setIsHoverShoppingBag(true);
-
-                // shoppingBagIconElement.addEventListener('mouseenter', () => {
-                //     setIsHoverSearch(true);
-                // });
+                setAnimationDelayBuffer(((prev) => ({
+                    ...prev,
+                    'shoppingbag' : true
+                })))
 
                 shoppingBagIconElement.addEventListener('mouseleave', () => {
                     setIsHoverShoppingBag(false);
                 });
             });
         }
+
     }, [isLargeScreen])
 
-    useEffect(() => { // hover on pop menu
-        const popMenu = document.getElementById('popMenu');
-        if (popMenu) {
-            popMenu.addEventListener('mouseenter', () => {
-                // Code to execute when the mouse enters the element
-                // console.log('Hovering over pop');
-                setIsHoverHeader((prev) => ({
-                    ...prev,
-                    [popMenu.getAttribute('data-key')] : true
-                }))
-            });
-            popMenu.addEventListener('mouseleave', () => {
-                // Code to execute when the mouse leaves the element
-                // console.log('No longer hovering pop');
-                setIsHoverHeader((prev) => ({
-                    ...prev,
-                    [popMenu.getAttribute('data-key')] : false
-                }))
-            });
+    useEffect(() => { // hover on header pop menu 
+        if(isHoverHeader) {
+            const item = Object.entries(isHoverHeader).find(([key, val]) => val)?.[0]
+            const popMenu = document.getElementById('popMenu' + item);
+            if (popMenu) {
+                popMenu.addEventListener('mouseenter', () => {
+                    // Code to execute when the mouse enters the element
+                        if (!animationDelayBufferRef.current[item]) {
+                            setIsHoverHeader((prev) => ({
+                                ...prev,
+                                [popMenu.getAttribute('data-key')] : true
+                            }))
+                            setAnimationDelayBuffer(((prev) => ({
+                                ...prev,
+                                [item] : true
+                            })))
+                            animationDelayBufferRef.current[item] = true
+                        }
+                });
+                popMenu.addEventListener('mouseleave', () => {
+                    // Code to execute when the mouse leaves the element
+                    // console.log('No longer hovering pop');
+                    setIsHoverHeader((prev) => ({
+                        ...prev,
+                        [popMenu.getAttribute('data-key')] : false
+                    }))
+
+                    if(isHoverHeader) {
+                        const item = Object.entries(isHoverHeader).find(([key, val]) => val)?.[0]
+
+                        setTimeout(() => {
+                            setAnimationDelayBuffer(((prev) => ({
+                                ...prev,
+                                [item] : false
+                            })))
+                            animationDelayBufferRef.current[item] = false
+
+                        }, 300)
+                    }
+                });
+            }
         }
+
     }, [isHoverHeader])
+    
 
     useEffect(() => { // hover on search pop menu
-        console.log('here')
         const searchPopMenu = document.getElementById('searchPopMenu');
         if (searchPopMenu) {
             searchPopMenu.addEventListener('mouseenter', () => {
-                setIsHoverSearch(true);
+                if (!animationDelayBufferRef.current['search']) {
+
+                    setIsHoverSearch(true);
+                    setAnimationDelayBuffer(((prev) => ({
+                        ...prev,
+                        'search' : true
+                    })))
+                    animationDelayBufferRef.current['search'] = true
+                }
+
             });
             searchPopMenu.addEventListener('mouseleave', () => {
-                setIsHoverSearch(false);
-                console.log("WHY HERE")
-                clearInput(); // clear searchbar on unhover
+                closeSearch();
+
+                setTimeout(() => {
+                    setAnimationDelayBuffer(((prev) => ({
+                        ...prev,
+                        'search' : false
+                    })))
+                    animationDelayBufferRef.current['search'] = false
+
+                }, 300)
             });
         }
 
@@ -452,20 +534,46 @@ const Header = (props) => {
                 searchIconElement.removeEventListener('mouseenter', () => {
                     setIsHoverSearch(true)});
                 searchIconElement.removeEventListener('mouseleave', () => {
-                    setIsHoverSearch(false)});
+                    setIsHoverSearch(true)
+                });
 
             }
         }
     }, [isHoverSearch])
 
+    useEffect(() => {
+        console.log(animationDelayBuffer)
+    }, [animationDelayBuffer])
+
+    useEffect(() => {
+        console.log(isHoverHeader)
+    }, [isHoverHeader])
+
     useEffect(() => { // hover on shopping bag pop menu
         const shoppingBagPopMenu = document.getElementById('shoppingBagPopMenu');
         if (shoppingBagPopMenu) {
             shoppingBagPopMenu.addEventListener('mouseenter', () => {
-                setIsHoverShoppingBag(true);
+                if (!animationDelayBufferRef.current['shoppingbag']) {
+
+                    setIsHoverShoppingBag(true);
+                    setAnimationDelayBuffer(((prev) => ({
+                        ...prev,
+                        'shoppingbag' : true
+                    })))
+                    animationDelayBufferRef.current['shoppingbag'] = true
+                }
             });
             shoppingBagPopMenu.addEventListener('mouseleave', () => {
-                setIsHoverShoppingBag(false);
+                closeShopping();
+                setTimeout(() => {
+                    setAnimationDelayBuffer((prev) => ({
+                        ...prev,
+                        'shoppingbag' : false
+                    }));
+                    animationDelayBufferRef.current['shoppingbag'] = false
+
+                }, 300)
+
             });
         }
 
@@ -506,7 +614,10 @@ const Header = (props) => {
         setIsClickSearchIcon(true);
         //focus on search bar when icon is clicked
         document.getElementById("apple-search").focus();
-        document.body.style.overflow = 'hidden'
+
+        if (!isLargeScreen) {
+            document.body.style.overflow = 'hidden'
+        }
     }
 
     const [inputValue, setInputValue] = useState('');
@@ -515,10 +626,6 @@ const Header = (props) => {
         setInputValue(e.target.value);  // Update state with the new value
       };
 
-    useEffect(() => {
-        console.log(inputValue)
-    }, [inputValue])
-
     const clearInput = () => {
         setInputValue('') // clear state
         document.getElementById("apple-search").focus(); // refocus on input field
@@ -526,12 +633,17 @@ const Header = (props) => {
 
     function clickShoppingBag () {
         setIsClickShoppingBagIcon(true);
-        document.body.style.overflow = 'hidden'
+        if (!isLargeScreen) {
+            document.body.style.overflow = 'hidden'
+        }
+
     }
 
     const clickSmallBurger = () => {
         setIsHoverSmallBurger(true);
-        document.body.style.overflow = 'hidden'
+        if (!isLargeScreen) {
+            document.body.style.overflow = 'hidden'
+        }
     }
 
     const updateMedia = () => {
@@ -558,19 +670,22 @@ const Header = (props) => {
         setIsHoverSmallBurger(false)
         document.body.style.overflow = 'auto'
     }
+
     
+
   return (
     <div className='select-none'>
         {/* putting pop menu before header because otherwise fixed element will show on top unless i put negative z-index */}
-        { isHoverSearch && //when search icon is hovered on
-            <>
-                <div className='fixed top-0 left-0 w-screen md:mt-[44px] z-30 bg-white' id='searchPopMenu'>
+
+            {/* when search icon is clicked on */}
+            <>  
+                <div className={`fixed ${isHoverSearch ? 'z-30 opacity-100' : 'opacity-0 z-30'} ${!animationDelayBuffer['search'] && '!z-0'} transition-opacity duration-300 top-0 left-0 w-screen md:pt-[44px] ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'}`} id='searchPopMenu' >
                     {!isLargeScreen &&
                         <div className='flex justify-end'>
                             <CloseIcon onClick={() => closeSearch()} className='text-[#86868B]'/>
                         </div>
                     }
-                    <div className={`select-none ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'} text-center text-white mb-6 px-12 `}>
+                    <div className={`select-none  text-center text-white mb-6 px-12 `}>
                         <div className='text-left max-w-[980px] w-full mx-auto md:my-10 '>
                             
                             <div className='flex items-center mb-8'>
@@ -592,13 +707,12 @@ const Header = (props) => {
                     </div>
                 </div>
 
-                <div className='fixed top-0 left-0 w-screen h-screen md:backdrop-blur z-0 md:bg-transparent'></div>
+                <div className={`fixed top-0 left-0 w-screen h-screen ${isHoverSearch ? 'backdrop-blur' : 'backdrop-blur-none'} transition-all duration-300 ${!animationDelayBuffer['search'] ? 'z-0' : 'z-[5]'} md:bg-transparent`}></div>
             </>
-        }
 
-        { isHoverShoppingBag && // when shopping bag icon is hovered on
+            {/* when shopping bag icon is clicked on */}
             <>
-                <div className='fixed top-0 left-0 w-screen md:mt-[44px] mt-4 z-30 bg-white' id='shoppingBagPopMenu'>
+                <div className={`fixed ${isHoverShoppingBag ? 'z-30 opacity-100' : 'opacity-0 z-30'} ${!animationDelayBuffer['shoppingbag'] && '!z-0'} transition-opacity duration-300 top-0 left-0 w-screen md:mt-[44px] mt-4 z-30 bg-white`} id='shoppingBagPopMenu'>
                     {!isLargeScreen &&
                         <div className='flex justify-end'>
                             <CloseIcon onClick={() => closeShopping()} className='text-[#86868B]'/>
@@ -619,12 +733,11 @@ const Header = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className='fixed top-0 left-0 w-screen h-screen md:backdrop-blur z-0 md:bg-transparent'></div>
+                <div className={`fixed top-0 left-0 w-screen h-screen ${isHoverShoppingBag ? 'backdrop-blur' : 'backdrop-blur-none'} transition-all duration-300 ${!animationDelayBuffer['shoppingbag'] ? 'z-0' : 'z-[5]'} md:bg-transparent`}></div>
             </>
-        }
 
 
-        { isHoverSmallBurger && // when shopping bag icon is hovered on
+        { isHoverSmallBurger && // when small hamburger icon is hovered on
             <>
                 <div className='fixed top-0 left-0 w-screen h-screen mt-4 z-50' >
                     {!isLargeScreen &&
@@ -648,21 +761,19 @@ const Header = (props) => {
             </>
         }
 
-        <div className={`z-30 ${props.fixed && 'fixed'} top-0 left-0 w-screen h-[44px] 
+        <div id='header' className={`z-30 ${props.fixed && 'fixed'} top-0 left-0 w-screen h-[44px] 
         ${props.dark  ? 'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' : 
         (props.light ? 'bg-[rgba(245,_245,_247,_0.8)] text-[#313131]' : 
         'bg-[[rgba(250,_250,_252,_0.8)]] text-[#313131]')} backdrop-blur`}>
 
             {isLargeScreen 
-
             ?
-
                 <header className='flex items-center justify-between max-w-[980px] w-full mx-auto text-xs px-2 h-full'>
                     <a href="/">
                         <AppleIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                     </a>
                     
-                    {/* header_item_icons */}
+                    {/* Letter Icons */}
                     {header_items.map((item, i) => {
                         return (
                             <a id={header_items_to_href[i]} className={`${props.dark ? 'glow' : 'glow_dark'} h-full
@@ -672,16 +783,18 @@ const Header = (props) => {
                         )
                     })} 
                     
+                    {/* Search Icon */}
                     <div onClick={clickSearch} id='search' className='h-full cursor-pointer flex items-center'>
                         <SearchIcon className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                     </div>
+
+                    {/* Shopping Bag Icon */}
                     <div onClick={clickShoppingBag} id='shoppingBag' className='h-full cursor-pointer flex items-center'>
                         <WorkOutlineIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                     </div>
                 </header>
 
             :
-
                 <header className='flex items-center justify-between w-full h-full text-xs px-4'>
                     <a href="/">
                         <AppleIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
@@ -696,17 +809,15 @@ const Header = (props) => {
                         <DragHandleIcon onClick={() => clickSmallBurger()}/>
                     </div>
                 </header>
-
             }
-
 
         </div>
 
         { isHoverHeader && // when header icon is hovered on
         Object.entries(isHoverHeader).map(([key, val], ind) => {
-            return val && 
+            return (
             <>
-                <div data-key={key} id='popMenu' className={`z-30 fixed top-0 left-0 w-full mt-[44px] ${props.dark ? 'header_color' : 'bg-[#f5f5f7] text-[#313131]'}  text-center text-white`}>
+                <div data-key={key} id={'popMenu' + key} className={`${val ? 'z-30 opacity-100' : 'opacity-0 z-30'} ${!animationDelayBuffer[key] && '!z-0'} transition-opacity duration-300 fixed top-0 left-0 w-full mt-[44px] ${props.dark ? 'header_color' : 'bg-[#f5f5f7] text-[#313131]'}  text-center text-white`}>
                     <div className='text-left w-[980px] mx-auto my-10 flex'>
                         {header_popMenu[ind].map((col, col_i) => {
                             if (col_i === 0) { // first col, bigger text
@@ -739,8 +850,11 @@ const Header = (props) => {
                     </div>
                 </div>
 
-                <div className='fixed w-screen h-screen backdrop-blur z-[5]'></div>
+                <div className={`fixed w-screen h-screen backdrop-blur ${val ? 'backdrop-blur' : 'backdrop-blur-none'} ${!animationDelayBuffer[key] ? 'z-0' : 'z-[5]'}`}></div>
+
+
             </> 
+            )
         })}
 
         

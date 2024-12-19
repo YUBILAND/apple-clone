@@ -7,7 +7,7 @@ const Laptops = () => {
     const product_title_items = [
         {
             product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mbp_14_16__bkl8zusnkpw2_large.png',
-            colors: ['black', 'silver'],
+            colors: ['black', 'summitstone'],
             new: true,
             product_header: 'MacBook Pro 14" and 16"',
             product_subheader : 'M4, M4 Pro, or M4 Max chip',
@@ -16,7 +16,7 @@ const Laptops = () => {
         },
         {
             product_img: 'https://www.apple.com/v/mac/home/cb/images/overview/select/product_tile_mba_13_15__fx2g3qlubdym_large.png',
-            colors: ['black', 'peach', 'gray', 'silver'],
+            colors: ['black', 'cloudpink', 'sagegray', 'summitstone'],
             new: false,
             product_header: 'MacBook Air 13” and 15”',
             product_subheader : 'M2 or M3 chip',
@@ -129,30 +129,29 @@ const Laptops = () => {
         {product_title_items.map((item, itemNum) => {
             return (
             <div className='ml-4 w-[372px]'>
-                <div className=' mt-20 text-center '>
+                <div className=' mt-20 md:text-center text-left '>
 
                 {/* Image */}
-                    <div className='h-[190px] flex flex-col justify-end'>
-                        <img className='mx-auto transition-transform duration-300 hover:scale-105' src={item.product_img} alt="" />
+                    <div className='w-full h-full flex flex-col md:items-center items-start justify-end '>
+                        <img className='lg:w-[354px] lg:h-[190px] md:w-[270px] md:h-[145px] w-[228px] h-[123px] transition-transform duration-300 hover:scale-105' src={item.product_img} alt="" />
                     </div>
                     
                 {/* Color and New */}
-                    <div className='mt-12 text-center '>
-                        
-                        <Colors colors={item.colors}/>
-                        
+                    <div className='w-full md:text-center text-left'>
+                        <div className='mt-12'>
+                            <Colors colors={item.colors}/>
+                        </div>
+
+                        <span className={`${!item.new && 'invisible'} inline-block mt-4 mb-2 font-bold text-xs text-[#BD4410]`}>New</span>
                     </div>
-
-                    <span className={`${!item.new && 'invisible'} inline-block mt-4 mb-2 font-bold text-xs text-[#BD4410]`}>New</span>
-
                 {/* Item Description */}
-                    <div className='flex flex-col mb-12'> 
-                        <span className='font-semibold text-3xl'>{item.product_header}</span>
-                        <span className='font-semibold text-lg'>{item.product_subheader}</span>
-                        <span className='inline-block mt-3 mx-auto w-[300px] text-lg'>{item.product_desc}</span>
-                        <span className='inline-block mt-3 font-semibold text-lg'>{item.product_price}</span>
+                    <div className='flex flex-col mb-12 md:items-center '> 
+                        <span className='font-semibold lg:text-3xl text-xl md:pr-0 pr-[60px]'>{item.product_header}</span>
+                        <span className='font-semibold lg:text-lg md:text-[17px] text-sm md:pr-0 pr-[60px]'>{item.product_subheader}</span>
+                        <span className='inline-block mt-3 w-[300px] lg:text-lg md:text-[17px] text-sm md:pr-0 pr-[60px]'>{item.product_desc}</span>
+                        <span className='inline-block mt-3 font-semibold lg:text-lg md:text-[17px] text-sm '>{item.product_price}</span>
 
-                        <div className='mt-8 flex items-center justify-between w-[260px] mx-auto px-4 text-lg'>
+                        <div className='mt-8 flex items-center md:justify-between justify-start md:gap-0 gap-8 w-[260px] md:mx-auto md:px-4 md:text-lg text-sm'>
                             <button className='text-white rounded-full px-5 py-2  bg-[#0072e0] hover:bg-[#0077ED]'>Learn more</button>
 
                             <a className='group flex items-end text-[#196899] ' href="">
@@ -168,15 +167,17 @@ const Laptops = () => {
                     <hr className='border-[#cececf] my-6' />
 
                 {/* Item Specs */}
-                    <div className='grid grid-cols-1 gap-10 pt-6 h-[732px]'>
+                    <div className='grid grid-rows-6 gap-10 pt-6 h-fit'>
                         {product_spec_items[itemNum].map((item, i) => {
 
-                            return <div className='flex flex-col items-center'>
-                                { item.topText && <span className='text-sm mb-2'>{item.topText}</span>}
-                                { item.middleText && <span className='font-semibold text-3xl mb-3 '>{item.middleText}</span>}
-                                { item.img && <img className={`w-[${item.width}] object-fit mb-4`} src={item.img} alt="" />}
-                                { item.bottomText && <span className='text-xs w-[300px] text-balance'>{item.bottomText}</span>}
-                            </div>
+                            return (
+                                <div className='flex flex-col md:items-center items-start'>
+                                    { item.topText && <span className='text-sm md:mb-2 mb-1'>{item.topText}</span>}
+                                    { item.middleText && <span className='font-semibold md:text-3xl text-xl md:mb-3 mb-2'>{item.middleText}</span>}
+                                    { item.img && <img className={`w-[${item.width}] object-fit md:mb-4 mb-3`} src={item.img} alt="" />}
+                                    { item.bottomText && <span className='text-xs w-[300px] text-balance'>{item.bottomText}</span>}
+                                </div>
+                            )
                         })}
                     </div>
                 </div>

@@ -18,7 +18,7 @@ const SwiperCard = (props) => {
 
     const body = document.body;
 
-    function showCarouselPopUp(card) {
+    function showCarouselPopUp(card) { // show popup on click
         setCardDelay(true);
 
         showCarouselCards(prevCards => {
@@ -33,7 +33,6 @@ const SwiperCard = (props) => {
     let finalSlideIndex = null;
 
     const slideIndex = useRef(0);
-
 
     const handleSlideChange = (slideInd) => {
         
@@ -76,8 +75,28 @@ const SwiperCard = (props) => {
 
     }
 
+    const updateMedia = () => {
+        const leftButton = document.querySelector('.swiperButtonOnBottom .swiper-button-prev')
+        const rightButton = document.querySelector('.swiperButtonOnBottom .swiper-button-next')
+
+        const offset = (70 + (window.screen.width - 500) / 138)
+        
+        leftButton.style.left = `calc(${offset}% + 0px)`;
+        rightButton.style.left = `calc(${offset}% + 50px)`;
+
+    };
+
+    useEffect(() => {
+        updateMedia()
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+      }, []);
+
+   
+
+
   return (
-    <div className={`w-screen min-w-[1000px]`}>
+    <div className={`w-screen relative`}>
         <Swiper
             className={`mt-8 !overflow-visible swiperButtonOnBottom`}
             modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -91,16 +110,16 @@ const SwiperCard = (props) => {
             {props.items.map((item, itemNum) => {
                 return (
 
-                    <SwiperSlide className='!w-[405px] !h-[740px]'>
-                        <div onClick={() => showCarouselPopUp(itemNum)} className={`cursor-pointer relative  transition-transform duration-300 hover:scale-105 shadow-lg rounded-3xl ${item.textColor === 'white' && 'text-white'} !w-[405px] !h-[740px]`}>
-                            <img className='rounded-3xl w-[405px] h-[740px] object-cover object-bottom' src={item.img} alt="" />
+                    <SwiperSlide className='2xl:!w-[405px] 2xl:!h-[740px] xl:!w-[372px] xl:!h-[680px] md:!w-[344px] md:!h-[628px] !w-[260px] !h-[480px]'>
+                        <div onClick={() => showCarouselPopUp(itemNum)} className={`cursor-pointer relative  transition-transform duration-300 hover:scale-105 shadow-lg rounded-3xl ${item.textColor === 'white' && 'text-white'} w-full h-full`}>
+                            <img className='rounded-3xl w-full h-full object-cover md:object-bottom object-top' src={item.img} alt="" />
                             <div className='absolute top-0 left-0 ml-8 mt-8 w-full'>
                             {/* TopText */}
-                                <div className='text-lg font-semibold'>
+                                <div className='md:text-lg text-base font-semibold'>
                                 {item.topText}
                                 </div>
                             {/* BottomText */}
-                                <h1 className={`w-[60%] font-semibold text-[28px] leading-[2.1rem] ${item.bottomTextRainbow && '!w-full text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310]'}`}>{item.bottomText}</h1>
+                                <h1 className={`w-[60%] font-semibold xl:text-[28px] md:text-2xl text-xl leading-[2.1rem] ${item.bottomTextRainbow && '!w-full text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310]'}`}>{item.bottomText}</h1>
                             </div>
 
                             <div className='absolute bottom-0 right-0 mr-4 mb-4'>

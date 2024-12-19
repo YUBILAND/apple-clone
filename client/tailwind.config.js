@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   mode: 'jit',
   content: [
@@ -7,6 +8,17 @@ module.exports = {
     './src/components/**/*.{jsx,tsx}'
   ],
   theme: {
+    screens: {
+      'md-apl': '836px',
+      // => @media (min-width: 640px) { ... }
+
+      'lg-apl': '1068px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl-apl': '1442px',
+      // => @media (min-width: 1280px) { ... }
+      ...defaultTheme.screens,
+    },
     extend: {
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',

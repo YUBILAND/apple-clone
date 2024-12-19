@@ -2,7 +2,13 @@ import React from 'react'
 
 const Colors = (props) => {
   return (
-    <div className={`flex justify-between gap-2 w-fit mx-auto h-3`}>
+    <div className={`flex 
+    md:justify-between justify-start 
+    md:w-fit w-full 
+    gap-2 
+    mx-auto
+    h-3
+    `}>
         {props.colors.map(color => {
             return (
                 <div className={`w-3 h-3 rounded-full 
