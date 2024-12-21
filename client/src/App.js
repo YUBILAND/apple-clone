@@ -39,7 +39,7 @@ function App() {
           <Routes>
             <Route path="/" element={
               <>
-                  <Header fixed={true} light />
+                  <Header fixed white />
                   <TopBanner headerFixed/>
                   <FrontPage />
                   <BigCarousel />
@@ -50,8 +50,8 @@ function App() {
 
             <Route path="/store" element={
               <>
-                  <Header fixed={false} light />
-                  <TopBanner stretch={true}/>
+                  <Header white />
+                  <TopBanner stretch/>
                   <NewStorePage />
                   <Footer />
               </>
@@ -59,7 +59,7 @@ function App() {
 
             <Route path="/mac" element={
               <>
-                  <Header fixed={false} />
+                  <Header />
                   <MacPage />
                   <Footer />
               </>

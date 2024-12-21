@@ -41,303 +41,378 @@ const Header = (props) => {
     const header_popMenu = [
         [ // Store
             [
-                'Shop',
-                'Shop the latest',
-                'Mac',
-                'iPad',
-                'iPhone',
-                'Apple Watch',
-                'Apple Vision Pro',
-                'Accessories',
+                ['Shop'],
+                [
+                    'Shop the latest',
+                    'Mac',
+                    'iPad',
+                    'iPhone',
+                    'Apple Watch',
+                    'Apple Vision Pro',
+                    'Accessories',
+                ]
             ],
             [
-                'Quick Links',
-                'Find a store',
-                'Order status',
-                'Apple Trade In',
-                'Financing',
+                ['Quick Links'],
+                [
+                    'Find a store',
+                    'Order status',
+                    'Apple Trade In',
+                    'Financing',
+                ]
             ],
             [
-                'Shop Special Stores',
-                'Certified Refurbished',
-                'Education',
-                'Business',
-                'Veterans and Military',
-                'Government',
+                ['Shop Special Stores'],
+                [
+                    'Certified Refurbished',
+                    'Education',
+                    'Business',
+                    'Veterans and Military',
+                    'Government',
+                ]
             ],
         ],
         [ // Mac
             [
-                'Explore Mac',
-                'Explore All Mac',
-                'MacBook Air',
-                'MacBook Pro',
-                'iMac',
-                'Mac Mini',
-                'Mac Studio',
-                'Mac Pro',
-                'Displays',
+                ['Explore Mac'],
+                [
+                    'Explore All Mac',
+                    'MacBook Air',
+                    'MacBook Pro',
+                    'iMac',
+                    'Mac Mini',
+                    'Mac Studio',
+                    'Mac Pro',
+                    'Displays',
+                ],
+                [
+                    'Compare Mac',
+                    'Switch from PC to Mac'
+                ]
+                
             ],
             [
-                'Shop Mac',
-                'Shop Mac',
-                'Help Me Choose',
-                'Mac Accessories',
-                'Apple Trade In',
-                'Financing',
+                ['Shop Mac'],
+                [
+                    'Shop Mac',
+                    'Help Me Choose',
+                    'Mac Accessories',
+                    'Apple Trade In',
+                    'Financing',
+                ],
+
             ],
             [
-                'More from mac',
-                'Mac Support',
-                'AppleCare+ for Mac',
-                'macOS Sequoia',
-                'Apple Intelligence',
-                'Apps by Apple',
-                'Continuity',
-                'iCloud+',
-                'Mac for Business',
-                'Education',
+                ['More from mac'],
+                [
+                    'Mac Support',
+                    'AppleCare+ for Mac',
+                    'macOS Sequoia',
+                    'Apple Intelligence',
+                    'Apps by Apple',
+                    'Continuity',
+                    'iCloud+',
+                    'Mac for Business',
+                    'Education',
+                ]
             ],
         ],
         [ // iPad
             [
-                'Explore iPad',
-                'Explore All iPad',
-                'iPad Pro',
-                'iPad Air',
-                'iPad',
-                'iPad mini',
-                'Apple Pencil',
-                'Keyboards',
-                'Compare iPad',
-                'Why iPad',
+                ['Explore iPad'],
+                [
+                    'Explore All iPad',
+                    'iPad Pro',
+                    'iPad Air',
+                    'iPad',
+                    'iPad mini',
+                    'Apple Pencil',
+                    'Keyboards',
+                ],
+                [    
+                    'Compare iPad',
+                    'Why iPad',
+                ]
             ],
             [
-                'Shop iPad',
-                'Shop iPad',
-                'iPad Accessories',
-                'Apple Trade In',
-                'Financing',
+                ['Shop iPad'],
+                [
+                    'Shop iPad',
+                    'iPad Accessories',
+                    'Apple Trade In',
+                    'Financing',
+                ]
             ],
             [
-                'More from iPad',
-                'iPad Support',
-                'AppleCare+ for iPad',
-                'iPadOS 18',
-                'Apple Intelligence',
-                'Apps by Apple',
-                'iCloud+',
-                'Education',
+                ['More from iPad'],
+                [
+                    'iPad Support',
+                    'AppleCare+ for iPad',
+                    'iPadOS 18',
+                    'Apple Intelligence',
+                    'Apps by Apple',
+                    'iCloud+',
+                    'Education',
+                ]
             ],
         ],
         [ // iPhone
             [
-                'Explore iPhone',
-                'Explore All iPhone',
-                'iPhone 16 Pro',
-                'iPhone 16',
-                'iPhone 15',
-                'iPhone 14',
-                'iPhone SE',
-                'Compare iPhone',
-                'Switch from Android',
+                ['Explore iPhone'],
+                [
+                    'Explore All iPhone',
+                    'iPhone 16 Pro',
+                    'iPhone 16',
+                    'iPhone 15',
+                    'iPhone 14',
+                    'iPhone SE',
+                ],   
+                [
+                    'Compare iPhone',
+                    'Switch from Android',
+                ]
             ],
             [
-                'Shop iPhone',
-                'Shop iPhone',
-                'iPhone Accessories',
-                'Apple Trade In',
-                'Carrier Deals at Apple',
-                'Financing',
+                ['Shop iPhone'],
+                [
+                    'Shop iPhone',
+                    'iPhone Accessories',
+                    'Apple Trade In',
+                    'Carrier Deals at Apple',
+                    'Financing',
+                ]
             ],
             [
-                'More from iPhone',
-                'iPhone Support ',
-                'AppleCare+ for iPhone',
-                'iOS 18',
-                'Apple Intelligence',
-                'Apps by Apple',
-                'iPhone Privacy',
-                'iCloud+',
-                'Wallet, Pay, Card',
-                'Siri',
+                ['More from iPhone'],
+                [
+                    'iPhone Support ',
+                    'AppleCare+ for iPhone',
+                    'iOS 18',
+                    'Apple Intelligence',
+                    'Apps by Apple',
+                    'iPhone Privacy',
+                    'iCloud+',
+                    'Wallet, Pay, Card',
+                    'Siri',
+                ]
             ],
         ],
         [ // Watch
             [
-                'Explore Watch',
-                'Explore All Apple Watch',
-                'Apple Watch Series 10',
-                'Apple Watch Ultra 2',
-                'Apple Watch SE',
-                'Apple Watch Nike',
-                'Apple Watch Hermès',
-                'Compare Watch',
-                'Why Apple Watch',
+                ['Explore Watch'],
+                [
+                    'Explore All Apple Watch',
+                    'Apple Watch Series 10',
+                    'Apple Watch Ultra 2',
+                    'Apple Watch SE',
+                    'Apple Watch Nike',
+                    'Apple Watch Hermès',
+                ],    
+                [    
+                    'Compare Watch',
+                    'Why Apple Watch',
+                ]
             ],
             [
-                'Shop Watch',
-                'Shop Apple Watch',
-                'Apple Watch Studio',
-                'Apple Watch Bands',
-                'Apple Watch Accessories',
-                'Apple Trade In',
-                'Financing',
+                ['Shop Watch'],
+                [
+                    'Shop Apple Watch',
+                    'Apple Watch Studio',
+                    'Apple Watch Bands',
+                    'Apple Watch Accessories',
+                    'Apple Trade In',
+                    'Financing',
+                ]    
             ],
             [
-                'More from Watch',
-                'Apple Watch Support',
-                'AppleCare+ watchOS 11',
-                'Apple Watch For Your Kids',
-                'Apps by Apple',
-                'Apple Fitness+',
-
+                ['More from Watch'],
+                [
+                    'Apple Watch Support',
+                    'AppleCare+ watchOS 11',
+                    'Apple Watch For Your Kids',
+                    'Apps by Apple',
+                    'Apple Fitness+',
+                ]
             ],
         ],
         [ // Vision
             [
-                'Explore Vision',
-                'Explore Apple Vision Pro',
-                'Guided Tour',
-                'Tech Specs',
+                ['Explore Vision'],
+                [
+                    'Explore Apple Vision Pro',
+                ],
+                [    
+                    'Guided Tour',
+                    'Tech Specs',
+                ]
             ],
             [
-                'Shop Vision',
-                'Shop Apple Vision Pro',
-                'Apple Vision Pro Accessories',
-                'Book a Demo',
-                'Financing',
+                ['Shop Vision'],
+                [
+                    'Shop Apple Vision Pro',
+                    'Apple Vision Pro Accessories',
+                    'Book a Demo',
+                    'Financing',
+                ]
             ],
             [
-                'More from Vision',
-                'Apple Vision Pro Support',
-                'AppleCare+ ',
-                'visionOS',
+                ['More from Vision'],
+                [
+                    'Apple Vision Pro Support',
+                    'AppleCare+ ',
+                    'visionOS',
+                ]
             ],
         ],
         [ // AirPods
             [
-                'Explore AirPods',
-                'Explore All AirPods',
-                'AirPods 4',
-                'AirPods Pro 2',
-                'AirPods Max',
-                'Compare AirPods',
+                ['Explore AirPods'],
+                [
+                    'Explore All AirPods',
+                    'AirPods 4',
+                    'AirPods Pro 2',
+                    'AirPods Max',
+                ],
+                [    
+                    'Compare AirPods',
+                ]
             ],
             [
-                'Shop AirPods',
-                'Shop AirPods',
-                'AirPods Accessories',
+                ['Shop AirPods'],
+                [
+                    'Shop AirPods',
+                    'AirPods Accessories',
+                ]
             ],
             [
-                'More from AirPods',
-                'AirPods Support',
-                'AppleCare+ for Headphones',
-                'Hearing Health',
-                'Apple Music',
+                ['More from AirPods'],
+                [
+                    'AirPods Support',
+                    'AppleCare+ for Headphones',
+                    'Hearing Health',
+                    'Apple Music',
+                ]
             ],
         ],
         [ // TV & Home
             [
-                'Explore TV & Home',
-                'Apple TV 4K',
-                'HomePod',
-                'HomePod mini',
+                ['Explore TV & Home'],
+                [
+                    'Apple TV 4K',
+                    'HomePod',
+                    'HomePod mini',
+                ]
             ],
             [
-                'Shop TV & Home',
-                'Shop Apple TV 4K',
-                'Shop HomePod',
-                'Shop HomePod mini',
-                'Shop Siri Remote',
-                'TV & Home Accessories',
+                ['Shop TV & Home'],
+                [
+                    'Shop Apple TV 4K',
+                    'Shop HomePod',
+                    'Shop HomePod mini',
+                    'Shop Siri Remote',
+                    'TV & Home Accessories',
+                ]
             ],
             [
-                'More from TV & Home',
-                'Apple TV Support',
-                'HomePod Support',
-                'AppleCare+',
-                'Apple TV app',
-                'Apple TV+',
-                'Home app',
-                'Apple Music',
-                'Siri ',
-                'AirPlay',
+                ['More from TV & Home'],
+                [
+                    'Apple TV Support',
+                    'HomePod Support',
+                    'AppleCare+',
+                    'Apple TV app',
+                    'Apple TV+',
+                    'Home app',
+                    'Apple Music',
+                    'Siri ',
+                    'AirPlay',
+                ]
             ],
         ],
         [ // Entertainment
             [
-                'Explore Entertainment',
-                'Explore Entertainment',
-                'Apple One',
-                'Apple TV+',
-                'Apple Music',
-                'Apple Arcade',
-                'Apple Fitness+',
-                'Apple News+',
-                'Apple Podcasts',
-                'Apple Books',
-                'App Store',
+                ['Explore Entertainment'],
+                [
+                    'Explore Entertainment',
+                    'Apple One',
+                    'Apple TV+',
+                    'Apple Music',
+                    'Apple Arcade',
+                    'Apple Fitness+',
+                    'Apple News+',
+                    'Apple Podcasts',
+                    'Apple Books',
+                    'App Store',
+                ]
             ],
             [
-                'Support',
-                'Apple TV+ Support',
-                'Apple Music Support',
+                ['Support'],
+                [
+                    'Apple TV+ Support',
+                    'Apple Music Support',
+                ]
             ],
         ],
         [ // Accessories
             [
-                'Shop Accessories',
-                'Shop All Accessories',
-                'Mac',
-                'iPad',
-                'iPhone',
-                'Apple Watch',
-                'Apple Vision Pro',
-                'AirPods',
-                'TV & Home',
+                ['Shop Accessories'],
+                [
+                    'Shop All Accessories',
+                    'Mac',
+                    'iPad',
+                    'iPhone',
+                    'Apple Watch',
+                    'Apple Vision Pro',
+                    'AirPods',
+                    'TV & Home',
+                ]
             ],
             [
-                'Explore Accessories',
-                'Made by Apple',
-                'Beats by Dr. Dre',
-                'AirTag',
+                ['Explore Accessories'],
+                [
+                    'Made by Apple',
+                    'Beats by Dr. Dre',
+                    'AirTag',
+                ]
             ],
         ],
         [ // Support
             [
-                'Explore Support',
-                'iPhone',
-                'Mac',
-                'iPad',
-                'Watch',
-                'Apple Vision Pro',
-                'AirPods',
-                'Music',
-                'TV',
-                'Explore Support',
+                ['Explore Support'],
+                [
+                    'iPhone',
+                    'Mac',
+                    'iPad',
+                    'Watch',
+                    'Apple Vision Pro',
+                    'AirPods',
+                    'Music',
+                    'TV',
+                ],
+                [    
+                    'Explore Support',
+                ]
             ],
             [
-                'Get Help',
-                'Community',
-                'Check Coverage',
-                'Repair',
-                'Contact Us',
+                ['Get Help'],
+                [
+                    'Community',
+                    'Check Coverage',
+                    'Repair',
+                    'Contact Us',
+                ]
             ],
             [
-                'Helpful Topics',
-                'Get AppleCare+',
-                'Apple Account and Password',
-                'Billing & Subscriptions',
-                'Accessibility',
+                ['Helpful Topics'],
+                [
+                    'Get AppleCare+',
+                    'Apple Account and Password',
+                    'Billing & Subscriptions',
+                    'Accessibility',
+                ]
 
             ],
         ],
     ]
-
-    // Doing Hover
-    const [isHoverStore, setIsHoverStore] = useState(false);
-    const [isHoverMac, setIsHoverMac] = useState(false);
 
     const [isHoverHeader, setIsHoverHeader] = useState(
         header_items_to_href.reduce((acc, str) => {
@@ -364,7 +439,17 @@ const Header = (props) => {
         'store': false, 'mac': false, 'ipad': false, 'iphone': false, 'watch': false, 'vision': false, 'airpods': false, 'tv-home': false, 'entertainment': false, 'accessories': false, 'support': false, 'search' : false, 'shoppingbag' : false
     }) //ref to check if animationDelayBuffer is still true when event listener is triggered, delay needs to finish before event listener can be triggered again
 
-    const ref1 = useRef(false);
+    const nonIconHoverRef = useRef(false); // used for making pop menu remain when hovering over header but not icon
+
+    const hoveringRef = useRef(false); // prevent setTimeout animationDelayBuffer from triggering when rehovering over icon within the 300ms timeframe, prevents it from setting to false while you are hovered which would make pop menu disappear while hovering
+
+    const stateReset = (stateDict) => { // set state or ref to all
+        var newStateDict = {};
+        for (let key in stateDict) {
+            newStateDict[key] = false;
+        }
+        return newStateDict;
+    }
 
     useEffect(() => { // add event listeners to icons, loads after DOM
         header_items_to_href.map(item => {
@@ -374,37 +459,35 @@ const Header = (props) => {
             if (headerIconElement) {
                 headerIconElement.addEventListener('mouseenter', () => {
                     // Code to execute when the mouse enters the element
+                    hoveringRef.current = true;
+                    console.log(stateReset(isHoverHeader))
+                        setIsHoverHeader(
+                            { ...stateReset(isHoverHeader), [item]: true }
+                        );
 
-                    setIsHoverHeader((prev) => ({
-                        ...Object.keys(prev).reduce((acc, key) => {
-                            acc[key] = false; // set everything to false
-                            return acc;
-                        }, {}),
-                        [item]: true // set item to true
-                    }));
-
-                    setAnimationDelayBuffer((prev) => ({
-                        ...Object.keys(prev).reduce((acc, key) => {
-                            acc[key] = false; // set everything to false
-                            return acc;
-                        }, {}),
-                        [item]: true // set item to true
-                    }));
-                    
-
+                        setAnimationDelayBuffer(
+                            { ...stateReset(animationDelayBuffer), [item]: true }
+                        );
                 });
 
                 headerElement.addEventListener('mouseover', () => {
-                    ref1.current = true;
+                    nonIconHoverRef.current = true;
                 })
 
                 headerElement.addEventListener('mouseleave', () => {
-                    ref1.current = false;
+                    nonIconHoverRef.current = false;
                 })
 
+                headerElement.addEventListener('wheel', () => { //scroll on header element should remove pop menus
+                    removePopMenu();
+                })
+
+                // trying to fix mouse leave from window
+
                 headerIconElement.addEventListener('mouseleave', () => {
-                    // Code to execute when the mouse leaves the element
-                    if (!ref1.current) {
+                    // When mouse leaves icon
+                    if (!nonIconHoverRef.current) { // if mouse hovers over another icon then remove pop menu, else don't since you rehover over same icon
+                        hoveringRef.current = false;
                         setIsHoverHeader((prev) => ({
                             ...prev,
                             [item] : false
@@ -418,7 +501,7 @@ const Header = (props) => {
             }
         })
 
-        // Search Icon, on click then hover
+        // Search Icon, on click
         const searchIconElement = document.getElementById('search');
         if (searchIconElement) {
             searchIconElement.addEventListener('click', () => {
@@ -427,15 +510,16 @@ const Header = (props) => {
                     ...prev,
                     'search' : true
                 })))
-
-                searchIconElement.addEventListener('mouseleave', () => {
-                    closeSearch();
-                    
-                });
+                if (!nonIconHoverRef.current) {
+                    searchIconElement.addEventListener('mouseleave', () => {
+                        closeSearch();
+                        
+                    });
+                }
             });
         }
 
-        // Shopping Bag Icon, on click then hover
+        // Shopping Bag Icon, on click
         const shoppingBagIconElement = document.getElementById('shoppingBag');
         if (shoppingBagIconElement) {
             shoppingBagIconElement.addEventListener('click', () => {
@@ -444,10 +528,11 @@ const Header = (props) => {
                     ...prev,
                     'shoppingbag' : true
                 })))
-
-                shoppingBagIconElement.addEventListener('mouseleave', () => {
-                    setIsHoverShoppingBag(false);
-                });
+                if (!nonIconHoverRef.current) {
+                    shoppingBagIconElement.addEventListener('mouseleave', () => {
+                        setIsHoverShoppingBag(false);
+                    });
+                }
             });
         }
 
@@ -459,7 +544,10 @@ const Header = (props) => {
             const popMenu = document.getElementById('popMenu' + item);
             if (popMenu) {
                 popMenu.addEventListener('mouseenter', () => {
-                    // Code to execute when the mouse enters the element
+                    // Code to execute when the mouse hovers over icon
+                        setIsHoverSearch(false);
+                        setIsHoverShoppingBag(false);
+                        // if not in the middle of closing animation
                         if (!animationDelayBufferRef.current[item]) {
                             setIsHoverHeader((prev) => ({
                                 ...prev,
@@ -475,36 +563,36 @@ const Header = (props) => {
                 popMenu.addEventListener('mouseleave', () => {
                     // Code to execute when the mouse leaves the element
                     // console.log('No longer hovering pop');
-                    setIsHoverHeader((prev) => ({
-                        ...prev,
-                        [popMenu.getAttribute('data-key')] : false
-                    }))
-
-                    if(isHoverHeader) {
-                        const item = Object.entries(isHoverHeader).find(([key, val]) => val)?.[0]
-
-                        setTimeout(() => {
-                            setAnimationDelayBuffer(((prev) => ({
+                    setTimeout(() => { // this waits for ref to change (headerElement mouseenter)
+                        if (!nonIconHoverRef.current) { // if hovering over icon then set false
+                            setIsHoverHeader((prev) => ({
                                 ...prev,
-                                [item] : false
-                            })))
-                            animationDelayBufferRef.current[item] = false
-
-                        }, 300)
-                    }
+                                [popMenu.getAttribute('data-key')] : false
+                            }))
+                            if(isHoverHeader) {
+                                const item = Object.entries(isHoverHeader).find(([key, val]) => val)?.[0]
+                                setTimeout(() => {
+                                    if (!hoveringRef.current) {
+                                        setAnimationDelayBuffer(((prev) => ({
+                                            ...prev,
+                                            [item] : false
+                                        })))
+                                        animationDelayBufferRef.current[item] = false
+                                    }
+                                }, 300)
+                            }
+                        }
+                    }, 0)
                 });
             }
         }
-
     }, [isHoverHeader])
     
-
     useEffect(() => { // hover on search pop menu
         const searchPopMenu = document.getElementById('searchPopMenu');
         if (searchPopMenu) {
             searchPopMenu.addEventListener('mouseenter', () => {
                 if (!animationDelayBufferRef.current['search']) {
-
                     setIsHoverSearch(true);
                     setAnimationDelayBuffer(((prev) => ({
                         ...prev,
@@ -515,16 +603,19 @@ const Header = (props) => {
 
             });
             searchPopMenu.addEventListener('mouseleave', () => {
-                closeSearch();
 
-                setTimeout(() => {
-                    setAnimationDelayBuffer(((prev) => ({
-                        ...prev,
-                        'search' : false
-                    })))
-                    animationDelayBufferRef.current['search'] = false
-
-                }, 300)
+                setTimeout(() => { // this waits for ref to change (headerElement mouseenter)
+                    if (!nonIconHoverRef.current) { // if hovering over icon then set false
+                        closeSearch();
+                        setTimeout(() => {
+                            setAnimationDelayBuffer(((prev) => ({
+                                ...prev,
+                                'search' : false
+                            })))
+                            animationDelayBufferRef.current['search'] = false
+                        }, 300)
+                    }
+                },0)
             });
         }
 
@@ -541,14 +632,6 @@ const Header = (props) => {
         }
     }, [isHoverSearch])
 
-    useEffect(() => {
-        console.log(animationDelayBuffer)
-    }, [animationDelayBuffer])
-
-    useEffect(() => {
-        console.log(isHoverHeader)
-    }, [isHoverHeader])
-
     useEffect(() => { // hover on shopping bag pop menu
         const shoppingBagPopMenu = document.getElementById('shoppingBagPopMenu');
         if (shoppingBagPopMenu) {
@@ -564,15 +647,19 @@ const Header = (props) => {
                 }
             });
             shoppingBagPopMenu.addEventListener('mouseleave', () => {
-                closeShopping();
-                setTimeout(() => {
-                    setAnimationDelayBuffer((prev) => ({
-                        ...prev,
-                        'shoppingbag' : false
-                    }));
-                    animationDelayBufferRef.current['shoppingbag'] = false
+                setTimeout(() => { // this waits for ref to change (headerElement mouseenter)
+                    if (!nonIconHoverRef.current) { // if hovering over icon then set false
+                        closeShopping();
+                        setTimeout(() => {
+                            setAnimationDelayBuffer((prev) => ({
+                                ...prev,
+                                'shoppingbag' : false
+                            }));
+                            animationDelayBufferRef.current['shoppingbag'] = false
 
-                }, 300)
+                        }, 300)
+                    }
+                }, 0)
 
             });
         }
@@ -671,15 +758,50 @@ const Header = (props) => {
         document.body.style.overflow = 'auto'
     }
 
-    
+    // useEffect(() => {
+    //     console.log(isHoverHeader)
+    // }, [isHoverHeader])
+
+    const removePopMenu = (iconHoveredOver) => {
+        // if on search pop menu and hover over search icon, don't remove pop menu
+
+            setIsHoverHeader(stateReset(isHoverHeader))
+            setIsHoverSearch(false);
+            setIsHoverShoppingBag(false);
+            setAnimationDelayBuffer(stateReset(animationDelayBuffer))
+            animationDelayBufferRef.current=stateReset(animationDelayBufferRef.current)
+            return;
+
+        
+
+        // if(iconHoveredOver === 'search' ? !isHoverSearch : !isHoverShoppingBag ) { // if not rehovering over same icon when going from popmenu to icon
+
+        //     setIsHoverHeader(stateReset(isHoverHeader))
+
+        //     iconHoveredOver === 'search' ? 
+        //     (() => { //if you hovered over search 
+        //         setIsHoverShoppingBag(false);
+        //         animationDelayBufferRef.current['shoppingbag'] = false;
+        //     })() : 
+        //     (() => { //if you hovered over shoppingbag 
+        //         setIsHoverSearch(false);
+        //         animationDelayBufferRef.current['search'] = false;
+        //     })()
+
+        //     setAnimationDelayBuffer(stateReset(animationDelayBuffer));
+        // }
+    }
 
   return (
     <div className='select-none'>
         {/* putting pop menu before header because otherwise fixed element will show on top unless i put negative z-index */}
 
-            {/* when search icon is clicked on */}
-            <>  
-                <div className={`fixed ${isHoverSearch ? 'z-30 opacity-100' : 'opacity-0 z-30'} ${!animationDelayBuffer['search'] && '!z-0'} transition-opacity duration-300 top-0 left-0 w-screen md:pt-[44px] ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'}`} id='searchPopMenu' >
+            {/* when search icon is clicked on/ pop menu hovered on */}
+            <>
+                <div
+                onWheel={() => removePopMenu()} //
+                className={`${props.fixed ? 'fixed' : 'absolute'} ${isHoverSearch ? 'z-30 max-h-[500px]' : 'z-30 max-h-0'} ${!animationDelayBuffer['search'] && '!z-0'} overflow-hidden transition-all duration-300 ease-[cubic-bezier(.51,.14,1,.99)] ${props.fixed ? 'top-0' : 'top-[44px]'} left-0 w-screen md:pt-[44px] ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'}`} 
+                id='searchPopMenu' >
                     {!isLargeScreen &&
                         <div className='flex justify-end'>
                             <CloseIcon onClick={() => closeSearch()} className='text-[#86868B]'/>
@@ -689,10 +811,20 @@ const Header = (props) => {
                         <div className='text-left max-w-[980px] w-full mx-auto md:my-10 '>
                             
                             <div className='flex items-center mb-8'>
-                                <SearchIcon className='' sx={{fontSize: '1.8rem', color: inputValue.length ? (props.dark ? 'white' : 'black') : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
-                                <input value={inputValue} onChange={handleChange} id='apple-search' placeholder={`${isLargeScreen ? 'Search apple.com' : 'Search'}`} className={`leading-none placeholder-[#86868B]
-                                ${props.dark ? 'header_color text-white' : 'white_header_color text-[#313131]'} font-semibold w-full outline-none md:text-2xl text-3xl`} type="text" />
-                                <CancelIcon onClick={clearInput} className={`${!inputValue.length && '!hidden'} ${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
+                                <SearchIcon 
+                                className='' 
+                                sx={{fontSize: '1.8rem', color: inputValue.length ? (props.dark ? 'white' : 'black') : '#86868B', transition: 'color 0.5s ease', marginRight: '4px'}}/>
+                                <input 
+                                value={inputValue} 
+                                onChange={handleChange} id='apple-search' 
+                                placeholder={`${isLargeScreen ? 'Search apple.com' : 'Search'}`} 
+                                className={`leading-none placeholder-[#86868B]
+                                ${props.dark ? 'header_color text-white' : 'white_header_color text-[#313131]'} font-semibold w-full outline-none md:text-2xl text-3xl`} 
+                                type="text" />
+                                <CancelIcon 
+                                onClick={clearInput} 
+                                className={`${!inputValue.length && '!hidden'} ${props.dark ? 'glow' : 'glow_dark'}`} 
+                                sx={{color: '#86868B', transition: 'color 0.5s ease'}}/>
                             </div>
                             <div className='md:text-xs text-xl'>
                                 <div className='dark_gray mb-2'>Quick Links</div>
@@ -709,10 +841,12 @@ const Header = (props) => {
 
                 <div className={`fixed top-0 left-0 w-screen h-screen ${isHoverSearch ? 'backdrop-blur' : 'backdrop-blur-none'} transition-all duration-300 ${!animationDelayBuffer['search'] ? 'z-0' : 'z-[5]'} md:bg-transparent`}></div>
             </>
-
-            {/* when shopping bag icon is clicked on */}
+            {/* when shopping bag icon is clicked on/ pop menu hovered on */}
             <>
-                <div className={`fixed ${isHoverShoppingBag ? 'z-30 opacity-100' : 'opacity-0 z-30'} ${!animationDelayBuffer['shoppingbag'] && '!z-0'} transition-opacity duration-300 top-0 left-0 w-screen md:mt-[44px] mt-4 z-30 bg-white`} id='shoppingBagPopMenu'>
+                <div 
+                onWheel={() => removePopMenu()}
+                className={`${props.fixed ? 'fixed' : 'absolute'} ${isHoverShoppingBag ? 'z-30 max-h-[500px]' : 'z-30 max-h-0'} ${!animationDelayBuffer['shoppingbag'] && '!z-0'} overflow-hidden transition-all duration-300 ease-[cubic-bezier(.51,.14,1,.99)] ${props.fixed ? 'top-0' : 'top-[44px]'} left-0 w-screen md:pt-[44px]  ${props.dark ? 'header_color' : 'white_header_color text-[#313131]'}`} 
+                id='shoppingBagPopMenu'>
                     {!isLargeScreen &&
                         <div className='flex justify-end'>
                             <CloseIcon onClick={() => closeShopping()} className='text-[#86868B]'/>
@@ -735,7 +869,6 @@ const Header = (props) => {
                 </div>
                 <div className={`fixed top-0 left-0 w-screen h-screen ${isHoverShoppingBag ? 'backdrop-blur' : 'backdrop-blur-none'} transition-all duration-300 ${!animationDelayBuffer['shoppingbag'] ? 'z-0' : 'z-[5]'} md:bg-transparent`}></div>
             </>
-
 
         { isHoverSmallBurger && // when small hamburger icon is hovered on
             <>
@@ -760,87 +893,133 @@ const Header = (props) => {
                 <div className='fixed top-0 left-0 w-screen h-screen md:backdrop-blur md:z-[5] z-20 md:bg-transparent bg-white'></div>
             </>
         }
-
-        <div id='header' className={`z-30 ${props.fixed && 'fixed'} top-0 left-0 w-screen h-[44px] 
-        ${props.dark  ? 'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' : 
-        (props.light ? 'bg-[rgba(245,_245,_247,_0.8)] text-[#313131]' : 
-        'bg-[[rgba(250,_250,_252,_0.8)]] text-[#313131]')} backdrop-blur`}>
+        {/* Header Icons */}
+        <div 
+        id='header' 
+        className={`z-30 ${props.fixed ? 'fixed' : 'absolute'} top-0 left-0 w-screen h-[44px] 
+        ${props.dark ? 'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' : 
+        (props.white ? 'bg-[rgba(250,_250,_252,_0.8)] text-[#313131]' : 
+        ' bg-[rgba(245,_245,_247,_0.8)] text-[#313131]')} backdrop-blur`}>
 
             {isLargeScreen 
             ?
                 <header className='flex items-center justify-between max-w-[980px] w-full mx-auto text-xs px-2 h-full'>
                     <a href="/">
-                        <AppleIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                        <AppleIcon 
+                        className={`${props.dark ? 'glow' : 'glow_dark'}`} 
+                        sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                     </a>
                     
-                    {/* Letter Icons */}
+                    {/* Word Icons */}
                     {header_items.map((item, i) => {
                         return (
-                            <a id={header_items_to_href[i]} className={`${props.dark ? 'glow' : 'glow_dark'} h-full
-                            md:block hidden`} href={header_items_to_href[i]}>
-                            <span id='child' className='px-2 leading-[44px] align-middle'>{item}</span>
+                            <a 
+                            onWheel={() => removePopMenu()}
+                            id={header_items_to_href[i]} 
+                            className={`${props.dark ? 'glow' : 'glow_dark'} h-full md:block hidden`} 
+                            href={header_items_to_href[i]}>
+                            <span 
+                            id='child' 
+                            className='px-2 leading-[44px] align-middle'>{item}</span>
                             </a>
                         )
                     })} 
                     
                     {/* Search Icon */}
-                    <div onClick={clickSearch} id='search' className='h-full cursor-pointer flex items-center'>
-                        <SearchIcon className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                    <div 
+                    onWheel={() => removePopMenu()}
+                    onClick={clickSearch} 
+                    onMouseEnter={() => removePopMenu('search')}
+                    id='search' 
+                    className='h-full cursor-pointer flex items-center'>
+                        <SearchIcon 
+                        className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} 
+                        sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                     </div>
 
                     {/* Shopping Bag Icon */}
-                    <div onClick={clickShoppingBag} id='shoppingBag' className='h-full cursor-pointer flex items-center'>
-                        <WorkOutlineIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                    <div 
+                    onWheel={() => removePopMenu()}
+                    onClick={clickShoppingBag}
+                    onMouseEnter={() => removePopMenu('shoppingbag')}
+                    id='shoppingBag' 
+                    className='h-full cursor-pointer flex items-center'>
+                        <WorkOutlineIcon 
+                        className={`${props.dark ? 'glow' : 'glow_dark'}`} 
+                        sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                     </div>
                 </header>
-
             :
                 <header className='flex items-center justify-between w-full h-full text-xs px-4'>
                     <a href="/">
-                        <AppleIcon className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                        <AppleIcon 
+                        className={`${props.dark ? 'glow' : 'glow_dark'}`} 
+                        sx={{color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                     </a>
 
                     <div className='grid grid-cols-3 gap-6 items-center'>
                         <div id='search'>
-                            <SearchIcon onClick={clickSearch} className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                            <SearchIcon 
+                            onClick={clickSearch} 
+                            className={`${props.dark ? 'glow' : 'glow_dark'} leading-[44px]`} 
+                            sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                         </div>
-                        <WorkOutlineIcon id='shoppingBag' onClick={clickShoppingBag} className={`${props.dark ? 'glow' : 'glow_dark'}`} sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
+                        <WorkOutlineIcon 
+                        id='shoppingBag' 
+                        onClick={clickShoppingBag} 
+                        className={`${props.dark ? 'glow' : 'glow_dark'}`} 
+                        sx={{fontSize: '1.3rem', color: props.dark ? '#d0d0d0' : '#313131', transition: 'color 0.5s ease'}}/>
                         
-                        <DragHandleIcon onClick={() => clickSmallBurger()}/>
+                        <DragHandleIcon 
+                        onClick={() => clickSmallBurger()}/>
                     </div>
                 </header>
             }
-
         </div>
 
-        { isHoverHeader && // when header icon is hovered on
+        { isHoverHeader && // when header pop menu is hovered on
         Object.entries(isHoverHeader).map(([key, val], ind) => {
             return (
             <>
-                <div data-key={key} id={'popMenu' + key} className={`${val ? 'z-30 opacity-100' : 'opacity-0 z-30'} ${!animationDelayBuffer[key] && '!z-0'} transition-opacity duration-300 fixed top-0 left-0 w-full mt-[44px] ${props.dark ? 'header_color' : 'bg-[#f5f5f7] text-[#313131]'}  text-center text-white`}>
-                    <div className='text-left w-[980px] mx-auto my-10 flex'>
+                <div 
+                data-key={key} 
+                id={'popMenu' + key} 
+                onWheel={() => removePopMenu()} 
+                className={`${val ? 'z-30 max-h-[800px] ' : 'z-30 max-h-0'} ${!animationDelayBuffer[key] && '!z-0'} overflow-hidden transition-all duration-300 ease-[cubic-bezier(.51,.14,1,.99)] fixed top-0 left-0 w-full mt-[44px] ${props.dark  ? 'bg-[rgba(22,_22,_23,_1)] text-[#d1d1d1]' : 
+                (props.white ? 'bg-[rgba(250,_250,_252,_1)] text-[#313131]' : 
+                ' bg-[rgba(245,_245,_247,_1)] text-[#313131]')}  text-center text-white`}>
+                    <div className='text-left w-[980px] mx-auto mt-10 mb-[84px] flex'>
+                        
                         {header_popMenu[ind].map((col, col_i) => {
                             if (col_i === 0) { // first col, bigger text
                                 return (
                                     <div className='mr-20 select-none'>
-                                        {col.map((item, i) => {
-                                            if (i === 0) { // title
-                                                return <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'}  text-xs pb-4`}>{item}</div>
-                                            } else {
-                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block leading-none font-bold text-xl pb-4`}>{item}</a>
-                                            }
+                                        <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'}  text-xs pb-4`}>{col[0]}</div>
+                                        {col[1].map((item, i) => {
+                                            return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} block leading-none font-bold text-2xl pb-4`}>{item}</a>
                                         })}
+
+                                        {col?.[2] && 
+                                            <div className='mt-2'>
+                                                {
+                                                    col[2].map((smallText) => {
+                                                    return (<div className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} font-semibold text-xs pb-2`}>{smallText}</div>)
+                                                    })
+                                                }
+                                            </div>
+                                        }
                                     </div>
+                                    
                                 )
                             } 
-                            else {
+                            else { // if not first col
                                 return (
                                     <div className='mr-12 select-none'>
-                                        {col.map((item, i) => {
+                                        {col[1].map((item, i) => {
                                             if (i === 0) {
                                                 return <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-xs pb-4`}>{item}</div>
                                             } else {
-                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block text-xs pb-2`}>{item}</a>
+                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block font-semibold text-xs pb-2`}>{item}</a>
                                             }
                                         })}
                                     </div>
@@ -850,16 +1029,13 @@ const Header = (props) => {
                     </div>
                 </div>
 
-                <div className={`fixed w-screen h-screen backdrop-blur ${val ? 'backdrop-blur' : 'backdrop-blur-none'} ${!animationDelayBuffer[key] ? 'z-0' : 'z-[5]'}`}></div>
+                <div className={`fixed w-screen h-screen ${val ? 'backdrop-blur' : 'backdrop-blur-none'} ${!animationDelayBuffer[key] ? 'z-0' : 'z-[5]'} transition-all duration-300`}></div>
 
 
             </> 
             )
         })}
-
         
-
-
     </div>
   )
 }
