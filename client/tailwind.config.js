@@ -9,7 +9,7 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'md-apl': '836px',
+      'md-apl': '834px',
       // => @media (min-width: 640px) { ... }
 
       'lg-apl': '1068px',

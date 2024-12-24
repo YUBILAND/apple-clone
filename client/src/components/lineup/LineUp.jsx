@@ -3,8 +3,6 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Laptops from './Laptops';
-import Desktops from './Desktops';
-import Displays from './Displays';
 import SmallCarousel from '../SmallCarousel';
 import ImportantDevicesRoundedIcon from '@mui/icons-material/ImportantDevicesRounded';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
@@ -126,8 +124,6 @@ const LineUp = () => {
         setMediumScreen(window.screen.width >= 836);
         setLargeScreen(window.screen.width >= 1068);
         setExtraLargeScreen(window.screen.width >= 1442);
-
-
     };
 
     useEffect(() => {
@@ -137,7 +133,7 @@ const LineUp = () => {
 
 
   return (
-    <div className='bg-[#f5f5f7] lg:pb-[150px] md:pb-[120px] pb-[90px]'>
+    <div className='bg-[#fafafa] lg:pb-[150px] md:pb-[120px] pb-[90px]'>
         
         <div className='w-screen px-[6.25%] '>
 
@@ -153,16 +149,16 @@ const LineUp = () => {
                     <button onClick={() => changeLineup(3)} className={`${lineup === 3 && 'bg-[#272729] text-white select-none'} rounded-full px-6 py-2`}>Displays</button>
                 </div>
 
-                {lineup === 1 && <Laptops />}
-                {lineup === 2 && <Desktops />}
-                {lineup === 3 && <Displays />}
+                {lineup === 1 && <Laptops laptop/>}
+                {lineup === 2 && <Laptops desktop />}
+                {lineup === 3 && <Laptops display />}
                 
             </div>
 
         {/* Apple Trade In */}
             <div className='lg:pt-[150px] md:pt-[120px] pt-[90px]'>
 
-            <Title title='Apple Trade In'/>
+                <Title title='Apple Trade In'/>
 
             {/* Card */}
                 <div className='lg:mt-[80px] md:mt-[64px] mt-[48px]'>

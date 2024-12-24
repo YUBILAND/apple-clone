@@ -50,7 +50,7 @@ function App() {
 
             <Route path="/store" element={
               <>
-                  <Header white />
+                  <Header />
                   <TopBanner stretch/>
                   <NewStorePage />
                   <Footer />
@@ -59,7 +59,7 @@ function App() {
 
             <Route path="/mac" element={
               <>
-                  <Header />
+                  <Header white/>
                   <MacPage />
                   <Footer />
               </>

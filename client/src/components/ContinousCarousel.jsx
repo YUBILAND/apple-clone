@@ -79,20 +79,19 @@ const ContinousCarousel = () => {
 
     const stopAnimation = () => { 
         setTimeout(() => {
+            currentTranslate.current = swiperRef.current.getTranslate();
+            const swiperWidth = ( isLargeScreen ? 432 : isMediumScreen ? 301 : 253 )
 
-        currentTranslate.current = swiperRef.current.getTranslate();
-        const swiperWidth = ( isLargeScreen ? 432 : isMediumScreen ? 301 : 253 )
+            //how many slides the translate goes to, correlate to modulo
+            translateNextSlide.current = Math.floor(currentTranslate.current / -swiperWidth)
 
-        //how many slides the translate goes to, correlate to modulo
-        translateNextSlide.current = Math.floor(currentTranslate.current / -swiperWidth)
+            // currentTranslate.current = currentTranslate.current % swiperWidth
 
-        // currentTranslate.current = currentTranslate.current % swiperWidth
-
-        console.log((((currentTranslate.current + swiperWidth ) * 6000 ) / swiperWidth) + 6000 * translateNextSlide.current)
-        swiperRef.current.setTranslate(currentTranslate.current); 
-        swiperRef.current.autoplay.stop();
-        swiperRef.current.params.speed = 6000;
-    }, 0)
+            console.log((((currentTranslate.current + swiperWidth ) * 6000 ) / swiperWidth) + 6000 * translateNextSlide.current)
+            swiperRef.current.setTranslate(currentTranslate.current); 
+            swiperRef.current.autoplay.stop();
+            swiperRef.current.params.speed = 6000;
+        }, 0)
 
     };
 

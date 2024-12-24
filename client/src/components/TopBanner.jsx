@@ -12,7 +12,7 @@ const TopBanner = (props) => {
     
     
   return (
-    <div className={`${props.headerFixed && 'mt-[44px]'} ${props.stretch ? 'min-w-[1032px]' : 'w-full'} bg-white`}>
+    <div className={`${props.headerFixed && 'mt-[44px]'} ${props.stretch ? 'md:min-w-[1032px]' : 'w-full'} bg-white `}>
         <div className='lg:w-full md:w-[640px] sm:w-[400px] w-[260px] lg:text-wrap text-balance mx-auto pt-4 pb-5 flex lg:flex-row flex-col justify-center items-center text-center'>
             
             {bannerInfo?.img && 

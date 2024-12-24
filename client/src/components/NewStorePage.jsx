@@ -587,101 +587,65 @@ const NewStorePage = () => {
 
         </div>
 
-            <div className={``}>
-                <div className={`flex ${!isMediumScreen && 'flex-col'} justify-between max-w-[1623px] w-full mx-auto`}>
-                    <leftgrid className={`font-semibold ${isMediumScreen ? 'text-5xl pb-24' : 'text-[32px] pb-6'}  text-left store_light_gray `}>
-                        <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310] float-left'>Store.</h1>
-                        &nbsp;Gift magic this holiday.
-                    </leftgrid>
-                    <rightgrid className={`text-left ${!isMediumScreen && 'pb-[28px]'}`}>
-                        <div className='w-fit text-sm'>
-                            <div className='flex'>
-                                <img className='w-[35px] h-[35px] mr-2' src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-chat-specialist-icon-202309?wid=70&hei=70&fmt=jpeg&qlt=90&.v=1701194050282" alt="" />
-                                <div className='text-left'>
-                                    <div className=''>Need shopping help?</div>
-                                    <a className='group flex items-center text-[#196899]' href="">
-                                        <div className='group-hover:underline'>Ask a Specialist</div>
-                                        <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className='flex items-center'>
-                                <AppleIcon sx={{fontSize: '2rem', marginRight: '8px'}}/>
-                                <div className='text-left'>
-                                    <div>Visit an Apple Store</div>
-                                    <a className='group flex items-center text-[#196899]' href="">
-                                        <div className='group-hover:underline'>Find one near you</div>
-                                        <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
-                                    </a>
-                                </div>
+        <div className={`px-[6.25%]`}>
+            <div className={`flex ${!isMediumScreen && 'flex-col'} justify-between max-w-[1623px] w-full mx-auto`}>
+                <leftgrid className={`font-semibold ${isMediumScreen ? 'text-5xl pb-24' : 'text-[32px] pb-6'}  text-left store_light_gray `}>
+                    <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310] float-left'>Store.</h1>
+                    &nbsp;Gift magic this holiday.
+                </leftgrid>
+                <rightgrid className={`text-left ${!isMediumScreen && 'pb-[28px]'}`}>
+                    <div className='w-fit text-sm'>
+                        <div className='flex'>
+                            <img className='w-[35px] h-[35px] mr-2' src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-chat-specialist-icon-202309?wid=70&hei=70&fmt=jpeg&qlt=90&.v=1701194050282" alt="" />
+                            <div className='text-left'>
+                                <div className=''>Need shopping help?</div>
+                                <a className='group flex items-center text-[#196899]' href="">
+                                    <div className='group-hover:underline'>Ask a Specialist</div>
+                                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
+                                </a>
                             </div>
                         </div>
-                    </rightgrid>
-                </div>
-
-                <div className={`flex justify-between items-center shrink-0 ${isMediumScreen ? 'w-[1623px]' : 'w-[1080px]'} mx-auto pt-[20px] `}>
-                    {platter_items.map(item => {
-                        return (
-                            <a href='' className=''>
-                                <img className={` ${isMediumScreen ? 'w-[120px] mb-4' : 'w-[92.3px] mb-3'}  object-fit`} src={item.img} alt="" />
-                                <div className='text-center hover:underline text-[14px]'>{item.title}</div>
-                            </a>
-                        )
-                    })}
-                </div>
-
-                <div className={`${isMediumScreen ? 'mt-[90px]' : 'mt-[60px]'} w-[1623px] mx-auto`}>
-                    {header.map((item, index) => {
-                        return (
-                            <div className={`${isMediumScreen && 'pb-[60px]'}`}>
-                                <div className={`font-semibold ${isMediumScreen ? 'text-[28px]' : 'text-[24px]'} text-left store_light_gray`}>
-                                    <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310] float-left'>{item.neon}</h1>
-                                    &nbsp;{item.grayText}
-                                </div>
-
-                                <SwiperCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} small={smallCardBool_arr[index]}/>
-
+                        <div className='flex items-center'>
+                            <AppleIcon sx={{fontSize: '2rem', marginRight: '8px'}}/>
+                            <div className='text-left'>
+                                <div>Visit an Apple Store</div>
+                                <a className='group flex items-center text-[#196899]' href="">
+                                    <div className='group-hover:underline'>Find one near you</div>
+                                    <ArrowForwardIosIcon sx={{fontSize: '0.8rem'}}/>
+                                </a>
                             </div>
-                        )
-                    })}
-                </div>
-            </div>          
-
-        {/* <div className='mt-[90px] '>
-            <div className='text-3xl font-semibold mb-4'>Quick Links</div>
-            <div className='flex'> 
-                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
-                    <div>
-                        Order Status
+                        </div>
                     </div>
-                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
-                </button>
-                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
-                    <div>
-                        Shopping Help
-                    </div>
-                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
-                </button>
-                
-                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
-                    <div>
-                    Returns
-                    </div>
-                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
-                </button>
-
-                <button className='hover:bg-[#272729] hover:underline hover:text-white rounded-full border-[1px] border-black px-4 py-1 mr-4 flex items-center'>
-                    <div>
-                    Your Saves
-                    </div>
-                    <ArrowOutwardIcon sx={{marginLeft: '4px', fontSize: '0.8rem'}}/>
-                </button>
-
+                </rightgrid>
             </div>
-        </div> */}
 
+            <div className={`flex justify-between items-center shrink-0 ${isMediumScreen ? 'w-[1623px]' : 'w-[1080px]'} mx-auto pt-[20px] `}>
+                {platter_items.map(item => {
+                    return (
+                        <a href='' className=''>
+                            <img className={` ${isMediumScreen ? 'w-[120px] mb-4' : 'w-[92.3px] mb-3'}  object-fit`} src={item.img} alt="" />
+                            <div className='text-center hover:underline text-[14px]'>{item.title}</div>
+                        </a>
+                    )
+                })}
+            </div>
 
+            <div className={`${isMediumScreen ? 'mt-[90px]' : 'mt-[60px]'} w-[1623px] mx-auto`}>
+                {header.map((item, index) => {
+                    return (
+                        <div className={`${isMediumScreen && 'pb-[60px]'}`}>
+                            <div className={`font-semibold ${isMediumScreen ? 'text-[28px]' : 'text-[24px]'} text-left store_light_gray`}>
+                                <h1 className='font-semibold text-md text-transparent bg-clip-text bg-gradient-to-r from-[#088ef7] via-[#ca58d2] to-[#f55310] float-left'>{item.neon}</h1>
+                                &nbsp;{item.grayText}
+                            </div>
 
+                            <SwiperCarousel Key={index.toString()} cards={carousel_cards[index]} itemsToShow={itemsToShow_arr[index]} small={smallCardBool_arr[index]}/>
+
+                        </div>
+                    )
+                })}
+            </div>
+        </div>          
         
     </div>
   )
