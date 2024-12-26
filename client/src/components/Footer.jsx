@@ -333,7 +333,7 @@ const Footer = () => {
                                     }
                                 </div>
                                 
-                                    <div className={`flex flex-col py-2 pl-4 text-[12px] footer_light transition-all transform overflow-hidden duration-500 ease ${dropDownArray[index] ? 'max-h-40' : 'max-h-0'} `}>
+                                    <div className={`flex flex-col py-2 pl-4 text-[12px] footer_light transition-all transform overflow-hidden duration-500 ease ${dropDownArray[index] ? 'max-h-[1000px]' : 'max-h-0'} `}>
                                         {footer_items[index].map(item => {
                                             return <a className='leading-6 text-[12px]' href="">{item}</a>
                                         })

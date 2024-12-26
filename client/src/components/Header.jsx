@@ -450,6 +450,8 @@ const Header = (props) => {
 
     const [isLargeScreen, setLargeScreen] = useState(window.innerWidth >= 834);
 
+    const [isSmallScreen, setSmallScreen] = useState(window.innerWidth <= 642);
+
     const [animationDelayBuffer, setAnimationDelayBuffer] = useState({
         'store': false, 'mac': false, 'ipad': false, 'iphone': false, 'watch': false, 'vision': false, 'airpods': false, 'tv-home': false, 'entertainment': false, 'accessories': false, 'support': false, 'search' : false, 'shoppingbag' : false, 'hamburger': false
     }) // when you hover over search pop menu and trigger mouse leave, even if you reenter within animation period it won't trigger event listener
@@ -500,9 +502,6 @@ const Header = (props) => {
                 const handleMobileClick = () => { // MOBILE ONLY. Mouseenter worked for first clicked but after scroll the mouse enter doesn't trigger so i had to use click event instead, same function.
                     if (!isLargeScreen) {
 
-                        // hoveringRef.current = stateReset(hoveringRef.current)
-                        // hoveringRef.current[item] = true;
-
                         hoveringRef.current = {...stateReset(hoveringRef.current), [item] : true }
                         
                         setIsHoverHeader(
@@ -549,7 +548,7 @@ const Header = (props) => {
                 headerIconElement.addEventListener('mouseleave', handleMouseLeave);
                 headerElement.addEventListener('mouseover', headerMouseOver);
                 headerElement.addEventListener('mouseleave', headerMouseLeave);
-                document.body.addEventListener('wheel', handleWheel);
+                document.addEventListener('wheel', handleWheel);
 
                 return () => {
                     headerIconElement.removeEventListener('mouseenter', handleMouseEnter);
@@ -557,7 +556,7 @@ const Header = (props) => {
                     headerIconElement.removeEventListener('mouseleave', handleMouseLeave);
                     headerElement.removeEventListener('mouseover', headerMouseOver);
                     headerElement.removeEventListener('mouseleave', headerMouseLeave);
-                    document.body.removeEventListener('wheel', handleWheel);
+                    document.removeEventListener('wheel', handleWheel);
                 };
             }
         })
@@ -825,6 +824,7 @@ const Header = (props) => {
     useEffect(() => { 
         const updateMedia = () => {
             setLargeScreen(window.innerWidth >= 834);
+            setSmallScreen(window.innerWidth <= 642);
         };
         window.addEventListener("resize", updateMedia);
         return () => window.removeEventListener("resize", updateMedia);
@@ -1309,9 +1309,15 @@ const Header = (props) => {
                 data-key={key} 
                 id={'popMenu' + key} 
                 className={`
-                    overflow-hidden transition-all duration-300 ease-[cubic-bezier(.51,.14,1,.99)] left-0 w-full  text-center text-white md-apl:top-[44px] top-0
-                    ${!isLargeScreen && 
-                        '!top-[44px] !z-50 w-screen h-screen'}
+                    ${Object.entries(isHoverHeader).find(([key, val]) => val)?.[0] == key ? 'overflow-auto' : 'overflow-hidden'}
+                    transition-all duration-300 ease-[cubic-bezier(.51,.14,1,.99)] left-0 w-full  text-center text-white md-apl:top-[44px] top-0
+                    ${!isLargeScreen ? 
+                        `!top-[44px] !z-50 w-screen h-screen
+                        ${Object.entries(isHoverHeader).find(([key, val]) => val)?.[0] == key ? 'overflow-auto' : 'overflow-hidden'}`
+                        :
+                        'overflow-hidden'
+                    
+                    }
                     ${val ? 
                         'max-h-[1000px] ' : 'max-h-0'} 
                     ${props.fixed ? 
@@ -1327,110 +1333,154 @@ const Header = (props) => {
                             ' bg-[rgba(245,_245,_247,_1)] text-[#313131]')
                     }  
                 `}>
-                    <div 
-                        className={`text-left px-[48px] pt-4 flex
-                            ${isLargeScreen && 'w-[980px] mx-auto mt-10 mb-[84px]'} 
-                            ${!isLargeScreen && 'flex-col'}`}>
-                        
-                        {isLargeScreen ? 
-
-                            header_popMenu[ind].map((col, col_i) => {
-                                if (col_i === 0) { // first col, bigger text
-                                    return (
-                                        <div 
-                                        className='mr-20 select-none'>
+                    <div className='h-fit'>
+                        <div 
+                            className={`text-left px-[52px] pt-3 flex
+                                ${isLargeScreen && 'w-[980px] mx-auto mt-10 mb-[84px]'} 
+                                ${!isLargeScreen && 'flex-col'}`}>
+                            
+                            {isLargeScreen  ? 
+                                //Large Screen one row
+                                header_popMenu[ind].map((col, col_i) => {
+                                    if (col_i === 0) { // first col, bigger text
+                                        return (
                                             <div 
-                                                className={`
-                                                    text-xs pb-4
-                                                    ${props.dark ? 
-                                                        'text-[#d1d1d1]' 
-                                                        : 
-                                                        'text-[#8B8B8F]'
-                                                    } `
-                                                }>
-                                                {/* title */}
-                                                {col[0]}
+                                            className={`${isLargeScreen && 'mr-20'} select-none`}>
+                                                <div 
+                                                    className={`
+                                                        text-xs pb-4
+                                                        ${props.dark ? 
+                                                            'text-[#d1d1d1]' 
+                                                            : 
+                                                            'text-[#8B8B8F]'
+                                                        } `
+                                                    }>
+                                                    {/* title */}
+                                                    {col[0]}
+                                                </div>
+                                                {col[1].map((item, i) => {
+                                                    // content
+                                                    return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} block leading-none font-bold text-2xl pb-4 w-fit`}>{item}</a>
+                                                })}
+
+                                                {col?.[2] && 
+                                                    // subcontent
+                                                    <div className='mt-2'>
+                                                        {
+                                                            col[2].map((smallText) => {
+                                                            return (<div className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} font-semibold text-xs pb-2`}>{smallText}</div>)
+                                                            })
+                                                        }
+                                                    </div>
+                                                }
                                             </div>
-                                            {col[1].map((item, i) => {
+                                        )
+                                    } 
+                                    else { // if not first col
+                                        return (
+                                            <div className='mr-12 select-none'>
+                                                {col[1].map((item, i) => {
+                                                    if (i === 0) {
+                                                        return <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-xs pb-4`}>{item}</div>
+                                                    } else {
+                                                        return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block font-semibold text-xs pb-2 w-fit`}>{item}</a>
+                                                    }
+                                                })}
+                                            </div>
+                                        )
+                                    }
+                                })
+
+                                :
+
+                                !isSmallScreen ? 
+                                    // Medium Screen two rows
+                                    <div className=''>
+                                        {/* first col, bigger text */}
+                                        <div 
+                                        className={`${isLargeScreen && 'mr-20'} select-none pb-[52px]`}>
+                                            
+                                            {header_popMenu[ind][0][1].map((item, i) => {
                                                 // content
-                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} block leading-none font-bold text-2xl pb-4 w-fit`}>{item}</a>
+                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} w-fit block leading-none font-semibold text-[28px] mb-4`}>{item}</a>
                                             })}
 
-                                            {col?.[2] && 
+                                            {header_popMenu[ind][0]?.[2] && 
                                                 // subcontent
                                                 <div className='mt-2'>
                                                     {
-                                                        col[2].map((smallText) => {
-                                                        return (<div className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} font-semibold text-xs pb-2`}>{smallText}</div>)
+                                                        header_popMenu[ind][0][2].map((smallText) => {
+                                                        return (<div className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} w-fit font-semibold text-[17px] pb-2`}>{smallText}</div>)
                                                         })
                                                     }
                                                 </div>
                                             }
                                         </div>
-                                    )
-                                } 
-                                else { // if not first col
-                                    return (
-                                        <div className='mr-12 select-none'>
-                                            {col[1].map((item, i) => {
-                                                if (i === 0) {
-                                                    return <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-xs pb-4`}>{item}</div>
-                                                } else {
-                                                    return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block font-semibold text-xs pb-2 w-fit`}>{item}</a>
+
+                                        <div className='mr-12 select-none flex pb-[92px]'>
+                                            {header_popMenu[ind].map((cols, col_i) => {
+                                                if (col_i > 0) { // for cols that are not the first col
+                                                    return (
+                                                        <div className='w-fit pr-[48px]'>
+                                                            <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-[17px] mb-4`}>{cols[0]}</div>
+                                                            {
+                                                                cols[1].map(val => {
+                                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} w-fit block font-semibold text-[17px] mb-2`}>{val}</a>
+                                                                })
+                                                                    
+                                                            }
+                                                        </div>
+                                                    )
                                                 }
-                                            })}
-                                        </div>
-                                    )
-                                }
-                            })
-
-                            :
-                            <div className=''>
-                                {/* first col, bigger text */}
-                                <div 
-                                className='mr-20 select-none pb-10'>
-                                    
-                                    {header_popMenu[ind][0][1].map((item, i) => {
-                                        // content
-                                        return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} w-fit block leading-none font-semibold text-[28px] mb-4`}>{item}</a>
-                                    })}
-
-                                    {header_popMenu[ind][0]?.[2] && 
-                                        // subcontent
-                                        <div className='mt-2'>
-                                            {
-                                                header_popMenu[ind][0][2].map((smallText) => {
-                                                return (<div className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} w-fit font-semibold text-[17px] pb-2`}>{smallText}</div>)
-                                                })
+                                            })
                                             }
                                         </div>
-                                    }
-                                </div>
+                                    </div>
 
-                                <div className='mr-12 select-none flex'>
-                                    {header_popMenu[ind].map((cols, col_i) => {
-                                        if (col_i > 0) { // for cols that are not the first col
+                                    :
+                                    // Small Screen three rows
+                                    header_popMenu[ind].map((col, col_i) => {
+                                        const isLastElement = col_i === header_popMenu[ind].length - 1;
+                                        if (col_i === 0) { // first col, bigger text
                                             return (
-                                                <div className='w-fit pr-[48px]'>
-                                                    <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-[17px] mb-4`}>{cols[0]}</div>
-                                                    {
-                                                        cols[1].map(val => {
-                                                        return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} w-fit block font-semibold text-[17px] mb-2`}>{val}</a>
-                                                        })
-                                                            
+                                                <div 
+                                                className={`${isLargeScreen && 'mr-20'} select-none pb-[52px]`}>
+                                                    
+                                                    {col[1].map((item, i) => {
+                                                        // content
+                                                        return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} block leading-none font-semibold text-[28px] pb-4 w-fit`}>{item}</a>
+                                                    })}
+
+                                                    {col?.[2] && 
+                                                        // subcontent
+                                                        <div className='mt-2'>
+                                                            {
+                                                                col[2].map((smallText) => {
+                                                                return (<div className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} font-semibold text-[17px] pb-2`}>{smallText}</div>)
+                                                                })
+                                                            }
+                                                        </div>
                                                     }
                                                 </div>
                                             )
+                                        } 
+                                        else { // if not first col
+                                            return (
+                                                <div className={`mr-12 select-none ${isLastElement ? 'mb-[92px]' : 'pb-[52px]'}`}>
+                                                    <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-[17px] pb-4`}>{col[0]}</div>
 
-                                             
+                                                    {col[1].map((item, i) => {
+                                                        return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block font-semibold text-[17px] pb-2 w-fit`}>{item}</a>
+                                                    }
+                                                    )}
+                                                </div>
+                                            )
                                         }
-
                                     })
-                                    }
-                                </div>
-                            </div>
-                        }
 
+                            }
+
+                        </div>
                     </div>
                     
                 </div>
