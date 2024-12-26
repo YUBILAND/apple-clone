@@ -883,10 +883,13 @@ const MacPage = () => {
                 <Title title='Mac'/>
                 
             {/* Mac Pop Menu */}
-                <div className='text-left mt-10 flex lg-apl:flex-row flex-col gap-6'>
-                    {!isLargeScreen && isMediumScreen ?
+                <div className='text-left mt-10 flex lg-apl:flex-row flex-col gap-6'> 
+                    {/* if large screen, flex-row everything go straight to false ternary*/}
 
+                    {!isLargeScreen && isMediumScreen ?
+                    //if medium screen , i repeated twice first div normal second div has flex 
                     <div className='flex flex-col gap-8'>
+                        {/* first row  */}
                         {header_popMenu.map((col, col_i) => {
                             if (col_i === 0) { // first col, bigger text
                                 return (
@@ -904,8 +907,10 @@ const MacPage = () => {
                                 )
                             }
                         })}
-
-                        <div className='flex'>
+                        
+                        {/* second row is flex-row */}
+                        <div className='flex'> 
+                            
                             {header_popMenu.map((col, col_i) => {
                                 if (col_i > 0) {
                                     return (
@@ -925,6 +930,7 @@ const MacPage = () => {
                     </div>
                     
                     :
+                        // straight down, small screen
                         header_popMenu.map((col, col_i) => {
                             if (col_i === 0) { // first col, bigger text
                                 return (
