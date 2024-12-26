@@ -470,151 +470,9 @@ const Header = (props) => {
         return newStateDict;
     }
 
-    const iconRefs = useRef({});
+    const iconRefs = useRef({}); // ref, replace getElementbyId
 
-    // useEffect(() => { // add event listeners to icons, loads after DOM
-
-    //     const searchIconElement = document.getElementById('search');
-    //     // const shoppingBagIconElement = document.getElementById('shoppingBag');
-    //     const shoppingBagIconElement = iconRefs.current['shoppingBag'];
-    //     const hamburgerIconElement = document.getElementById('hamburger');
-    //     console.log(searchIconElement)
-    //     console.log(shoppingBagIconElement)
-
-
-    //     // Search Icon, on click
-    //     if (searchIconElement) {
-    //         console.log("CLICKED SEARCHED")
-    //         const searchIconClick= () => {
-
-    //             setAnimationDelayBuffer(
-    //                 { ...stateReset(animationDelayBuffer), 'search' : true }
-    //             );
-    //         };
-    //         searchIconElement.addEventListener('click', searchIconClick);
-    //         return () => {
-    //             searchIconElement.removeEventListener('click', searchIconClick);
-    //         };
-    //     }
-
-    //     // Shopping Bag Icon, on click
-    //     if (shoppingBagIconElement) {
-    //         console.log("CLICKED SHOPPING")
-
-    //         const shoppingBagIconClick = () => {
-                
-    //             setAnimationDelayBuffer(
-    //                 { ...stateReset(animationDelayBuffer), 'shoppingbag': true }
-    //             );
-    //         };
-    //         shoppingBagIconElement.addEventListener('click', shoppingBagIconClick);
-    //         return () => {
-    //             shoppingBagIconElement.removeEventListener('click', shoppingBagIconClick);
-    //         };
-    //     }
-
-    //     header_items_to_href.map(item => { // for each icon add event listener
-    //         const headerIconElement = document.getElementById(item);
-    //         const headerElement = document.getElementById('header');
-
-    //         if (headerIconElement) { // When DOM loads
-
-    //             const handleMouseEnter = () => { // for that event listener if mouse hovered over
-    //                 // When mouse hovers over icon
-    //                 removePopMenu('small')
-    //                 hoveringRef.current[item] = true;
-    //                 setIsHoverHeader(
-    //                     { ...stateReset(isHoverHeader), [item]: true }
-    //                 );
-
-    //                 isLargeScreen &&
-    //                 setAnimationDelayBuffer(
-    //                     { ...stateReset(animationDelayBuffer), [item]: true }
-    //                 );
-    //             };
-
-    //             const handleMobileClick = () => { // MOBILE ONLY. Mouseenter worked for first clicked but after scroll the mouse enter doesn't trigger so i had to use click event instead, same function.
-    //                 if (!isLargeScreen) {
-
-    //                     // hoveringRef.current = stateReset(hoveringRef.current)
-    //                     // hoveringRef.current[item] = true;
-
-    //                     hoveringRef.current = {...stateReset(hoveringRef.current), [item] : true }
-                        
-    //                     setIsHoverHeader(
-    //                         { ...stateReset(isHoverHeader), [item]: true }
-    //                     );
-    //                     isLargeScreen &&
-    //                     setAnimationDelayBuffer(
-    //                         { ...stateReset(animationDelayBuffer), [item]: true }
-    //                     );
-    //                 }
-
-    //             };
-
-    //             const handleMouseLeave = () => {
-    //                 // When mouse leaves icon
-    //                 if (!hoverHeaderWhiteSpaceRef.current) { // if mouse hovers over another icon then remove pop menu, else don't since you rehover over same icon
-    //                     //going in here means you hovered over another icon
-    //                     hoveringRef.current[item] = false;
-    //                     setIsHoverHeader((prev) => ({
-    //                         ...prev,
-    //                         [item] : false
-    //                     }))
-    //                     setAnimationDelayBuffer((prev) => ({
-    //                         ...prev,
-    //                         [item] : false
-    //                     }));
-    //                 }
-    //             };
-
-    //             const headerMouseOver = () => {
-    //                 hoverHeaderWhiteSpaceRef.current = true;
-    //             };
-
-    //             const headerMouseLeave = () => {
-    //                 hoverHeaderWhiteSpaceRef.current = false;
-    //             };
-
-    //             const handleWheel = () => { //any scroll movement should remove pop menu
-    //                 if (isLargeScreen) removePopMenu();
-    //             };
-
-    //             headerIconElement.addEventListener('mouseenter', handleMouseEnter);
-    //             headerIconElement.addEventListener('click', handleMobileClick);
-    //             headerIconElement.addEventListener('mouseleave', handleMouseLeave);
-    //             headerElement.addEventListener('mouseover', headerMouseOver);
-    //             headerElement.addEventListener('mouseleave', headerMouseLeave);
-    //             document.body.addEventListener('wheel', handleWheel);
-
-    //             return () => {
-    //                 headerIconElement.removeEventListener('mouseenter', handleMouseEnter);
-    //                 headerIconElement.removeEventListener('click', handleMobileClick);
-    //                 headerIconElement.removeEventListener('mouseleave', handleMouseLeave);
-    //                 headerElement.removeEventListener('mouseover', headerMouseOver);
-    //                 headerElement.removeEventListener('mouseleave', headerMouseLeave);
-    //                 document.body.removeEventListener('wheel', handleWheel);
-    //             };
-    //         }
-    //     })
-
-    //     // Hamburger Icon, on click
-    //     if (hamburgerIconElement) {
-    //         const hamburgerIconClick = () => {
-    //             // setHoverHamburger(true)
-    //             setAnimationDelayBuffer(
-    //                 { ...stateReset(animationDelayBuffer), 'hamburger': true }
-    //             );
-    //         };
-
-    //         hamburgerIconElement.addEventListener('click', hamburgerIconClick);
-
-    //         return () => {
-    //             hamburgerIconElement.removeEventListener('click', hamburgerIconClick);
-    //         };
-    //     }
-
-    // }, [])
+    const [displayChange, setDisplayChange] = useState(false); // changes when display size changes from desktop to mobile, vice versa
 
     useEffect(() => { // Header Icons Event Listener
 
@@ -626,7 +484,6 @@ const Header = (props) => {
 
                 const handleMouseEnter = () => { // for that event listener if mouse hovered over
                     // When mouse hovers over icon
-            
 
                     removePopMenu('small')
                     hoveringRef.current[item] = true;
@@ -705,7 +562,7 @@ const Header = (props) => {
             }
         })
 
-    }, [])
+    }, [displayChange]) // add event listener on mount and on display change
 
     useEffect(() => { // Search Icon Event Listener
         const searchIconElement = iconRefs.current['search'];
@@ -955,9 +812,12 @@ const Header = (props) => {
     }
 
     const resizedRef = useRef(false);
+    
+
     useEffect(() => {
         if (resizedRef.current != isLargeScreen) {
             resizedRef.current = isLargeScreen;
+            setDisplayChange(prev => !prev);
             removePopMenu();
         }
     }, [isLargeScreen])
@@ -1034,18 +894,14 @@ const Header = (props) => {
                 className={`overflow-hidden transition-[max-height] duration-300 ease-[cubic-bezier(.51,.14,1,.99)] left-0 h-full w-screen 
                     ${!isLargeScreen && '!z-50 top-0 '}
                     ${props.fixed ? 
-                        'fixed' 
-                        : 
-                        'absolute'} 
+                        'fixed' : 'absolute'} 
                     ${isHoverSearch ? 
                         'md-apl:max-h-[500px] max-h-[1000px] ' 
                         : 
                         'max-h-0 pt-0 '} 
                     ${!animationDelayBuffer['search'] ? 'z-30' : 'md-apl:z-20 z-50'} 
                     ${props.fixed ? 
-                        'top-0' 
-                        : 
-                        'md-apl:top-[44px] top-0'} 
+                        'top-0' : 'md-apl:top-[44px] top-0'} 
                     ${props.dark ?
                         'bg-[rgba(22,_22,_23,_0.9)] text-[#d1d1d1]' 
                         : 
@@ -1053,7 +909,7 @@ const Header = (props) => {
                         ${props.white ? 
                             'bg-[rgb(250,_250,_252)]' 
                         : 
-                            'bg-[rgb(245,_245,_247)]' 
+                            'bg-[#FAFAFC]' 
                         }`
                     }
                 `} 
@@ -1066,18 +922,15 @@ const Header = (props) => {
                                 onClick={() => closeSearch()} className='text-[#86868B]'/>
                             </div>
                         }
-                        <div className={`select-none  text-center text-white mb-6 px-12 `}>
-                            <div className='text-left max-w-[980px] w-full mx-auto md-apl:my-10 '>
+                        <div className={`select-none  text-center text-white mb-6  `}>
+                            <div className='text-left max-w-[980px] w-full mx-auto md-apl:my-10 px-12'>
                                 <div className='flex items-center mb-8'>
                                     <SearchIcon 
                                     className='' 
                                     sx={{
                                         fontSize: '1.8rem', 
                                         color: inputValue.length ? 
-                                            (props.dark ? 
-                                                'white' 
-                                                : 
-                                                'black'
+                                            (props.dark ? 'white' : 'black'
                                                 ) 
                                             : 
                                             '#86868B', 
@@ -1206,10 +1059,10 @@ const Header = (props) => {
                             onClick={() => closeShopping()} className='text-[#86868B]'/>
                         </div>
                         }
-                        <div className={`select-none text-center text-white pb-10 px-12
+                        <div className={`select-none text-center text-white 
                             ${props.dark && 'header_color'} 
                             `}>
-                            <div className='text-left w-[980px] mx-auto md-apl:py-10  '>
+                            <div className='text-left w-[980px] mx-auto md-apl:py-10 pb-10 px-12 '>
                                 <div className='md-apl:text-2xl text-3xl mb-5 text-black'>Your Bag is empty.</div>
                                 <div className='md-apl:text-xs text-lg mb-8 dark_gray'>
                                     <a className='underline text-[#2997FF]' href="/signin">Sign in</a>&nbsp;to see if you have any saved items</div>
@@ -1396,7 +1249,6 @@ const Header = (props) => {
 
                 {/* Shopping Bag Icon */}
                     <div 
-                    onWheel={() => removePopMenu()}
                     onClick={clickShoppingBag}
                     onMouseEnter={() => removePopMenu('shoppingbag')}
                     ref={(el) => (iconRefs.current['shoppingBag'] = el)}
@@ -1501,7 +1353,7 @@ const Header = (props) => {
                                             </div>
                                             {col[1].map((item, i) => {
                                                 // content
-                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} block leading-none font-bold text-2xl pb-4`}>{item}</a>
+                                                return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'} block leading-none font-bold text-2xl pb-4 w-fit`}>{item}</a>
                                             })}
 
                                             {col?.[2] && 
@@ -1524,7 +1376,7 @@ const Header = (props) => {
                                                 if (i === 0) {
                                                     return <div className={`${props.dark ? 'text-[#d1d1d1]' : 'text-[#8B8B8F]'} text-xs pb-4`}>{item}</div>
                                                 } else {
-                                                    return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block font-semibold text-xs pb-2`}>{item}</a>
+                                                    return <a href='/' className={`${props.dark ? 'text-[#e6e6e6] glow' : 'text-[#333336] glow_dark'}  block font-semibold text-xs pb-2 w-fit`}>{item}</a>
                                                 }
                                             })}
                                         </div>

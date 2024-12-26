@@ -579,7 +579,7 @@ const NewStorePage = () => {
       }, []);
 
   return (
-    <div className={`select-none mb-16 w-screen overflow-hidden ${isMediumScreen && 'min-w-[1032px]'}`}>
+    <div className={`select-none mb-16 w-screen overflow-hidden ${isMediumScreen && 'w-screen'}`}>
 
         <div className='bg-[rgb(158,209,245)] bg-[linear-gradient(90deg,_rgba(158,209,245,1)_13%,_rgba(129,149,238,1)_30%,_rgba(161,138,236,1)_49%,_rgba(243,119,190,1)_68%,_rgba(249,171,109,1)_100%)]
  w-full h-32 relative'>
